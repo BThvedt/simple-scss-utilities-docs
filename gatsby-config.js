@@ -2,6 +2,7 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+  pathPrefix: "/simple-scss-utilities",
   siteMetadata: {
     title: `Simple SCSS Utilities`,
     siteUrl: `https://www.yourdomain.tld`
