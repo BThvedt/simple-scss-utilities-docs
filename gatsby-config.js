@@ -2,13 +2,14 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
-  pathPrefix: "/simple-scss-utilities",
+  pathPrefix: "/simple-scss-utilities-docs",
   siteMetadata: {
     title: `Simple SCSS Utilities`,
     siteUrl: `https://www.yourdomain.tld`
   },
   plugins: [
     "gatsby-plugin-sitemap",
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {

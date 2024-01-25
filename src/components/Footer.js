@@ -2,9 +2,9 @@ import * as React from "react"
 
 const Footer = () => {
   return (
-    <div>
+    <footer id="#footer" className="p-lg bt-solid bt-sm">
       <p>Footer</p>
-    </div>
+    </footer>
   )
 }
 

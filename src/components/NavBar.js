@@ -4,11 +4,19 @@ import { Link } from "gatsby"
 
 const NavBar = () => {
   return (
-    <div>
-      <Link to="/">Simple Scss Utilities</Link>
-      <Link to="/install">Install</Link>
-      <Link to="/">Docs</Link>
-      <Link to="/faq">FAQ</Link>
+    <div id="navBar" className="p-lg bb-solid bb-sm">
+      <nav className="d-flex justify-between max-w-container m-auto">
+        <div>
+          <Link to="/">SSU</Link>
+        </div>
+
+        <div className="d-flex justify-between w-2/5 pr-xl">
+          <Link to="/philosophy">Philosophy</Link>
+          <Link to="/install">Install</Link>
+          <Link to="/install">Customize</Link>
+          <Link to="/classes">Docs</Link>
+        </div>
+      </nav>
     </div>
   )
 }

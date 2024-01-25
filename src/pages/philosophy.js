@@ -2,16 +2,15 @@ import * as React from "react"
 import Layout from "../components/Layout"
 
 // Step 2: Define your component
-const FAQ = () => {
+const Philosophy = () => {
   return (
     <Layout>
       <main>
-        <h1>FAQ</h1>
-        <p>Here are some FAQ's</p>
+        <h1>Philosophy</h1>
       </main>
     </Layout>
   )
 }
 
 // Step 3: Export your component
-export default FAQ
+export default Philosophy
