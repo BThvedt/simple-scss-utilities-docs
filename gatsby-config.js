@@ -10,6 +10,14 @@ module.exports = {
   plugins: [
     "gatsby-plugin-sitemap",
     `gatsby-plugin-sass`,
+    `gatsby-plugin-mdx`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages`
+      }
+    },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -45,6 +53,27 @@ module.exports = {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png"
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "docs",
+        path: "./content/docs/"
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "customize",
+        path: "./content/customize/"
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "components",
+        path: "./content/components/"
       }
     }
   ]
