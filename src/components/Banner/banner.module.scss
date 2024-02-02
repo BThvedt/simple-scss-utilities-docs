@@ -98,7 +98,7 @@ $c: cyan yellow tomato;
 
         @for $i from 1 through $chars {
           &:nth-child(#{$i}) {
-            animation-delay: $i/$chars * -$d;
+            animation-delay: calc($i / $chars) * -$d;
           }
         }
       }

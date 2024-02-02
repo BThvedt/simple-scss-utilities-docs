@@ -1,3 +1,4 @@
+const path = require(`path`)
 // exports.createPages = async ({ graphql, actions }) => {
 //   const { createRedirect } = actions
 
@@ -39,3 +40,37 @@
 //   //   toPath: `/philosophy`
 //   // })
 // }
+
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
+  const result = await graphql(`
+    query {
+      allMdx {
+        nodes {
+          id
+          frontmatter {
+            type
+            slug
+          }
+          internal {
+            contentFilePath
+          }
+        }
+      }
+    }
+  `)
+
+  const { nodes } = result.data.allMdx
+  const postTemplate = path.resolve(`./src/templates/post.js`)
+
+  nodes.forEach((node) => {
+    const type = node.frontmatter.type
+    const slug = node.frontmatter.slug
+    createPage({
+      path: `/${type}/${slug}`,
+      component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+      context: {
+        id: node.id
+      }
+    })
+  })
+}
