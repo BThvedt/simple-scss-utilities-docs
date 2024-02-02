@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[4276],{4276:function(t,n,e){async function s(t,n=!0){await t.addInteractor("externalAttract",(async n=>{const{Attractor:s}=await e.e(505).then(e.bind(e,505));return new s(t,n)}),n)}e.d(n,{loadExternalAttractInteraction:function(){return s}})}}]);
+//# sourceMappingURL=4276-d3d2631ed104883b8ab0.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[4288],{4288:function(s,t,e){async function a(s,t=!0){const{StarDrawer:a}=await e.e(4870).then(e.bind(e,4870));await s.addShape("star",new a,t)}e.d(t,{loadStarShape:function(){return a}})}}]);
+//# sourceMappingURL=4288-943882325a896d6f6923.js.map

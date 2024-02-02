@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[5618],{5618:function(t,i,e){async function s(t,i=!0){await t.addParticleUpdater("opacity",(async t=>{const{OpacityUpdater:i}=await e.e(2187).then(e.bind(e,2187));return new i(t)}),i)}e.d(i,{loadOpacityUpdater:function(){return s}})}}]);
+//# sourceMappingURL=5618-fcfc4c0314db31e985e1.js.map
