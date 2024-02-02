@@ -151,7 +151,7 @@ const SideBar = ({ sidebarData }) => {
       // don't give a slug of "index" part of the path here ..
       // the path will just be /docs/ or /customize/ etc
       // this is different for the categories
-      const pathName = `/${path}/${slug}`
+      const pathName = slug === "index" ? `/${path}` : `/${path}/${slug}`
       rootDocArr.push({
         title,
         path: pathName,

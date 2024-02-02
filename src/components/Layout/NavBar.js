@@ -16,9 +16,9 @@ const NavBar = () => {
         <div className="display-flex justify-content-between w-2/5 pr-xl">
           <Link to="/philosophy">Philosophy</Link>
           <Link to="/install">Install</Link>
-          <Link to="/docs/index">Docs</Link>
-          <Link to="/customize/index">Customize</Link>
-          <Link to="/components/index">Components</Link>
+          <Link to="/docs">Docs</Link>
+          <Link to="/customize">Customize</Link>
+          <Link to="/components">Components</Link>
         </div>
       </nav>
     </div>
