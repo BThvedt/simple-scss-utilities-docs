@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[9704],{9704:function(t,n,e){e.d(n,{drawPolygon:function(){return a}});var o=e(4324);const s=180,i={x:0,y:0},u=2;function a(t,n,e){const{context:a}=t,c=e.count.numerator*e.count.denominator,r=e.count.numerator/e.count.denominator,l=s*(r-u)/r,f=Math.PI-(0,o.qy)(l);if(a){a.beginPath(),a.translate(n.x,n.y),a.moveTo(i.x,i.y);for(let t=0;t<c;t++)a.lineTo(e.length,i.y),a.translate(e.length,i.y),a.rotate(f)}}}}]);
+//# sourceMappingURL=9704-8d80482938d86cf4ba22.js.map

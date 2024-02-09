@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[6356],{6356:function(a,s,e){async function n(a,s=!0){await a.addMover("parallax",(async()=>{const{ParallaxMover:a}=await e.e(6512).then(e.bind(e,6512));return new a}),s)}e.d(s,{loadParallaxMover:function(){return n}})}}]);
+//# sourceMappingURL=6356-e24fc885d4eb91705dea.js.map

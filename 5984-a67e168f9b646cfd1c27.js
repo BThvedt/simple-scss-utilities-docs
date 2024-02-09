@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[5984],{9955:function(t,e,s){async function i(t,e=!0){await t.addParticleUpdater("color",(async t=>{const{ColorUpdater:e}=await s.e(704).then(s.bind(s,704));return new e(t)}),e)}s.d(e,{loadColorUpdater:function(){return i}})}}]);
+//# sourceMappingURL=5984-a67e168f9b646cfd1c27.js.map

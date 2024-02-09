@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[3408],{3408:function(s,e,t){t.d(e,{SquareDrawer:function(){return i}});class i{async draw(s){const{drawSquare:e}=await t.e(4252).then(t.bind(t,4252));e(s)}getSidesCount(){return 4}}}}]);
+//# sourceMappingURL=3408-41a5e892ca01feba3890.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[3584],{3584:function(e,i,s){async function c(e,i=!0){const{CircleDrawer:c}=await s.e(9152).then(s.bind(s,9152));await e.addShape("circle",new c,i)}s.d(i,{loadCircleShape:function(){return c}})}}]);
+//# sourceMappingURL=3584-ec6408747c308789eead.js.map

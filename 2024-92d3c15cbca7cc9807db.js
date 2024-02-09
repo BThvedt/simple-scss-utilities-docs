@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[2024],{2024:function(s,e,i){i.d(e,{LineDrawer:function(){return n}});class n{async draw(s){const{drawLine:e}=await i.e(8512).then(i.bind(i,8512));e(s)}getSidesCount(){return 1}}}}]);
+//# sourceMappingURL=2024-92d3c15cbca7cc9807db.js.map

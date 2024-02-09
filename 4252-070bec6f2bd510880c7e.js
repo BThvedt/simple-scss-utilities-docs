@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[4252],{4252:function(s,t,e){e.d(t,{drawSquare:function(){return n}});const i=Math.sqrt(2),c=2;function n(s){const{context:t,radius:e}=s,n=e/i,u=n*c;t.rect(-n,-n,u,u)}}}]);
+//# sourceMappingURL=4252-070bec6f2bd510880c7e.js.map

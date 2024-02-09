@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[3696],{3696:function(t,e,s){async function i(t,e=!0){await t.addParticleUpdater("strokeColor",(async t=>{const{StrokeColorUpdater:e}=await s.e(5216).then(s.bind(s,5216));return new e(t)}),e)}s.d(e,{loadStrokeColorUpdater:function(){return i}})}}]);
+//# sourceMappingURL=3696-6c4fdd2166a158dc547d.js.map

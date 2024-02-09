@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[4596],{8549:function(n,a,i){async function e(n,a=!0){await async function(n,a=!0){const{PolygonDrawer:e}=await i.e(5659).then(i.bind(i,5659));await n.addShape("polygon",new e,a)}(n,a),await async function(n,a=!0){const{TriangleDrawer:e}=await i.e(564).then(i.bind(i,564));await n.addShape("triangle",new e,a)}(n,a)}i.d(a,{loadPolygonShape:function(){return e}})}}]);
-//# sourceMappingURL=4596-6ed510a5cdbe8606e51e.js.map

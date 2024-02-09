@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[4870],{4870:function(s,t,e){e.d(t,{StarDrawer:function(){return i}});var a=e(3622);class i{async draw(s){const{drawStar:t}=await e.e(6997).then(e.bind(e,6997));t(s)}getSidesCount(s){const t=s.shapeData;return Math.round((0,a.Gu)(t?.sides??5))}async particleInit(s,t){const e=t.shapeData;t.starInset=(0,a.Gu)(e?.inset??2),await Promise.resolve()}}}}]);
-//# sourceMappingURL=4870-5fb280561be311d775d0.js.map

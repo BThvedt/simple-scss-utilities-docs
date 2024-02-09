@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[5453],{5453:function(t,e,s){async function a(t,e=!0){await t.addParticleUpdater("rotate",(async t=>{const{RotateUpdater:e}=await s.e(1706).then(s.bind(s,1706));return new e(t)}),e)}s.d(e,{loadRotateUpdater:function(){return a}})}}]);
-//# sourceMappingURL=5453-4e916ad9a32089ab4850.js.map

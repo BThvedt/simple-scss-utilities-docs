@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[3567],{3567:function(i,e,s){s.d(e,{bounce:function(){return n}});var l=s(3622);const o=i=>{void 0===i.collisionMaxSpeed&&(i.collisionMaxSpeed=(0,l.Gu)(i.options.collisions.maxSpeed)),i.velocity.length>i.collisionMaxSpeed&&(i.velocity.length=i.collisionMaxSpeed)};function n(i,e){(0,l.kR)((0,l.gy)(i),(0,l.gy)(e)),o(i),o(e)}}}]);
-//# sourceMappingURL=3567-14a21d3df31123dc1611.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[475],{475:function(s,e,t){t.d(e,{Pauser:function(){return n}});var i=t(4324);class n extends i.Ef{constructor(s){super(s),this.handleClickMode=s=>{if("pause"!==s)return;const e=this.container;e.animationStatus?e.pause():e.play()}}clear(){}init(){}async interact(){}isEnabled(){return!0}reset(){}}}}]);
+//# sourceMappingURL=475-90b3e3d3897f108afbf4.js.map

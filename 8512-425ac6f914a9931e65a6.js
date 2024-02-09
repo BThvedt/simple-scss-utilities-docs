@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[8512],{8512:function(s,e,i){function t(s){const{context:e,particle:i,radius:t}=s,n=i.shapeData;e.moveTo(-t,0),e.lineTo(t,0),e.lineCap=n?.cap??"butt"}i.d(e,{drawLine:function(){return t}})}}]);
+//# sourceMappingURL=8512-425ac6f914a9931e65a6.js.map

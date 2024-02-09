@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[3712],{3712:function(c,i,e){e.d(i,{drawCircle:function(){return a}});const s=2*Math.PI,n=0,t={x:0,y:0};function a(c){const{context:i,particle:e,radius:a}=c;e.circleRange||(e.circleRange={min:n,max:s});const l=e.circleRange;i.arc(t.x,t.y,a,l.min,l.max,!1)}}}]);
+//# sourceMappingURL=3712-6dc847365ecb3412f23b.js.map

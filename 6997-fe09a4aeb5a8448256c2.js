@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[6997],{6997:function(t,s,e){e.d(s,{drawStar:function(){return o}});const i=2,n={x:0,y:0};function o(t){const{context:s,particle:e,radius:o}=t,c=e.sides,a=e.starInset??i;s.moveTo(n.x,n.y-o);for(let i=0;i<c;i++)s.rotate(Math.PI/c),s.lineTo(n.x,n.y-o*a),s.rotate(Math.PI/c),s.lineTo(n.x,n.y-o)}}}]);
-//# sourceMappingURL=6997-fe09a4aeb5a8448256c2.js.map

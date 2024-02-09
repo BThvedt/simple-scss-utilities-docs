@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[5802],{5802:function(n,t,e){async function s(n,t=!0){await n.addInteractor("externalSlow",(async n=>{const{Slower:t}=await e.e(7523).then(e.bind(e,7523));return new t(n)}),t)}e.d(t,{loadExternalSlowInteraction:function(){return s}})}}]);
-//# sourceMappingURL=5802-087d1aefac8033df017c.js.map
