@@ -9,14 +9,19 @@ image: https://picsum.photos/200?random=1
 
 import ImportedLayout from "../components/Layout/Layout"
 
-# This is the install page
+# Installing Simple Scss Utilities
 
-Install info here
+#### Not tough, if you're familiar with SCSS and NPM
+
+<div className="max-w-42 mx-auto text-lg line-height-xl">
+  Instructions coming soon
+</div>
 
 export default function Layout({ children }) {
   return (
     <ImportedLayout>
-      <main>{children}</main>
+      <main className="p-xl">{children}</main>
     </ImportedLayout>
   )
+
 }

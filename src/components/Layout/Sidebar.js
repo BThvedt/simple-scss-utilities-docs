@@ -3,16 +3,26 @@ import { Link } from "gatsby"
 import { useLocation } from "@reach/router"
 import CustomAnchor from "./CustomAnchor"
 import SidebarContext from "./SidebarContext"
+import LayoutContext from "./LayoutContext"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faX, faBars } from "@fortawesome/free-solid-svg-icons"
+import * as layoutStyles from "./layout.module.scss"
+import useWindowDimensions from "../../hooks/useWindowDimensions"
 // HEADER IS A ReserveD WORD
 
 const SideBar = ({ sidebarData }) => {
   const { setActiveAnchor, hasScrolled } = useContext(SidebarContext)
+  const { sidebarOpen, setSidebarOpen } = useContext(LayoutContext)
 
   const [anchorsOnPage, setAnchorsOnPage] = useState([])
   const [anchorsLoaded, setAnchorsLoaded] = useState(false)
   const [anchorUpdate, setAnchorUpdate] = useState([])
 
   const [intialAnchorLinkSet, setIntialAnchorLinkSet] = useState(false)
+
+  // const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [wideScreen, setWideScreen] = useState(false)
+  const { width } = useWindowDimensions()
 
   const location = useLocation()
   const { pathname } = location
@@ -132,11 +142,23 @@ const SideBar = ({ sidebarData }) => {
     }
   }, [anchorsLoaded, anchorsOnPage, intialAnchorLinkSet])
 
+  useEffect(() => {
+    if (width > 768) {
+      setWideScreen(true)
+    } else {
+      setWideScreen(false)
+    }
+  }, [width])
+
+  useEffect(() => {
+    setSidebarOpen(true)
+  }, [wideScreen])
+
   // organize alphabetically
   // then loop the map and fill in the links and sublinks
 
   if (!sidebarData) {
-    return
+    return <>{`No sidebar data for path ${pathname}`}</>
   }
 
   const { path, nodes } = sidebarData
@@ -166,11 +188,12 @@ const SideBar = ({ sidebarData }) => {
 
       if (isCategoryRoot) {
         categoryArr.push({
-          title: category, // uppercase the first letter later
+          title, // uppercase the first letter later
           categoryName: category, // in case I change it from the title
           isCategoryRoot: true,
           path: `/${path}/${slug}`,
           sublinks: null, // get changed into an array later
+          order,
           anchorLinks
         })
       } else {
@@ -195,9 +218,9 @@ const SideBar = ({ sidebarData }) => {
   // in alphabetical order, and then the sublinks (in a category) are sorted by a frontmatter "order" property
   // the anchor links are already determined in the frontmatter defintion
   rootDocArr.sort((a, b) => a.order - b.order)
-  categoryArr.sort((a, b) =>
-    a.title.localeCompare(b.title, "en", { sensitivity: "base" })
-  )
+  categoryArr.sort((a, b) => {
+    return a.order - b.order
+  })
 
   categoryArr.forEach((item) => {
     const { sublinks } = item
@@ -215,91 +238,158 @@ const SideBar = ({ sidebarData }) => {
   // .. hm.. oh yeah. Fix anchor links
 
   return (
-    <div id="sidebar" className="min-w-1/4 br-sm br-black">
-      <h1>This is the sidebar</h1>
+    <>
+      <div className="w-0">
+        <div
+          onClick={() => setSidebarOpen(true)}
+          className={`${
+            sidebarOpen ? "display-none" : "display-flex"
+          } text-xl w-3 h-3 position-relative top-1 left-1 radius-full cursor-pointer shadow-magenta-lg hover:shadow-blue-lg bg-background-ltr items-center justify-center bg-background z-5 text-magenta hover:text-blue`}
+        >
+          <FontAwesomeIcon icon={faBars} />
+        </div>
+      </div>
+      <div
+        id="sidebar"
+        className={`${
+          layoutStyles.sidebar
+        }  max-tab:position-absolute max-tab:h-full min-w-1/4 max-tab:w-20 overflow-y-scroll bg-background z-4  ${
+          sidebarOpen ? "" : "display-none"
+        }`}
+      >
+        <nav className="p-md">
+          <span className={`${wideScreen ? "display-none" : ""} `}>
+            <FontAwesomeIcon
+              className={`cursor-pointer hover:text-magenta text-magenta hover:text-blue text-lg py-sm`}
+              onClick={() => setSidebarOpen(false)}
+              icon={faX}
+            />
+          </span>
+          <ul className="display-flex flex-col line-height-lg">
+            {sidebarLinkArr.map((entry) => {
+              const {
+                isCategoryRoot,
+                categoryName,
+                path,
+                title,
+                sublinks,
+                anchorLinks
+              } = entry
 
-      <nav className="display-flex flex-col">
-        <ul className="p-md">
-          {sidebarLinkArr.map((entry) => {
-            const { isCategoryRoot, categoryName, path, title, sublinks } =
-              entry
+              if (isCategoryRoot) {
+                const upperCaseTitle =
+                  title.charAt(0).toUpperCase() + title.slice(1)
 
-            if (isCategoryRoot) {
+                const highlightLink =
+                  `${process.env.PATH_PREFIX}${path}/` === pathname
+
+                return (
+                  <li key={`${path} ${title}`}>
+                    <span
+                      className={`${
+                        highlightLink ? "text-magenta" : ""
+                      } font-large hover:text-magenta `}
+                    >
+                      <Link to={path}>{upperCaseTitle}</Link>
+                    </span>
+                    {anchorLinks && (
+                      <ul className="line-height-md ">
+                        {anchorLinks.map((anchorLink, i) => {
+                          // name of is a bit different, I don't think anchor links are a full "path" (might need to refacto later)
+                          const { title, link } = anchorLink
+
+                          return (
+                            <li
+                              key={`${title} ${link}`}
+                              className={`pl-md text-md ${
+                                i == anchorLinks.length - 1 ? "mb-xs" : ""
+                              } `}
+                            >
+                              <CustomAnchor path={path} to={link}>
+                                {title}
+                              </CustomAnchor>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    )}
+                    {sublinks && (
+                      <ul>
+                        {sublinks.map((link, i) => {
+                          const { title, path: subLinkPath, anchorLinks } = link
+
+                          const highlightLink =
+                            `${process.env.PATH_PREFIX}${subLinkPath}/` ===
+                            pathname
+
+                          return (
+                            <li
+                              key={`${title} ${subLinkPath}`}
+                              className={`pl-md font-normal   ${
+                                i == sublinks.length - 1 ? "mb-xs" : ""
+                              }`}
+                            >
+                              <span
+                                className={`${
+                                  highlightLink ? "text-magenta" : ""
+                                } font-bold hover:text-magenta`}
+                              >
+                                <Link to={subLinkPath}>{title}</Link>
+                              </span>
+
+                              {anchorLinks && (
+                                <ul className="line-height-md ">
+                                  {anchorLinks.map((anchorLink) => {
+                                    // name of is a bit different, I don't think anchor links are a full "path" (might need to refacto later)
+                                    const { title, link } = anchorLink
+
+                                    return (
+                                      <li
+                                        key={`${title} ${link}`}
+                                        className="pl-md text-md hover:text-magenta"
+                                      >
+                                        <CustomAnchor
+                                          path={subLinkPath}
+                                          to={link}
+                                        >
+                                          {title}
+                                        </CustomAnchor>
+                                      </li>
+                                    )
+                                  })}
+                                </ul>
+                              )}
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    )}
+                  </li>
+                )
+              }
+
               const upperCaseTitle =
                 title.charAt(0).toUpperCase() + title.slice(1)
 
-              const highlightLink = `${path}/` === pathname
+              const highlightLink =
+                `${process.env.PATH_PREFIX}${path}/` === pathname
 
               return (
-                <li key={`${path} ${title}`} className="font-bold">
-                  <span className={`${highlightLink ? "text-blue" : ""}`}>
-                    <Link to={path}>{upperCaseTitle}</Link>
+                <li key={`${path} ${title}`}>
+                  <span
+                    className={`${
+                      highlightLink ? "text-magenta" : ""
+                    } font-large hover:text-magenta`}
+                  >
+                    <Link to={path}>{title}</Link>
                   </span>
-                  {sublinks && (
-                    <ul>
-                      {sublinks.map((link) => {
-                        const { title, path: subLinkPath, anchorLinks } = link
-
-                        const highlightLink = `${subLinkPath}/` === pathname
-
-                        return (
-                          <li
-                            key={`${title} ${subLinkPath}`}
-                            className="pl-md font-normal"
-                          >
-                            <span
-                              className={`${highlightLink ? "text-blue" : ""}`}
-                            >
-                              <Link to={subLinkPath}>{title}</Link>
-                            </span>
-
-                            {anchorLinks && (
-                              <ul>
-                                {anchorLinks.map((anchorLink) => {
-                                  // name of is a bit different, I don't think anchor links are a full "path" (might need to refacto later)
-                                  const { title, link } = anchorLink
-
-                                  return (
-                                    <li
-                                      key={`${title} ${link}`}
-                                      className="pl-md font-md"
-                                    >
-                                      <CustomAnchor
-                                        path={subLinkPath}
-                                        to={link}
-                                      >
-                                        {title}
-                                      </CustomAnchor>
-                                    </li>
-                                  )
-                                })}
-                              </ul>
-                            )}
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  )}
                 </li>
               )
-            }
-
-            const upperCaseTitle =
-              title.charAt(0).toUpperCase() + title.slice(1)
-
-            const highlightLink = `${path}/` === pathname
-
-            return (
-              <li key={`${path} ${title}`}>
-                <span className={`${highlightLink ? "text-blue" : ""}`}>
-                  <Link to={path}>{title}</Link>
-                </span>
-              </li>
-            )
-          })}
-        </ul>
-      </nav>
-    </div>
+            })}
+          </ul>
+        </nav>
+      </div>
+    </>
   )
 }
 

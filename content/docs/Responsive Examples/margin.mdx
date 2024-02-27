@@ -1,0 +1,402 @@
+---
+title: Margin
+tags: [responsive, margin]
+type: docs
+description: Overview of the Margin Classes
+category: responsive
+slug: margin
+order: 20
+anchorLinks:
+  [
+    { title: "Classes", link: "classes" },
+		{ title: "Examples", link: "examples" }
+  ]
+---
+
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Margin
+
+#### How to use
+
+Margins and paddings can have both size values such as `sm` `md` `lg` as well as fractional values, which by default cover every 5% up until 100% plus `1/3` and `2/3` fractional values. Like with most other things with many values, both the names and values can be edited in the `_variables.scss` file. See the [Customize](/customize/) section for more details.
+
+### What about Negitive Margins?
+
+I did not include negitive margins in this framework, since in my experience I don't use 'em that heavily, however, they are useful sometimes. If you need negitive margins it could be a good time to write some custom SCSS.
+
+Alright let's get into the classes.
+
+## Classes
+
+Here are the default classes. Note that in addition to the `m-[size]` classes, there's also `.mt`,`.mb`,`ml`, and `mr` classes for top, bottom, left, and right margins respectively, as well as `.mx` and `.my` classes for both left and right or top and bottom.
+
+All these clases also respond to the responsive prefixes, see the (Responsive)[/docs/responsive-classes/] section for details for that as well.
+
+Note that with the fraction classes the percents aren't repeated, for example, there's a `1/20` and a `3/20` margin, but not a `2/20` margin or a `4/20` margin because those are already handled by the `1/10` and `1/5` classes.
+
+| Class   | CSS rule          |
+| :------ | :---------------- |
+| m-0     | margin: 0;        |
+| m-xxs   | margin: 0.125rem; |
+| m-xs    | margin: 0.25rem;  |
+| m-sm    | margin: 0.5rem;   |
+| m-md    | margin: 0.75rem;  |
+| m-base  | margin: 1rem;     |
+| m-lg    | margin: 1.25rem;  |
+| m-xl    | margin: 1.5rem;   |
+| m-2xl   | margin: 2rem;     |
+| m-3xl   | margin: 3rem;     |
+| m-4xl   | margin: 4rem;     |
+| m-5xl   | margin: 5rem;     |
+| m-5xl   | margin: 5rem;     |
+| m-1/2   | margin: 50%       |
+| m-1/3   | margin: 33%       |
+| m-2/3   | margin: 66%       |
+| m-1/4   | margin: 25%       |
+| m-2/4   | margin: 50%       |
+| m-3/4   | margin: 75%       |
+| m-1/5   | margin: 20%       |
+| m-2/5   | margin: 40%       |
+| m-3/5   | margin: 60%       |
+| m-4/5   | margin: 80%       |
+| m-1/10  | margin: 10%       |
+| m-3/10  | margin: 30%       |
+| m-7/10  | margin: 70%       |
+| m-9/10  | margin: 90%       |
+| m-1/20  | margin: 5%        |
+| m-3/20  | margin: 15%       |
+| m-7/20  | margin: 35%       |
+| m-9/20  | margin: 45%       |
+| m-11/20 | margin: 55%       |
+| m-13/20 | margin: 65%       |
+| m-17/20 | margin: 85%       |
+| m-19/20 | margin: 95%       |
+| m-full  | margin: 100%      |
+
+Each of these classes are repeated for top, bottom, left, right, x, and y directions so see some examples below:
+
+## Examples
+
+### Margin Sizes
+
+These are the example "default" sizes for margins. Note these can all be changed by editing the `_variables.scss` file. See the [Customize](/customize/) section for further info. These are just a collection of examples, each blue box has a margin the size of the caption applied to it:
+
+<div className="row mb-xl">
+  <div className="col-4 display-flex flex-col items-center">
+    <div className="mb-lg">
+      <div className="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed">
+        <div className="bg-blue w-3 h-3 mr-xs" />
+      </div>
+      <p>.mr-xs</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed">
+        <div className="bg-blue w-3 h-3 mr-lg" />
+      </div>
+      <p>.mr-lg</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed">
+        <div className="bg-blue w-3 h-3 mr-3xl" />
+      </div>
+      <p>.mr-3xl</p>
+    </div>
+
+  </div>
+
+  <div className="col-4 display-flex flex-col items-center">
+    <div className="mb-lg">
+      <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed">
+        <div className="bg-blue w-3 h-3 mr-sm" />
+      </div>
+      <p>.mr-sm</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed">
+        <div className="bg-blue w-3 h-3 mr-xl" />
+      </div>
+      <p>.mr-xl</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed">
+        <div className="bg-blue w-3 h-3 mr-4xl" />
+      </div>
+      <p>.mr-4xl</p>
+    </div>
+
+  </div>
+
+  <div className="col-4 display-flex flex-col items-center">
+    <div className="mb-lg">
+      <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed">
+        <div className="bg-blue w-3 h-3 mr-md" />
+      </div>
+      <p>.mr-md</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed">
+        <div className="bg-blue w-3 h-3 mr-2xl" />
+      </div>
+      <p>.mr-2xl</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed">
+        <div className="bg-blue w-3 h-3 mr-5xl" />
+      </div>
+      <p>.mr-5xl</p>
+    </div>
+
+  </div>
+  
+</div>
+
+Here's what the html for one of the boxes above would look like
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div>
+  <div class="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed">
+    <div class="bg-blue w-3 h-3 mr-xl" />
+  </div>
+  <p>.mr-xl</p>
+</div>
+```
+
+</CodeWrapper>
+
+### Fractional Sizes
+
+Percents are relative to the containing element, so each box here has been given a fixed size, and the margin left pushes it away from the left side by the percent that the fraction is equal to:
+
+<div className="display-flex flex-col items-center mb-xl">
+
+<div className="m-md">
+  <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="bg-blue w-3 h-3 ml-1/10" />
+  </div>
+  <p>.ml-1/10</p>
+</div>
+
+<div className="m-md">
+  <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="bg-blue w-3 h-3 ml-1/5" />
+  </div>
+  <p>.ml-1/5</p>
+</div>
+
+<div className="m-md">
+  <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="bg-blue w-3 h-3 ml-1/3" />
+  </div>
+  <p>.ml-1/3</p>
+</div>
+
+<div className="m-md">
+  <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="bg-blue w-3 h-3 ml-1/2" />
+  </div>
+  <p>.ml-1/2</p>
+</div>
+
+<div className="m-md">
+  <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="bg-blue w-3 h-3 ml-17/20" />
+  </div>
+  <p>.ml-17/20</p>
+</div>
+
+<div className="m-md">
+  <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="bg-blue w-3 h-3 ml-full" />
+  </div>
+  <p>.ml-full</p>
+</div>
+
+</div>
+
+Here's an example for the HTML of the ml-1/2 box:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="m-md">
+  <div class="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div class="bg-blue w-3 h-3 ml-1/2" />
+  </div>
+  <p>.ml-1/2</p>
+</div>
+```
+
+</CodeWrapper>
+
+### Directional Margins
+
+And here are examples of classes going in each direction. Each "directional" class also works for every one of the widths i.e. `sm`, `md`, `lg`, etc.
+
+<div className="display-flex align-center justify-between mb-xl">
+  <div className="display-flex flex-col justify-center">
+    <div className="display-flex center">
+      <div className="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed">
+        <div className="bg-blue w-3 h-3 ml-xl" />
+      </div>
+    </div>
+    <p>.ml-xl</p>
+  </div>
+ 
+  <div className="display-flex flex-col justify-center ">
+    <div className="display-flex center">
+      <div className="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed">
+        <div className="bg-blue w-3 h-3 mr-xl" />
+      </div>
+    </div>
+    <p>.mr-xl</p>
+  </div>
+
+{" "}
+
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div className="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed">
+      <div className="bg-blue w-3 h-3 mt-xl" />
+    </div>
+  </div>
+  <p>.mt-xl</p>
+</div>
+
+{" "}
+
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div className="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed">
+      <div className="bg-blue w-3 h-3 mb-xl" />
+    </div>
+  </div>
+  <p>.mb-xl</p>
+</div>
+
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div className="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed">
+      <div className="bg-blue w-3 h-3 mx-xl" />
+    </div>
+  </div>
+  <p>.mx-xl</p>
+</div>
+
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div className="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed">
+      <div className="bg-blue w-3 h-3 my-xl" />
+    </div>
+  </div>
+  <p>.my-xl</p>
+</div>
+
+</div>
+
+A few examples of the above boxes (just `mt`, `mb`, and `mx`):
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="display-flex flex-col justify-center ">
+  <div class="display-flex center">
+    <div class="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed">
+      <div class="bg-blue w-3 h-3 mt-xl" />
+    </div>
+  </div>
+  <p>.mt-xl</p>
+</div>
+
+<div class="display-flex flex-col justify-center ">
+  <div class="display-flex center">
+    <div class="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed">
+      <div class="bg-blue w-3 h-3 mb-xl" />
+    </div>
+  </div>
+  <p>.mb-xl</p>
+</div>
+
+<div class="display-flex flex-col justify-center ">
+  <div class="display-flex center">
+    <div class="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed">
+      <div class="bg-blue w-3 h-3 mx-xl" />
+    </div>
+  </div>
+  <p>.mx-xl</p>
+</div>
+```
+
+</CodeWrapper>
+
+### Responsive Margins
+
+And finally, here's some examples with the responsive classes set. If you're on a browser, adjust the screen sizes to see them in action, although for small sizes you'll have to close the sidebar:
+
+<div className="center m-lg mb-xl flex-col my-xl">
+  <div className="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed radius-md mb-md">
+    <div className="w-5 h-5 m-sm tab:m-lg scr:m-2xl lg:m-3xl bg-blue radius-md" />
+  </div>
+  <Paragraph className="display-none max-mob:display-block" text=".m-sm" />
+  <Paragraph
+    className="display-none tab:display-block scr:display-none"
+    text=".tab:m-lg"
+  />
+  <Paragraph
+    className="display-none scr:display-block lg:display-none"
+    text=".scr:m-2xl"
+  />
+  <Paragraph className="display-none lg:display-block" text=".lg:m-3xl" />
+</div>
+
+Code for the Box:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed radius-md mb-md">
+  <div class="w-5 h-5 m-sm tab:m-lg scr:m-2xl lg:m-3xl bg-blue radius-md" />
+</div>
+```
+
+</CodeWrapper>
+
+Responive margin with the max-[breakpoint] classes. Here the margin left is 1/4 for widths under 1024px and 3/4 for widths over that amount:
+
+<div className="center flex-col m-xl">
+  <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="bg-blue w-3 h-3 ml-3/4 max-scr:ml-1/4" />
+  </div>
+  <Paragraph
+    className="display-none max-scr:display-block"
+    text=".max-scr:ml-1/4"
+  />
+  <Paragraph className="display-none lg:display-block" text=".ml-3/4" />
+</div>
+
+And here's the HTML:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="center flex-col m-xl">
+  <div class="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div class="bg-blue w-3 h-3 ml-3/4 max-scr:ml-1/4" />
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+Anyway hope that clears up how the margin works.
+
+Happy coding!

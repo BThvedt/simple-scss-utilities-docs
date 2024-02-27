@@ -18,12 +18,16 @@ const CustomAnchor = ({ children, path, to }) => {
   const { pathname } = location
 
   useEffect(() => {
-    if (activeAnchor == `${path} ${to}`) {
+    if (activeAnchor == `${process.env.PATH_PREFIX}${path} ${to}`) {
       setActive(true)
     } else {
       setActive(false)
     }
   }, [activeAnchor])
+
+  // console.log(
+  //   `path: ${path} to: ${to} pathname: ${pathname} prefix with path: ${process.env.PATH_PREFIX}${path}`
+  // )
 
   return (
     <p
@@ -31,7 +35,7 @@ const CustomAnchor = ({ children, path, to }) => {
       onClick={() => {
         // the pathname from location usually has an added slash
 
-        if (`${path}/` == pathname) {
+        if (`${process.env.PATH_PREFIX}${path}/` == pathname) {
           const tag = document.getElementById(to)
           tag.scrollIntoView({ behavior: "smooth" })
           // set "hasScrolled" to false .. gets set true if the user scrolls the docs area
@@ -41,7 +45,7 @@ const CustomAnchor = ({ children, path, to }) => {
           // two anchor links on different documents might have the same text so
           // I have the path be part of the identifying string
           // as long as 2 anchors on the same MDX page don't have the same text we're good
-          setActiveAnchor(`${path} ${to}`)
+          setActiveAnchor(`${process.env.PATH_PREFIX}${path} ${to}`)
         } else {
           navigate(`${path}?anchor=${to}`)
         }

@@ -1,0 +1,508 @@
+---
+title: Colors
+tags: [pseudo-classes, colors]
+type: docs
+category: pseudo-classes
+description: An overview of the Colors
+slug: colors
+order: 20
+anchorLinks:
+  [
+		{ title: "Color Shades", link: "the-default-color-shades" },
+		{ title: "Psuedo Classes", link: "pseudo-classes" }
+  ]
+---
+
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+import {Paragraph} from "../../../src/components/Mdx/textComponents"
+ 
+# Colors
+
+#### Overview, Shades and Pseudo Classes
+
+Colors are meant to be edited! This is an overview of the default colors. Once you have an idea of how they work, please see the [Customizing Colors and Fonts](/customize/colors-and-font/) section for customizing colors to your theme!
+
+## The Default Color Shades
+
+By Default, each color defined gets genrated in 4 shades in addition to the base color:
+
+<div className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl font-large">
+  <div className="display-flex pb-lg text-xl font-large">
+    <h6 className="w-8 shrink-0">Color</h6>
+    <h6 className="grow-1">Shades</h6>
+  </div>
+  <div className="display-flex mb-lg">
+    <div className="center-start shrink-0 w-8">
+      <h6>Red</h6>
+    </div>
+    <div className="display-flex grow-1 justify-between text-white">
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-red-dkr mr-sm">
+        <p>Red</p>
+        <p>Dkr</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-red-dk mr-sm">
+        <p>Red</p>
+        <p>Dk</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-red mr-sm">
+        <p>Red</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-red-lt mr-sm">
+        <p>Red</p>
+        <p>Lt</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-red-ltr mr-sm">
+        <p>Red</p>
+        <p>Ltr</p>
+      </div>
+    </div>
+  </div>
+  <div className="display-flex mb-lg">
+    <div className="center-start shrink-0 w-8">
+      <h6>Green</h6>
+    </div>
+    <div className="display-flex grow-1 justify-between text-white">
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-green-dkr mr-sm">
+        <p>Green</p>
+        <p>Dkr</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-green-dk mr-sm">
+        <p>Green</p>
+        <p>Dk</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-green mr-sm">
+        <p>Green</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-green-lt mr-sm">
+        <p>Green</p>
+        <p>Lt</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-green-ltr mr-sm">
+        <p>Green</p>
+        <p>Ltr</p>
+      </div>
+    </div>
+  </div>
+  <div className="display-flex mb-lg">
+    <div className="center-start shrink-0 w-8">
+      <h6>Blue</h6>
+    </div>
+    <div className="display-flex grow-1 justify-between text-white">
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-blue-dkr mr-sm">
+        <p>Blue</p>
+        <p>Dkr</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-blue-dk mr-sm">
+        <p>Blue</p>
+        <p>Dk</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-blue mr-sm">
+        <p>Blue</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-blue-lt mr-sm">
+        <p>Blue</p>
+        <p>Lt</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-blue-ltr mr-sm">
+        <p>Blue</p>
+        <p>Ltr</p>
+      </div>
+    </div>
+  </div>
+  <div className="display-flex mb-lg">
+    <div className="center-start shrink-0 w-8">
+      <h6>Default</h6>
+    </div>
+    <div className="display-flex grow-1 justify-between text-background">
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-default-dkr mr-sm">
+        <p>Default</p>
+        <p>Dkr</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-default-dk mr-sm">
+        <p>Default</p>
+        <p>Dk</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-default mr-sm">
+        <p>Default</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-default-lt mr-sm">
+        <p>Default</p>
+        <p>Lt</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-default-ltr mr-sm">
+        <p>Default</p>
+        <p>Ltr</p>
+      </div>
+    </div>
+  </div>
+  <div className="display-flex mb-lg">
+    <div className="shrink-0 center-start w-8">
+      <h6>Background</h6>
+    </div>
+    <div className="display-flex grow-1 justify-between max-tab:line-height-sm">
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-background-dkr mr-sm">
+        <p>Back-</p>
+        <p>ground</p>
+        <p>Dkr</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-background-dk mr-sm">
+        <p>Back-</p>
+        <p>ground</p>
+        <p>Dkr</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-background mr-sm">
+        <p>Back-</p>
+        <p>ground</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-background-lt mr-sm">
+        <p>Back-</p>
+        <p>ground</p>
+        <p>Lt</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-background-ltr mr-sm">
+        <p>Back-</p>
+        <p>ground</p>
+        <p>Ltr</p>
+      </div>
+    </div>
+  </div>
+  <div className="display-flex mb-lg">
+    <div className="center-start shrink-0 w-8">
+      <h6>Magenta</h6>
+    </div>
+    <div className="display-flex grow-1 justify-between text-white">
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-magenta-dkr mr-sm">
+        <p>Magenta</p>
+        <p>Ltr</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-magenta-dk mr-sm">
+        <p>Magenta</p>
+        <p>Ltr</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-magenta mr-sm">
+        <p>Magenta</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-magenta-lt mr-sm">
+        <p>Magenta</p>
+        <p>Ltr</p>
+      </div>
+      <div className="center shadow-md flex-col w-4 h-4 scr:w-5 scr:h-5 bg-magenta-ltr mr-sm">
+        <p>Magenta</p>
+        <p>Ltr</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+In addition to these, there are the `white` and `black` colors, which don't get shades.
+
+## Pseudo Classes
+
+Naturally coupled with colors is the concept of pseudo classes. One common thing to do is have a color change when the user is interacting with an element, like hovering or pressing a button for example, or focusing on an input field.
+
+Simple Scss Utilities comes with 3 pseudo classes by default:
+
+- Hover
+- Active
+- and Focus
+
+Most classes having to do with color or font can respond to each of these states. Additional states can be added, but if you need more states it also could be an opportunity to write some custom SCSS as well. This framework only aims to provide the bulk of common use cases after all.
+
+To use these classes, add a `hover:`, `active:` or `focus:` prefix to the class names that work with pseudo classes, which are namely the color and font classes. If you need something to change size, or do a fancy transition, that could also be a case where it's probably best to just write your own scss.
+
+See the following Table for exmples of the Pseudo Classes in Action. To keep example short I only apply minimal styles:
+
+<table className="w-2/3 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Background Color with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            text-white 
+            bg-green 
+            hover:bg-red"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p className="text-white bg-green hover:bg-red">Hover Me</p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Border Color with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm justify-center ">
+        ```html
+        <input
+          class="
+            w-6
+            text-black 
+            border-xl
+            border-blue
+            focus:border-green"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          className="w-6 text-black border-blue border-xl focus:border-green"
+          value="Focus Me"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Outline with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            outline-solid
+            outline-magenta
+            outline-xl 
+            active:outline-default"
+        >
+          Press Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p
+          className="
+            outline-solid
+            outline-magenta
+            outline-xl 
+            active:outline-default"
+        >
+          Press Me
+        </p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Text Decoration with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            text-underline
+            decoration-xl
+            decoration-green  
+            hover:text-overline"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p
+          className="
+            text-underline
+            decoration-xl
+            decoration-green  
+            hover:text-overline
+          "
+        >
+          Hover Me
+        </p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Selection with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            p-lg
+            selection-color-blue
+            selection-bg-red
+            hover:selection-color-white
+            hover:selection-bg-blue"
+        >
+          Select some text in this sentence and Hover!
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="
+            p-lg
+            selection-color-blue
+            selection-bg-red
+            hover:selection-color-white
+            hover:selection-bg-blue
+          "
+          text="Select some text in this sentence and Hover!"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Size with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm justify-center ">
+        ```html
+        <input
+          class="
+            w-6
+            text-black 
+            border-sm
+            border-black
+            focus:text-2xl"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          className="w-6 text-black border-black border-sm focus:text-2xl"
+          value="Focus Me"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Family with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            cursor-pointer
+            active:font-header"
+        >
+          Press Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p
+          className=" 
+            cursor-pointer
+            active:font-header
+          "
+        >
+          Press Me
+        </p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Weight with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm justify-center ">
+        ```html
+        <p
+          class="
+            cursor-pointer
+            font-light
+            hover:font-bold"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p
+          className=" 
+            cursor-pointer
+            font-light
+            hover:font-bold"
+        >
+          Hover Me
+        </p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Border Width and Style with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class="
+            w-6
+            text-black 
+            border-xl
+            border-dotted
+            focus:border-sm
+            focus:border-solid"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          class="
+            w-6
+            text-black 
+            border-xl
+            border-dotted
+            focus:border-sm
+            focus:border-solid"
+          value="Focus Me"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr  min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Outline Width and Style with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm justify-center ">
+        ```html
+        <p
+          class="
+            w-6
+            text-black 
+            outline-xl
+            outline-solid
+            hover:outline-sm
+            hover:outline-dotted"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p
+          class="
+            w-6
+            text-black 
+            outline-xl
+            outline-solid
+            hover:outline-lg
+            hover:outline-dotted"
+        >
+          Hover Me
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+I hope this shows how easy it is to use colros and pseudo classes in your markup! See the sidebar for more pages with more detaied examples.

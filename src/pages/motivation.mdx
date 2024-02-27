@@ -1,0 +1,71 @@
+---
+title: Philosophy
+tags: []
+type: page
+slug: philosophy
+description: The philosophy
+image: https://picsum.photos/200?random=1
+---
+
+import ImportedLayout from "../components/Layout/Layout"
+import { Paragraph } from "../components/Mdx/textComponents"
+
+# About Simple SCSS Utilities
+
+#### So.. what's the point?
+
+<div className="max-w-42 mx-auto text-lg line-height-xl">
+
+Who needs another framework right? There's already more than I can name off the top of my head. At this point is trying to provide yet more alternatives to throw on the pile innovation... or pollution?
+
+Well, I'll worry about it if people actually use it. In the meantime, let me just say I just like writing my own SCSS.
+
+When I first encountered utility classes, they immediately felt right. Tailwind became my favorite framework. In fact you can make an entire big website with just it's built in classes. Nothing more. There's some rules about how to do things, but they're not terrible. In fact, if I were making a big enterpriese-level site, it would probably be my first choice.
+
+But what if - when I'm goofing off on my own - I like writing my own SCSS? Sure there's nothing "preventing" one from doing that. But where should the framework end and your own styles begin? What if you're doing it .. "wrong"? Plus combining PostCSS and SCSS is like combining two different things, y'know? Feels messier. A tiny bit more mental load.
+
+PostCSS can do stuff that SCSS can't do. That's alright, SCSS can do stuff that PostCSS can't. Guess it's just a matter of taste.
+
+What if a framework didn't try to do everything? What if it just tried to handle the bulk of the "standard" stuff, then get out of the way? And what if it was all in SCSS?
+
+I'd have my utility classes. Or at least most of 'em. It'd all be in SCSS, so I wouldn't be like, combining 2 differnet things, y'know? I'd have no worries about whether I was doing it "right" either. I like SCSS modules too! In this entire site, besides the banner, I have 1 SCSS module, and it's 4 lines long. I just wanted to keep it clean to show off the framework. But I could have as much or as little as I like, and that's the point.
+
+Anyway these were just feelings I had in the back of my mind, but I was inspired by an excellent SCSS turoial I watched one day which brought it all to the front:
+
+<div className="mb-xl pt-md">
+
+<figure className="w-full">
+  <iframe
+    width="673"
+    height="380"
+    src="https://www.youtube.com/embed?v=_kqN4hl9bGc&list=PL4cUxeGkcC9jxJX7vojNVK-o8ubDZEcNb&index=1"
+    className="w-full"
+  ></iframe>
+  <figcaption className="text-sm">
+    <Paragraph
+      className="text-md py-md"
+      text="The tutorial that got me started"
+    />
+  </figcaption>
+</figure>
+
+</div>
+
+I decided to expand upon it and write stuff for most of the SCSS I typically use. But that's just it. I just want utiltiy classes. SO I took the tutorial with the goal of exapanding on it in order to make an almost tailwind clone in SCSS, something I would enjoy actually using in real projects:
+
+And here I'm documenting it, just to show it off, or in cace someone else thinks it might be useful. At least it's a neat portfolio project. I alreay have personal projects mentally lined up I'd use this with as soon as I'm done with these docs. And the docs really are the hard part. So much writing! Haha.
+
+Anyway, I was bored and it seemed like a good project. See the Install page, glance around the docs, see what Simple SCSS Utilites can do for you. Ciao!
+
+---
+
+</div>
+
+export default function Layout({ children }) {
+  return (
+    <ImportedLayout>
+      <main className="p-xl">{children}</main>
+    </ImportedLayout>
+  )
+
+}

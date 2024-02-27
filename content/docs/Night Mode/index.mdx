@@ -1,0 +1,150 @@
+---
+title: Dark Mode
+tags: [grid]
+type: docs
+category: grid
+description: How to use Dark Mode
+isCategoryRoot: true
+slug: dark-mode
+order: 20
+anchorLinks:
+  [
+		{ title: "With JS", link: "with-js" },
+		{ title: "No JS", link: "but-i-dont-wanna-use-js" }
+  ]
+---
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSun } from "@fortawesome/free-solid-svg-icons"
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Dark Mode
+
+#### How different color modes work
+
+Many large websites come in a light and dark color mode. Now, I use JS for contorlling this, it's just my personal taste and I don't mind, since probably wll over 99% of users have JS turned on which is enough for me and because all my personal projects are heavy in JS anyway, but the option to control it with user system settings is included as well. And I'll talk about how to use either way in this section.
+
+I guess the easiest place to start is by looking at the color definitions in `_variables.scss`:
+
+<CodeWrapper title="_variables.scss" isFile>
+
+```scss
+$modes: "default", "dark-mode";
+$jsForColorMode: true;
+
+$color-modifiers: (
+  "light": (
+    "lt": 15%,
+    "ltr": 30%
+  ),
+  "dark": (
+    "dk": 15%,
+    "dkr": 30%
+  )
+);
+
+$colors: (
+  "default": (
+    "white": #fff,
+    "black": #000,
+    "red": #cb3810,
+    "green": #589f50,
+    "blue": #2978a0,
+    "default": #252832,
+    "background": #fdfcf9,
+    "magenta": #bf4081
+  ),
+  "dark-mode": (
+    "background": #292d3a,
+    "default": #dcdbda,
+    "blue": #5798e1,
+    "dark-mode-only": #4d5359
+  )
+);
+```
+
+</CodeWrapper>
+
+Alright so what is going on here? It's not tough. All these colors generate various utility classes. The 'default' color mode, which is a "light" color theme, defines about 8 colors. If you've read the [Colors](/docs/colors/) section which goes into more detail you'll know that each of 'em except for white and black come in 5 shades, which is the shade in `$colors` map plus every other shade in the `$color-modifiers` map which lighten or darken them by the percents specified (by mixing in white or black).
+
+Below the `default` map in `$colors` is the `dark-mode` map. Every color in the `dark-mode` map that has the same name as in the 'default' map is overridden for that mode, and the shades are overridden too if you're wondering. Here, I override 2 colors, the background and the default (which I use for text) to provide a quick and easy dark mode. I also override "blue" just for illustrative purposes, as well as I define a color `dark-mode-only`, the classes generated won't have any effet in outslide of dark mode. I did this partially for illustration, but also becasue I wanted a dark-mode specific color for the inline code blocks. This also could have been handeled by adding another color to the default colors and overriding it for dark mode, but I think it's handy to just have an extra color or two depending the current active color theme.
+
+You can [Customize](/customize/) the names, shades, the amount of colors, even the amount of modes if you are using JavaScript. You can see how it works on this site by hitting the <FontAwesomeIcon  icon={faSun} /> icon in the top right, now, let's dive into a little bit more on what's going on under the hood.
+
+So, let's take a look at these lines:
+
+<CodeWrapper title="_variables.scss" isFile>
+
+```scss
+$modes: "default", "dark-mode";
+$jsForColorMode: true;
+```
+
+</CodeWrapper>
+
+Note that the submaps in the `$colors` map have to match the names in the `$modes` list. If you were to define a third color mode, for example, you'd have to put it in this `$modes` list as well as the `$colors` map, and follow the same pattern as the two default modes.
+
+## With JS
+
+If `$jsForColorMode` is true, then you can switch color modes by applying a class to some kind of wrapper element. For example, in this site, the main layout is wrappted with a div, and when a user clicks the <FontAwesomeIcon  icon={faSun} /> icon I add or remove a `.dark-mode` class to the wrapper, and the css applies the overridden colors. No additional classes are necessary this way, although I did include that `dark-mode-only` color I mentioned above as well as some extra classes for box-shadows (see the [Box Shadows](/docs/box-shadow/)) section.
+
+So in other words, anything with a class generated with an over-ridden color, say for example the background color which is applied by classes such as `.bg-background` will have the light, off-white #fdfcf9 color in default mode, but have the darker `#292d3a` color when it's wrapped by an element with the `.dark-mode` class. All you gotta do is wrap your site in a wrapper div and switch the class name! Note that the names of the class (in the non-default mode) has to match the names in the `_variables.scss` file.
+
+Just as an illustration, here's how I approach adding or removing this class for this particular site..
+
+<CodeWrapper title="JS">
+
+```JS
+
+function setThemeMode(mode) {
+  // .. adds a class to the wrapper div
+	// note that 'default' doesn't actually neeed a class
+  // only 'dark-mode' needs a .dark-mode class
+	// other modes, if you have 'em, will take a classname of whatever you define
+	// in the _variables.scss file
+}
+
+// runs when the site is loaded
+const mode = localStorage.getItem("themeMode")
+
+if (mode === "dark-mode") {
+  setThemeMode("dark-mode")
+} else if (!mode) {
+	// in case this is a user's first time to the site, I set it to
+	// whatever the system settings
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    setThemeMode("dark-mode")
+  }
+} else {
+  setThemeMode("default")
+}
+
+// .. plus another bit of code for when the user clicks the icon which sets the class and
+// stores the mode in local storage
+```
+
+</CodeWrapper>
+
+It's a react-based site so I have it in a couple `useEffect()` hooks but however you implement it is up to you. It's pretty straight forward, check localstorage to see if the user has visited before and set a preference, apply the preference, and that's it. If the user hasn't visted before set a preference, it checks the system settings to see if they've set that they prefer a dark color scheme and applies that.
+
+So let's talk about this system setting. It depends on your platform, but on Windows 11 desktop for exmaple, you'd right click the desktop, select `Personalize` in the context menu that pops up, and then look for `Color` and you can change your mode from `light` to `dark`. For other platforms it's easy enough to figure out how to do this.
+
+But IF you are on windows, and you change your mode, your browser will pick it up. Now, since you're already here, you've got a variable in `local storage` that is already storing the mode. Open the developer console and (in chrome, for exmple) go to `Application` → `Local Storage` → `https://bthvedt.github.io` and find the `themeMode` variable and delete it. Change your system setting to dark, and refresh the page, and this site will be in dark mode, since I'm automatically detecting it with JS! Of coruse that involves a small amount of effort, so only do it if you want to see verification that it works haha.
+
+## But I don't wanna use JS!
+
+Ok that's fine too. Everything still will work the same style-wise, exempt now you are restricted to 2 modes. Now this site uses JS, and like I said it doesn't bother me because well over 99% of people have JS enabled and I'm ok with that, but if you're making your own that doesn't use JS just change this setting:
+
+<CodeWrapper title="_variables.scss" isFile>
+
+```scss
+$jsForColorMode: true; // <-- change to false
+```
+
+</CodeWrapper>
+
+Now, the generated CSS won't apply a `.dark-mode` class, instead, it will use the `prefers-color-scheme:dark` media query. Otherwise, the styles and colors work the same!

@@ -1,0 +1,753 @@
+---
+title: Classes with Colors
+tags: [pseudo-classes, colors]
+type: docs
+category: pseudo-classes
+description: An overview of the classes with Colors
+slug: classes-with-colors
+order: 30
+anchorLinks:
+  [
+		{ title: "Text Color", link: "text-color" },
+		{ title: "Background Color", link: "background-color" },
+		{ title: "Border Color", link: "border-color" },
+		{ title: "Outline Color", link: "outline-color" },
+		{ title: "Text Decoration", link: "text-decoration-color" },
+		{ title: "Selection", link: "selection-color" }
+  ]
+---
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSun } from "@fortawesome/free-solid-svg-icons"
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Overview of the Classes with Colors
+
+#### And how they react to element states
+
+Just about any class with color reacts to element state and comes with pseudo classes. The default colors are Red, Green, Blue, Default (which I use for text), Background (not shown because it would blend into the background), and Magenta, each generated with 4 other shades in addition to the base color.
+
+By default, the colors for Background and Default are overridden for dark-mode. Use the <FontAwesomeIcon  icon={faSun} /> in the navbar to see switching modes. Any color can be overridden by adding/removing/changing name/changing value in the colors map in `variables.scss`. See the [Customize](/customize/) section for more details.
+
+## Text Color
+
+The text color classes have the form `.text-[color]` or `.text-[color]-[shade]`, where the shades are `dk` (dark), `dkr` (darker), `lt` (light), and `ltr` (lighter)
+
+| Class Example    | CSS rule        | Example                                                     |
+| :--------------- | :-------------- | :---------------------------------------------------------- |
+| text-red         | color: #cb3810; | <p className="text-lg font-bold text-red ">Text</p>         |
+| text-default     | color: #252832; | <p className="text-lg font-bold text-default ">Text</p>     |
+| text-green       | color: #589f50; | <p className="text-lg font-bold text-green ">Text</p>       |
+| text-blue-dkr    | color: #1d5470; | <p className="text-lg font-bold text-blue-dkr ">Text</p>    |
+| text-blue-lt     | color: #498cae; | <p className="text-lg font-bold text-blue-lt ">Text</p>     |
+| text-magenta-dk  | color: #a2366e; | <p className="text-lg font-bold text-magenta-dk ">Text</p>  |
+| text-magenta-ltr | color: #d279a7; | <p className="text-lg font-bold text-magenta-ltr ">Text</p> |
+
+### Using the Pseudo Class with Text Color Examples:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Color with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            font-bold
+            cursor-pointer
+            hover:text-red"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p class="hover:text-red font-bold cursor-pointer">Hover Me</p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Color with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            font-bold
+            cursor-pointer
+            active:text-green"
+        >
+          Press Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p class="font-bold cursor-pointer active:text-green">Press Me</p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr  min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Color with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class="
+            w-6
+            font-bold
+            text-lg
+            border-sm
+            focus:text-magenta"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          className="
+						w-6
+            font-bold
+    				text-lg
+						border-sm
+            focus:text-magenta"
+          value="Focus Me"
+        />
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+## Background Color
+
+The background color classes have the form `.bg-[color]` or `.bg-[color]-[shade]`, where the shades are `dk` (dark), `dkr` (darker), `lt` (light), and `ltr` (lighter)
+
+| Class Example  | CSS rule                   | Example                                    |
+| :------------- | :------------------------- | :----------------------------------------- |
+| bg-red         | background-color: #cb3810; | <div className="w-3 h-3 bg-red "/>         |
+| bg-default     | background-color: #252832; | <div className="w-3 h-3 bg-default "/>     |
+| bg-green       | background-color: #589f50; | <div className="w-3 h-3 bg-green "/>       |
+| bg-blue-dkr    | background-color: #1d5470; | <div className="w-3 h-3 bg-blue-dkr "/>    |
+| bg-blue-lt     | background-color: #498cae; | <div className="w-3 h-3 bg-blue-lt "/>     |
+| bg-magenta-dk  | background-color: #a2366e; | <div className="w-3 h-3 bg-magenta-dk "/>  |
+| bg-magenta-ltr | background-color: #d279a7; | <div className="w-3 h-3 bg-magenta-ltr "/> |
+
+### Using the Pseudo Class with Background Color:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Background Color with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            font-bold
+            cursor-pointer
+            hover:bg-red
+            hover:text-white"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p class="hover:bg-red hover:text-white font-bold cursor-pointer">Hover Me</p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Background Color with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            font-bold
+            cursor-pointer
+            active:bg-green"
+        >
+          Press Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p class="font-bold cursor-pointer active:bg-green">Press Me</p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Background Color with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class="
+            w-6
+            font-bold
+            text-lg
+            border-sm
+            focus:bg-magenta
+            focus:text-white"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          className="
+						w-6
+            font-bold
+    				text-lg
+						border-sm
+            focus:bg-magenta
+            focus:text-white"
+          value="Focus Me"
+        />
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+## Border Color
+
+The border color classes have the form `.border-[color]` or `.border-[color]-[shade]`, where the shades are `dk` (dark), `dkr` (darker), `lt` (light), and `ltr` (lighter).
+
+Also note that borders also havo to have a width to show up with a class like `border-sm` or `border-lg`, for example.
+
+| Class Example      | CSS rule               | Example                                                 |
+| :----------------- | :--------------------- | :------------------------------------------------------ |
+| border-red         | border-color: #cb3810; | <div className="w-2 h-2 border-red border-md"/>         |
+| border-default     | border-color: #252832; | <div className="w-2 h-2 border-default border-md"/>     |
+| border-green       | border-color: #589f50; | <div className="w-2 h-2 border-green border-md"/>       |
+| border-blue-dkr    | border-color: #1d5470; | <div className="w-2 h-2 border-blue-dkr border-md"/>    |
+| border-blue-lt     | border-color: #498cae; | <div className="w-2 h-2 border-blue-lt border-md"/>     |
+| border-magenta-dk  | border-color: #a2366e; | <div className="w-2 h-2 border-magenta-dk border-md"/>  |
+| border-magenta-ltr | border-color: #d279a7; | <div className="w-2 h-2 border-magenta-ltr border-md"/> |
+
+### Using the Pseudo Classes with Border Color:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Border Color with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            border-md
+            cursor-pointer
+            hover:border-red"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p class="border-md cursor-pointer hover:border-red">Hover Me</p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Border Color with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            border-md
+            cursor-pointer
+            active:border-magenta"
+        >
+          Press Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p class="border-md cursor-pointer active:border-magenta">Press Me</p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Border Color with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class="
+            w-6 
+            border-md
+            focus:border-green"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          className="
+						w-6 
+            border-md
+            focus:border-green"
+          value="Focus Me"
+        />
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+## Outline Color
+
+The outline color classes have the form `.outline-[color]` or `.outline-[color]-[shade]`, where the shades are `dk` (dark), `dkr` (darker), `lt` (light), and `ltr` (lighter).
+
+Also note that outline also havo to have a width AND a style to show up with a classes like `outline-sm` or `outline-lg` for the width, and `outline-solid` for the style, for example.
+
+| Class Example       | CSS rule                | Example                                                                  |
+| :------------------ | :---------------------- | :----------------------------------------------------------------------- |
+| outline-red         | outline-color: #cb3810; | <div className="w-2 h-2 outline-solid outline-red outline-md"/>          |
+| outline-default     | outline-color: #252832; | <div className="w-2 h-2 outline-solid  outline-default outline-md"/>     |
+| outline-green       | outline-color: #589f50; | <div className="w-2 h-2 outline-solid  outline-green outline-md"/>       |
+| outline-blue-dkr    | outline-color: #1d5470; | <div className="w-2 h-2 outline-solid  outline-blue-dkr outline-md"/>    |
+| outline-blue-lt     | outline-color: #498cae; | <div className="w-2 h-2 outline-solid  outline-blue-lt outline-md"/>     |
+| outline-magenta-dk  | outline-color: #a2366e; | <div className="w-2 h-2 outline-solid  outline-magenta-dk outline-md"/>  |
+| outline-magenta-ltr | outline-color: #d279a7; | <div className="w-2 h-2 outline-solid  outline-magenta-ltr outline-md"/> |
+
+### Using the Pseudo Classes with Outline Color:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Outline Color with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            cursor-pointer
+            outline-xl
+            outline-groove
+            outline-white
+            hover:outline-red"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p class="
+            cursor-pointer
+						outline-xl
+						outline-groove
+						outline-white
+            hover:outline-red">Hover Me</p>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Outline Color with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            cursor-pointer
+            outline-xl
+            outline-dotted
+            outline-blue
+            active:outline-red"
+        >
+          Press Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <p class="
+            cursor-pointer
+						outline-xl
+						outline-dotted
+						outline-blue
+            active:outline-red">Press Me</p>
+       
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Outline Color with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class="
+            w-6
+            cursor-pointer
+            outline-xl
+            outline-inset
+            outline-green
+            focus:outline-magenta"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          class="
+            w-6
+            cursor-pointer
+            outline-xl
+            outline-inset
+            outline-green
+            focus:outline-magenta"
+          value="Focus Me"
+        />
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+## Text Decoration Color
+
+#### (ToDo: Fix Text Decloration conflicts with style and property)
+
+The text-decoration color classes have the form `.decoration-[color]` or `.decoration-[color]-[shade]`, where the shades are `dk` (dark), `dkr` (darker), `lt` (light), and `ltr` (lighter).
+
+Sometimes if you switch a decoration style with a pseudo class from underline to overline for example, it won't inherit the color on all browsers. But that is a really rare use case that can be solved with some custom scss however.
+
+| Class Example          | CSS rule                        | Example                                                                     |
+| :--------------------- | :------------------------------ | :-------------------------------------------------------------------------- |
+| decoration-red         | text-decoration-color: #cb3810; | <p className="text-underline decoration-red decoration-md">Text</p>         |
+| decoration-default     | text-decoration-color: #252832; | <p className="text-underline decoration-default decoration-md">Text</p>     |
+| decoration-green       | text-decoration-color: #589f50; | <p className="text-underline decoration-green decoration-md">Text</p>       |
+| decoration-blue-dkr    | text-decoration-color: #1d5470; | <p className="text-underline decoration-blue-dkr decoration-md">Text</p>    |
+| decoration-blue-lt     | text-decoration-color: #498cae; | <p className="text-underline decoration-blue-lt decoration-md">Text</p>     |
+| decoration-magenta-dk  | text-decoration-color: #a2366e; | <p className="text-underline decoration-magenta-dk decoration-md">Text</p>  |
+| decoration-magenta-ltr | text-decoration-color: #d279a7; | <p className="text-underline decoration-magenta-ltr decoration-md">Text</p> |
+
+### Using the Pseudo Classes with Decoration Color:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Outline Color with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            cursor-pointer
+            decoration-xl
+            text-line-through
+            decoration-green 
+            hover:decoration-red"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="
+            cursor-pointer
+            decoration-xl
+            text-line-through
+            decoration-green
+            hover:decoration-red"
+						text="Hover Me!"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Outline Color with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            cursor-pointer
+            decoration-xl
+            text-overline
+            decoration-blue 
+            active:decoration-magenta"
+        >
+          Press Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="
+            cursor-pointer
+            decoration-xl
+            text-overline
+            decoration-blue
+            active:decoration-magenta"
+						text="Press Me!"
+        />
+       
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Outline Color with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <textarea
+          class="
+            w-6
+            outline-sm
+            outline-solid
+            decoration-xl
+            text-underline 
+            decoration-magenta-dk
+            focus:decoration-green"
+            value="Focus Me!"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <textarea
+          className="
+            w-6
+						outline-sm
+						outline-solid
+            decoration-xl
+						text-underline 
+						decoration-magenta-dk
+            focus:decoration-green"
+						value="Focus Me!"
+        />
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+## Selection Color
+
+The selections color classes have the form `.decoration-[color]` or `.decoration-[color]-[shade]`, where the shades are `dk` (dark), `dkr` (darker), `lt` (light), and `ltr` (lighter).
+
+Sometimes if you switch a decoration style with a pseudo class from underline to overline for example, it won't inherit the color on all browsers. But that is a really rare use case that can be solved with some custom scss however.
+
+### Selection Text Color
+
+| Class Example               | CSS rule        | Example                                                           |
+| :-------------------------- | :-------------- | :---------------------------------------------------------------- |
+| selection-color-red         | color: #cb3810; | <p className="text-lg selection-color-red ">Select Me</p>         |
+| selection-color-default     | color: #252832; | <p className="text-lg selection-color-default ">Select Me</p>     |
+| selection-color-green       | color: #589f50; | <p className="text-lg selection-color-green ">Select Me</p>       |
+| selection-color-blue-dkr    | color: #1d5470; | <p className="text-lg selection-color-blue-dkr ">Select Me</p>    |
+| selection-color-blue-lt     | color: #498cae; | <p className="text-lg selection-color-blue-lt ">Select Me</p>     |
+| selection-color-magenta-dk  | color: #a2366e; | <p className="text-lg selection-color-magenta-dk ">Select Me</p>  |
+| selection-color-magenta-ltr | color: #d279a7; | <p className="text-lg selection-color-magenta-ltr ">Select Me</p> |
+
+### Selection Text Background
+
+In addition to the color, the background can be changed
+
+| Class Example            | CSS rule                   | Example                                                        |
+| :----------------------- | :------------------------- | :------------------------------------------------------------- |
+| selection-bg-red         | background-color: #cb3810; | <p className="text-lg selection-bg-red ">Select Me</p>         |
+| selection-bg-default     | background-color: #252832; | <p className="text-lg selection-bg-default ">Select Me</p>     |
+| selection-bg-green       | background-color: #589f50; | <p className="text-lg selection-bg-green ">Select Me</p>       |
+| selection-bg-blue-dkr    | background-color: #1d5470; | <p className="text-lg selection-bg-blue-dkr ">Select Me</p>    |
+| selection-bg-blue-lt     | background-color: #498cae; | <p className="text-lg selection-bg-blue-lt ">Select Me</p>     |
+| selection-bg-magenta-dk  | background-color: #a2366e; | <p className="text-lg selection-bg-magenta-dk ">Select Me</p>  |
+| selection-bg-magenta-ltr | background-color: #d279a7; | <p className="text-lg selection-bg-magenta-ltr ">Select Me</p> |
+
+For best results, combine the two! Try selecting the large text below
+
+<Paragraph
+  className="text-2xl py-xl font-header align-center selection-bg-magenta selection-color-white"
+  text="Select Me!"
+/>
+
+Here is the Html:
+
+<CodeWrapper title="Html">
+
+```html
+<p
+  class="text-2xl py-xl font-header align-center selection-bg-magenta selection-color-white"
+  value="Focus Me"
+/>
+```
+
+</CodeWrapper>
+
+### Using the Pseudo Classes with Selection Color:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Selection with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            text-lg 
+            hover:selection-bg-blue
+            hover:selection-color-green
+            w-7/10"
+        >
+          Select some text and Hover
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+					className="text-lg hover:selection-bg-blue hover:selection-color-green w-7/10"
+					text="Select some text and Hover"
+				/>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Selection with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            text-lg 
+            active:selection-bg-blue
+            active:selection-color-green
+            w-7/10"
+        >
+          Select some text and Press!
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+					className="text-lg active:selection-bg-green active:selection-color-magenta w-7/10"
+					text="Select some text and Press!"
+				/>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Focus works too I guess haha
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class="
+            border-sm
+            text-md 
+            focus:selection-bg-magenta
+            focus:selection-color-white
+            w-7/10"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          className="
+						border-sm
+            text-md 
+            focus:selection-bg-magenta
+            focus:selection-color-white
+            w-7/10"
+          value="Select w/ Focus"
+        />
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+A natural next topic would be transitions!
+(todo: transitions section)

@@ -1,90 +1,74 @@
-// Step 1: Import React
-import React from "react"
+import React, { useEffect } from "react"
 import Layout from "../components/Layout/Layout"
 import Banner from "../components/Banner/Banner"
-// import "../css/ssu.css"
-// import "../../simple-scss-utilities/ssu.scss"
+import "../../simple-scss-utilities/ssu.scss"
 import "../scss/custom.scss"
-import "../css/ssu.css"
+import { Link } from "gatsby"
+// import "../css/ssu.css"
 
-// Step 2: Define your component
 const IndexPage = () => {
   return (
     <Layout>
       <Banner />
-      <main className="max-w-container mx-auto p-lg">
+      <main className="max-w-container mx-auto p-lg letter-spacing-md text-lg">
         <div>
-          <p>
-            <span class="font-bold">
-              Wow that's an awesome banner isn't it!
-            </span>{" "}
-            No wonder you're interested in my scss framework. Ok, ok, I hate to
-            let you down but the banner wasn't made with the framework.
-            Everything else on this site was though! It's a work in
-            progress..and I'll be making updates.. but in the meantime, what's
-            this for?
+          <p className="line-height-lg letter-spacing-md line-height-lg mt-md">
+            <span className="font-bold">Wow what a great banner!</span> No
+            wonder you're interested in my framework. Ok, the banner wasn't made
+            with it. But everything else was! Aside from the banner, I use
+            utility classes and 4 lines of Scss. Now that's a lean stylesheet!
           </p>
 
-          <h1 className="font-header align-center mt-xl font-4xl">
-            - Simple Scss Utilites -
+          <h1 className="font-header align-center mt-xl mb-md text-5xl">
+            <span className="max-mob:display-none">-</span> Simple Scss Utilites
+            <span className="max-mob:display-none">-</span>
           </h1>
 
           <div className="row gap-lg">
             <div className="col-12 scr:col-4">
-              <h3 className="font-large font-xl mb-s">For Simplicity</h3>
-              <p>
-                I just want to write SCSS. I don't want a framework to make my
-                design decisions for me. But I do like utility classes.
+              <h3 className="font-large text-2xl mb-lg">For Simplicity</h3>
+              <p className="line-height-lg mb-xl">
+                There's no "rules" about how to use this framework. Don't worry
+                if you're doing it "right" or not. The concept couldn't be
+                simpler. Change the variables to match your theme. Use utility
+                classes to cut down on the SCSS bloat. Write the rest how you
+                want!
               </p>
-              <p>
-                Yes tailwind is pretty good. And SCSS and PostCSS can do
-                somewhat different things. But y'konw what? I like just writing
-                SCSS! I made some files to generate 90% of the utility classes I
-                usually will use. The rest is up to me to do it how I wanna.
-                That's it!
+              <p className="font-large text-xl  font-bold text-blue hover:text-magenta cursor-pointer">
+                <Link to="/install">Install</Link>
               </p>
-              <p>I just wanna write SCSS</p>
-              <p>Philosophy</p>
             </div>
             <div className="col-12 scr:col-4">
-              <h3 className="font-large font-xl mb-s">For Creativitiy</h3>
+              <h3 className="font-large text-2xl mb-lg">For Creativitiy</h3>
+              <p className="line-height-lg mb-xl">
+                I don't try to do everything for you, or make decisions for you.
+                I encourage you to write your own SCSS. Put your own stamp and
+                style on projects! The utility classes are there to be useful,
+                then get out of your way.
+              </p>
 
-              <p>
-                I know how I want things to look. I want a framework to keep my
-                stylesheets lean and consistant, but not as a constraint. Why
-                have a framework with rules? Help then get out of the way. Maybe
-                I want wacky fonts and buttons. Maybe in my personal projects I
-                wanna get a little weird. Just give me utility classes!
+              <p className="font-large text-xl font-bold text-blue hover:text-magenta cursor-pointer">
+                <Link to="/docs">Docs</Link>
               </p>
-              <p>
-                I want to encourge writing your own scss to your satisfaction.
-                Let's have some fun.
-              </p>
-              <p>Docs</p>
             </div>
             <div className="col-12 scr:col-4 p-xs">
-              <h3 className="font-large font-xl mb-s">For Customization</h3>
-              <p>
-                Everything is in a variables file, all in plain scss. Aouple
-                dozen rules for colors, breakpoints, sizes, etc. It generates a
-                ton of css but purging isn't hard. Add/remove things at your
-                will! Have a design sheet? Edit the varibles to your own font
-                sizes, colors, - or anything - and tayloring the classes to your
-                design is just that easy. The SCSS is not exhaustive. I only
-                wrote it to handle the things I personally use over and over.
-                But adding and removing isn't tough! You can make it your own.
-                Customize! Instructions included.
+              <h3 className="font-large text-2xl mb-lg">For Customization</h3>
+              <p className="line-height-lg mb-xl">
+                All the variables are in one file. Call me crazy but I think if
+                you can develop a website, you can certinaly change a variable's
+                value. I (hope I) made everything super easy. Change anything
+                you want! Go wild!
               </p>
-              <p>Customization</p>
+              <p className="font-large text-xl  font-bold text-blue hover:text-magenta cursor-pointer">
+                <Link to="/customize">Customize</Link>
+              </p>
             </div>
           </div>
-          <p>
-            In short, I just wanted some scss files that generated utility
-            classes to my satisfaction. So I'm making some! I'll use the utility
-            classes to cut down on 90% of the style bloat. Basically, to handle
-            90% of the styles. The other 10% is up to the developer. I'll be
-            adding documentation as things get working. In the meantime, thanks
-            for dropping by!
+          <p className="line-height-lg letter-spacing-md mt-2xl mb-3xl">
+            In short, when I'm goofing off on my own, I like writing my own
+            SCSS. I also like utility classes. My ideal framework is where the
+            utility can do most of the standard stuff, the boring stuff. That's
+            where they stop. The rest is up to me! For me, it's the sweet spot.
           </p>
         </div>
       </main>

@@ -19,11 +19,6 @@ a {
   text-decoration: none;
 }
 
-hr {
-  border: 0;
-  border-top: 1px dotted #efefef;
-}
-
 img {
   max-width: 100%;
 }
@@ -37,7 +32,7 @@ $bg: #111; // background color
 $c: cyan yellow tomato;
 
 #banner {
-  font: 7vw/1 Rubik Doodle Shadow;
+  font: 8.5vw/1 Rubik Doodle Shadow;
   //display: flex;
   align-items: center;
   justify-content: center;
@@ -45,7 +40,7 @@ $c: cyan yellow tomato;
   text-align: center;
   background: $bg;
   color: snow;
-  padding: 4rem 0rem 4.5rem 0rem;
+  padding: 4.5rem 0rem 5.5rem 0rem;
   overflow: hidden;
 
   background: linear-gradient(-45deg, #e73c7e, #510c53, #052681, #af0404);

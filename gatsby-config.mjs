@@ -1,7 +1,13 @@
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
-module.exports = {
+import path from "path"
+import { fileURLToPath } from "url"
+import remarkGfm from "remark-gfm"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// https://github.com/tdudkowski/gatsby-homepage4/blob/main/gatsby-config.mjs
+
+const config = {
   pathPrefix: "/simple-scss-utilities-docs",
   siteMetadata: {
     title: `Simple SCSS Utilities`,
@@ -10,7 +16,27 @@ module.exports = {
   plugins: [
     "gatsby-plugin-sitemap",
     `gatsby-plugin-sass`,
-    `gatsby-plugin-mdx`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        mdxOptions: {
+          remarkPlugins: [
+            // Add GitHub Flavored Markdown (GFM) support
+            remarkGfm,
+            {
+              resolve: `gatsby-remark-images`,
+              options: {
+                // It's important to specify the maxWidth (in pixels) of
+                // the content container as this plugin uses this as the
+                // base for generating different widths of each image.
+                maxWidth: 590
+              }
+            }
+          ]
+        }
+      }
+    },
+    `gatsby-plugin-fontawesome-css`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -52,7 +78,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png"
+        icon: "src/images/SSU-logo.png"
       }
     },
     {
@@ -68,13 +94,34 @@ module.exports = {
         name: "customize",
         path: "./content/customize/"
       }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "components",
-        path: "./content/components/"
-      }
     }
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "components",
+    //     path: "./content/components/"
+    //   }
+    // }
   ]
 }
+
+export default config
+
+// {
+//   resolve: 'gatsby-plugin-mdx',
+//   options: {
+//     gatsbyRemarkPlugins: [
+//       {
+//         resolve: `gatsby-remark-images`,
+//         options: {
+//             // options here
+//         },
+//       },
+//     ],
+//     mdxOptions: {
+//       remarkPlugins: [
+//         remarkGfm,
+//       ],
+//     },
+//   },
+// },

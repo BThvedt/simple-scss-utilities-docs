@@ -1,0 +1,932 @@
+---
+title: Additional Classes
+tags: [pseudo-classes]
+type: docs
+category: pseudo-classes
+description: An overview of Additional Classes
+slug: additional-classes
+order: 40
+anchorLinks:
+  [
+		{ title: "Font Size", link: "font-size" },
+		{ title: "Font Family", link: "font-family" },
+		{ title: "Font Weight", link: "font-weight" },
+		{ title: "Text Decoration & Style", link: "text-decoration-and-style" },
+		{ title: "Border Width & Style", link: "border-width-and-style" },
+		{ title: "Outline Width & Style", link: "outline-width-and-style" }
+  ]
+---
+
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+
+# Overview of the Additional pseudo-classes
+
+#### Other Classes that respond to Pseudo States
+
+The additional Classes that respond to pseudo states are
+
+- Font Size
+- Font Family
+- Font Weight
+- Text Decoration
+- Border and Outline Classes
+
+Not all of these can be transitioned, although maybe some can be faked - for example you can fake smooth font weight transtitions by getting creative with text shadow - (but that's kind of weird for a framework I think, but maybe a good opportunity to write some custom SCSS if you want it). But some of these can, I'll try to include transitions for the transitionable properties in the examples.
+
+Of course everything on this page can be customized for your own theme in the `_variables.scss` and see the (Customize)[/customize/] section of the docs for more details!
+
+Let's start with Font Size!
+
+## Font Size
+
+Font size is supported by pseudo classes, although it's a bit of a special use case. I thought it was useful enough to include, although be careful going too wild because they might conflict with any responsive font size styles. Going wild with font size and pseudo classes would likely be best handeled by writing some custom SCSS for most cases I can imagine, although utility classes probably still come in handy if you just need some styles that aren't gonna be too eclectic:
+
+| Class Example | CSS rule             | Example                                                    |
+| :------------ | :------------------- | :--------------------------------------------------------- |
+| text-xs       | font-size: 0.375rem; | <Paragraph className=" text-xs" text="Font Size XS" />     |
+| text-sm       | font-size: 0.625rem; | <Paragraph className=" text-sm" text="Font Size SM" />     |
+| text-md       | font-size: 0.875rem; | <Paragraph className=" text-md" text="Font Size Med" />    |
+| text-base     | font-size: 1rem;     | <Paragraph className=" text-base" text="Font Size Base" /> |
+| text-lg       | font-size: 1.25rem;  | <Paragraph className=" text-lg" text="Font Size Large" />  |
+| text-xl       | font-size: 1.5rem;   | <Paragraph className=" text-xl" text="Size XL" />          |
+| text-2xl      | font-size: 1.75rem;  | <Paragraph className=" text-2xl" text="Size 2XL" />        |
+| text-3xl      | font-size: 3rem;     | <Paragraph className=" text-3xl" text="3XL" />             |
+| text-4xl      | font-size: 4rem;     | <Paragraph className=" text-4xl" text="4xL" />             |
+| text-5xl      | font-size: 5rem;     | <Paragraph className=" text-5xl" text="5XL" />             |
+
+Pseudo Class Examples:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Size with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            text-lg 
+            hover:text-xl
+            cursor-pointer"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+					className="text-lg hover:text-xl cursor-pointer"
+					text="Hover Me"
+				/>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Size with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            text-lg  
+            active:text-xl
+            cursor-pointer"
+        >
+          Press me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+					className="text-lg active:text-xl cursor-pointer"
+					text="Press Me"
+				/>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Text Size with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class="
+            text-lg 
+            active:text-xl
+            border-sm
+            w-1/2"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          className="
+						text-lg 
+            focus:text-xl
+						border-sm
+						w-3/5"
+          value="Focus Me!"
+        />
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+## Font Family
+
+Font family can also respond to Pseudo States. The framework comes with 3 default font families, probably one of the first things one would want to do when starting a project is change the fonts to their theme, which can be done in the `_variables.scss` file (see [Customize](/customize/) section). I purposefully choose a basic font that one would probably want to edit to drive this point home haha (although I it works good for this site!)
+
+| Class Example | CSS rule                                 | Example                                                    |
+| :------------ | :--------------------------------------- | :--------------------------------------------------------- |
+| font-default  | font-family: "Lato", sans-serif;         | <Paragraph className="font-default" text="Font Default" /> |
+| font-large    | font-family: "Francois One", sans-serif; | <Paragraph className="font-large" text="Font Large" />     |
+| font-header   | font-family: "Bebas Neue", sans-serif;   | <Paragraph className="font-header" text="Font Header" />   |
+
+### Examples:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Family with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            hover:font-large
+            cursor-pointer"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+					className="hover:font-large cursor-pointer"
+					text="Hover Me"
+				/>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Family with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            active:font-header
+            cursor-pointer"
+        >
+          Press me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+					className="active:font-header cursor-pointer"
+					text="Press Me"
+				/>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Family with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class=" 
+            focus:font-large
+            border-sm
+            w-6/10"
+          value="Focus Me!"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          className=" 
+            focus:font-large
+						border-sm
+						w-3/5"
+          value="Focus Me!"
+        />
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+## Font Weight
+
+Font weight can't be transitioned, although it can be faked with a text shadow. However, this framework provides these three classes by default. Not all fonts support weights, some support more than 3 weights, but again that all can be editied in the `_variables.scss` file.
+
+| Class Example | CSS rule          | Example                                                  |
+| :------------ | :---------------- | :------------------------------------------------------- |
+| font-light    | font-weight: 200; | <Paragraph className="font-light" text="Font Light" />   |
+| font-normal   | font-weight: 400; | <Paragraph className="font-normal" text="Font Normal" /> |
+| font-bold     | font-weight: 700; | <Paragraph className="font-bold" text="Font Bold" />     |
+
+### And here are some Examples:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Weight with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            hover:font-light
+            cursor-pointer"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+					className="hover:font-light cursor-pointer"
+					text="Hover Me"
+				/>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Weight with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            active:font-bold
+            cursor-pointer"
+        >
+          Press me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+					className="active:font-bold cursor-pointer"
+					text="Press Me"
+				/>
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Font Weight with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class=" 
+            focus:font-bold
+            border-sm
+            w-6/10"
+          value="Focus Me!"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          className=" 
+            focus:font-bold
+						border-sm
+						w-3/5"
+          value="Focus Me!"
+        />
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+## Text Decoration and Style
+
+Here are the classes for text decoration and text decoration style. Text decoration can also have a width and color, but notice that for each element state the thickness needs to be specified or it'll revert to the default thickness for that particular state. Also, not every style will work with every type of decoration. Hey, that's CSS, what can I say! But these are all kind of rarely used edge cases, just demonstrated here.
+
+First, the Classes.
+
+### Text Decoration:
+
+| Class Example     | CSS rule                             | Example                                                  |
+| :---------------- | :----------------------------------- | :------------------------------------------------------- |
+| text-none         | text-decoration: none;               | <Paragraph className="font-light" text="Font Light" />   |
+| text-underline    | text-decoration: underline;          | <Paragraph className="font-normal" text="Font Normal" /> |
+| text-overline     | text-decoration: overline;           | <Paragraph className="font-bold" text="Font Bold" />     |
+| text-underover    | text-decoration: underline overline; | <Paragraph className="font-bold" text="Font Bold" />     |
+| text-line-through | text-decoration: line-through;       | <Paragraph className="font-bold" text="Font Bold" />     |
+
+### Text Decoration Style:
+
+| Class Example     | CSS rule                       | Example                                                  |
+| :---------------- | :----------------------------- | :------------------------------------------------------- |
+| decoration-solid  | text-decoration-style: solid;  | <Paragraph className="font-light" text="Font Light" />   |
+| decoration-double | text-decoration-style: double; | <Paragraph className="font-normal" text="Font Normal" /> |
+| decoration-dotted | text-decoration-style: dotted; | <Paragraph className="font-bold" text="Font Bold" />     |
+| decoration-dashed | text-decoration-style: dashed; | <Paragraph className="font-bold" text="Font Bold" />     |
+| decoration-wavy   | text-decoration-style: wavy;   | <Paragraph className="font-bold" text="Font Bold" />     |
+
+### Decoration Examples:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Decoration with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            text-underover 
+            hover:text-line-through 
+            decoration-xl
+            hover:decoration-xl"
+        >
+          Hover Me!!
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="text-underover hover:text-line-through decoration-xl hover:decoration-xl"
+          text="Hover Me"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr  min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Decoration with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            text-overline 
+            decoration-xl
+            active:text-underline
+            active:decoration-xl"
+        >
+          Press me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="text-overline decoration-xl active:text-underline active:decoration-xl"
+          text="Press Me"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Decoration Style Examples:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Decoration Style with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            text-underline  
+            decoration-double
+            decoration-xl
+            hover:decoration-dashed
+            hover:decoration-xl"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="text-underline  
+            decoration-double
+            decoration-xl
+            hover:decoration-dashed
+            hover:decoration-xl"
+          text="Hover Me"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr   min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Decoration Style with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <textarea
+          class="
+            w-6
+            outline-sm
+            outline-solid
+            decoration-xl
+            text-underline 
+            decoration-magenta-dk
+            focus:decoration-green"
+          value="Focus Me!"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <textarea
+          className="
+            p-sm
+            w-6
+            sizing-border 
+            outline-sm
+            outline-solid
+            decoration-xl
+            text-underline  
+            decoration-magenta-dk
+            focus:decoration-wavy"
+          value="Focus Me!"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Border Width and Style
+
+Border width classes cover every direction, while border style does not. While it is possible to want borders with different styles in different directions, and because responsive styles can conflect with element states, these are specific cases I felt are probably best handled with custom SCSS. Otherwise, I feel like these classes will cover the vast majority of use cases.
+
+For more info on responsivity and customization, see the [Responsive](/responsive-classes/) and [Customize](/customize/) sections. The default values are as follows:
+
+### Border Width:
+
+| Class Example | CSS rule                                               | Example                                                         |
+| :------------ | :----------------------------------------------------- | :-------------------------------------------------------------- |
+| border-0      | border-width: 0;                                       | <Paragraph className="border-0 p-sm" text="No Border" />        |
+| border-sm     | border-width: 1px;                                     | <Paragraph className="border-sm p-sm" text="Border Small" />    |
+| border-md     | border-width: 3px;                                     | <Paragraph className="border-md p-sm" text="Border Mdd" />      |
+| border-lg     | border-width: 5px;                                     | <Paragraph className="border-lg p-sm" text="Border Large" />    |
+| border-xl     | border-width: 7px;                                     | <Paragraph className="border-xl p-sm" text="Border Xl" />       |
+| bx-0          | border-left-width: 0; <br/> border-right-width: 0;     | <Paragraph className="border-0 p-sm" text="No X Border" />      |
+| bx-sm         | border-left-width: 1px; <br/> border-right-width: 1px; | <Paragraph className="bx-sm p-sm" text="Border x Small" />      |
+| bx-md         | border-left-width: 3px; <br/> border-right-width: 3px; | <Paragraph className="bx-md p-sm" text="Border x Med" />        |
+| bx-lg         | border-left-width: 5px; <br/> border-right-width: 5px; | <Paragraph className="bx-lg p-sm" text="Border x Large" />      |
+| bx-xl         | border-left-width: 7px; <br/> border-right-width: 7px; | <Paragraph className="bx-xl p-sm" text="Border x Xl" />         |
+| by-0          | border-top-width: 0; <br/> border-bottom-width: 0;     | <Paragraph className="by-0 p-sm" text="No Y Border" />          |
+| by-sm         | border-top-width: 1px; <br/> border-bottom-width: 1px; | <Paragraph className="by-sm p-sm" text="Border y Small" />      |
+| by-md         | border-top-width: 3px; <br/> border-bottom-width: 3px; | <Paragraph className="by-md p-sm" text="Border y Med" />        |
+| by-lg         | border-top-width: 5px; <br/> border-bottom-width: 5px; | <Paragraph className="by-lg p-sm" text="Border y Large" />      |
+| by-xl         | border-top-width: 7px; <br/> border-bottom-width: 7px; | <Paragraph className="by-xl p-sm" text="Border y Xl" />         |
+| bt-0          | border-top-width: 0px;                                 | <Paragraph className="bt-0 p-sm" text="No top Border" />        |
+| bt-sm         | border-top-width: 1px;                                 | <Paragraph className="bt-sm p-sm" text="Border Top Sm" />       |
+| bt-md         | border-top-width: 3px;                                 | <Paragraph className="bt-md p-sm" text="Border Top Med" />      |
+| bt-lg         | border-top-width: 5px;                                 | <Paragraph className="bt-lg p-sm" text="Border Top Large" />    |
+| bt-xl         | border-top-width: 7px;                                 | <Paragraph className="bt-xl p-sm" text="Border Top XL" />       |
+| bb-0          | border-bottom-width: 0px;                              | <Paragraph className="bb-0 p-sm" text="No bottom Border" />     |
+| bb-sm         | border-bottom-width: 1px;                              | <Paragraph className="bb-sm p-sm" text="Border Bottom Sm" />    |
+| bb-md         | border-bottom-width: 3px;                              | <Paragraph className="bb-md p-sm" text="Border Bottom Med" />   |
+| bb-lg         | border-bottom-width: 5px;                              | <Paragraph className="bb-lg p-sm" text="Border Bottom Large" /> |
+| bb-xl         | border-bottom-width: 7px;                              | <Paragraph className="bb-xl p-sm" text="Border Bottom XL" />    |
+| bl-0          | border-left-width: 0px;                                | <Paragraph className="bl-0 p-sm" text="No left Border" />       |
+| bl-sm         | border-left-width: 1px;                                | <Paragraph className="bl-sm p-sm" text="Border Left Sm" />      |
+| bl-md         | border-left-width: 3px;                                | <Paragraph className="bl-md p-sm" text="Border Left Med" />     |
+| bl-lg         | border-left-width: 5px;                                | <Paragraph className="bl-lg p-sm" text="Border Left Large" />   |
+| bl-xl         | border-left-width: 7px;                                | <Paragraph className="bl-xl p-sm" text="Border Left XL" />      |
+| br-0          | border-right-width: 0px;                               | <Paragraph className="br-0 p-sm" text="No Right Border" />      |
+| br-sm         | border-right-width: 1px;                               | <Paragraph className="br-sm p-sm" text="Border Right Sm" />     |
+| br-md         | border-right-width: 3px;                               | <Paragraph className="br-md p-sm" text="Border Right Med" />    |
+| br-lg         | border-right-width: 5px;                               | <Paragraph className="br-lg p-sm" text="Border Right Large" />  |
+| br-xl         | border-right-width: 7px;                               | <Paragraph className="br-xl p-sm" text="Border Right XL" />     |
+
+### Border Style:
+
+| Class Example | CSS rule              | Example                                                                                 |
+| :------------ | :-------------------- | :-------------------------------------------------------------------------------------- |
+| border-solid  | border-style: solid;  | <Paragraph className="border-sm border-lg  border-solid  p-sm" text="Border Solid" />   |
+| border-dashed | border-style: dashed; | <Paragraph className="border-sm border-lg  border-dashed  p-sm" text="Border Dashed" /> |
+| border-dotted | border-style: dotted; | <Paragraph className="border-sm border-lg  border-dotted  p-sm" text="Border Dotted" /> |
+| border-groove | border-style: groove; | <Paragraph className="border-sm border-lg  border-groove  p-sm" text="Border Groove" /> |
+| border-inset  | border-style: inset;  | <Paragraph className="border-sm border-lg  border-inset  p-sm" text="Border Inset" />   |
+
+### Border Width Pseudo Class Examples:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Border width with hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            cursor-pointer
+            p-sm
+            border-lg
+            by-xl
+            hover:border-sm
+            hover:bx-xl"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="cursor-pointer
+            p-sm
+            border-lg
+            by-xl
+            hover:border-sm
+            hover:bx-xl"
+          text="Hover Me"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr  min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Border width with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            p-sm
+            cursor-pointer
+            border-md
+            border-magenta
+            border-inset
+            bx-xl
+            by-xl
+            active:border-xl
+            active:bx-0
+            active:by-0 
+            active:border-green"
+        >
+          Press Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="p-sm
+            cursor-pointer
+            border-md
+            border-magenta
+            border-inset
+            bt-xl
+            bl-xl
+            active:border-xl
+            active:bt-0
+            active:bl-0 
+            active:border-green"
+          text="Press Me"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Border Style Pseudo Class Examples:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Decoration Style with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            p-sm
+            border-groove
+            hover:border-dashed"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="p-sm
+            border-lg
+            border-groove
+            hover:border-dashed"
+          text="Hover Me"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr   min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Decoration Style with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class="
+            p-sm
+            w-4
+            border-lg
+            border-inset
+            focus:border-dotted
+            focus:border-red"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          class="
+            p-sm
+            w-4
+            border-lg
+            border-inset
+            focus:border-dotted
+            focus:border-red"
+          value="Focus Me"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Outline Width and Style
+
+Like border, outlines have widths and styles. Unlike border, outline classes can't be applied per direction, making them a bit less time consuming to generate and document haha. Also notice that in the examples, the style has to be included or it won't show up. I did include pseudo classes with outline, so they can respond to hover, focus, etc.
+
+### Outline WIdth
+
+| Class Example | CSS rule            | Example                                               |
+| :------------ | :------------------ | :---------------------------------------------------- |
+| outline-0     | outline-width: 0;   | <div className="outline-0 outline-solid w-3 h-3" />   |
+| outline-sm    | outline-width: 1px; | <div className="outline-sm outline-solid w-3 h-3"  /> |
+| outline-md    | outline-width: 3px; | <div className="outline-md outline-solid w-3 h-3" />  |
+| outline-lg    | outline-width: 5px; | <div className="outline-lg outline-solid w-3 h-3" />  |
+| outline-xl    | outline-width: 7px; | <div className="outline-xl outline-solid w-3 h-3" />  |
+
+### Outline Style
+
+(I addded the `blue-ltr` color and made the width `outline-xl` to make it a bit easier to see)
+
+| Class Example  | CSS rule               | Example                                                                  |
+| :------------- | :--------------------- | :----------------------------------------------------------------------- |
+| outline-none   | outline-style: none;   | <div className="outline-xl outline-blue-ltr outline-none w-3 h-3" />     |
+| outline-dotted | outline-style: dotted; | <div className="outline-xl  outline-blue-ltr outline-dotted w-3 h-3"  /> |
+| outline-solid  | outline-style: solid;  | <div className="outline-xl outline-blue-ltr outline-solid w-3 h-3" />    |
+| outline-groove | outline-style: groove; | <div className="outline-xl outline-blue-ltr outline-groove w-3 h-3" />   |
+| outline-inset  | outline-style: inset;  | <div className="outline-xl outline-blue-ltr outline-inset w-3 h-3" />    |
+
+### Outline Width Pseudo Class Examples:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Outline width with hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p 
+          class="
+            outline-sm
+            outline-solid
+            hover:outline-xl"  
+        >
+          Outline
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="
+            outline-md
+            outline-dotted 
+            outline-blue
+            hover:outline-xl
+            hover:outline-groove"
+          text="Hover Me"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr  min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Border width with Active
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            outline-sm
+            outline-dashed
+            outline-blue-ltr
+            hover:outline-xl"
+        >
+          Press Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="
+            outline-sm
+            outline-solid
+            outline-blue-ltr
+            active:outline-xl"
+          text="Press Me"
+        />
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+### Outline Style Pseudo Class Examples:
+
+<table className="w-3/4 mx-auto max-scr:w-full max-scr:mx-0 mt-lg mb-2xl mt-2xl">
+  <thead className="display-block pr-2xl letter-spacing-xl">
+    <tr className="display-flex">
+      <th className="display-flex font-large text-lg w-1/4 max-tab:w-1/5 ">
+        Example
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/2 max-tab:w-9/20 ">
+        Html
+      </th>
+      <th className="display-flex justify-center font-large text-lg w-1/4 max-tab:w-1/5">
+        Result
+      </th>
+    </tr>
+  </thead>
+  <tbody className="display-block max-h-48 overflow-y-auto pr-lg">
+    <tr className="display-flex py-sm border-dotted border-green-ltr bb-sm min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Decoration Style with Hover
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <p
+          class="
+            outline-xl
+            outline-groove
+            outline-blue-ltr
+            hover:outline-inset"
+        >
+          Hover Me
+        </p>
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <Paragraph
+          className="
+            outline-xl
+            outline-groove
+            outline-blue-ltr
+            hover:outline-inset"
+          text="Hover Me"
+        />
+      </td>
+    </tr>
+    <tr className="display-flex py-sm border-dotted border-green-ltr   min-h-2">
+      <td className="display-flex flex-col w-1/4 justify-center pr-lg max-tab:pr-md max-tab:w-1/5 sizing-border">
+        Decoration Style with Focus
+      </td>
+      <td className="display-flex flex-col w-1/2 max-tab:w-9/20 max-tab:mr-sm  justify-center ">
+        ```html
+        <input
+          class="
+            w-4
+            outline-xl
+            outline-solid
+            outline-blue-ltr
+            focus:outline-dotted"
+          value="Focus Me"
+        />
+        ```
+      </td>
+      <td className="display-flex flex-col w-1/4 max-tab:w-1/5 center text-lg">
+        <input
+          class="
+            w-4
+            outline-xl
+            outline-solid
+            outline-blue-ltr
+            focus:outline-dotted"
+          value="Focus Me"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

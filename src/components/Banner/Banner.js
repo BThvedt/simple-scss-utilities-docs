@@ -15,7 +15,7 @@ const Banner = () => {
   }, [])
 
   const particlesLoaded = (container) => {
-    console.log(container)
+    console.log("")
   }
 
   const options = useMemo(
@@ -49,7 +49,7 @@ const Banner = () => {
       },
       particles: {
         number: {
-          value: 15,
+          value: 17,
           density: { enable: false, value_area: 1443 }
         },
         color: { value: "#6216cf" },
@@ -65,7 +65,7 @@ const Banner = () => {
           anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
         },
         size: {
-          value: 120,
+          value: 130,
           random: true,
           anim: { enable: true, speed: 10, size_min: 40, sync: false }
         },

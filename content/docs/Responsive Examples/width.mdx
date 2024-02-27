@@ -1,0 +1,399 @@
+---
+title: Width
+tags: [responsive, width]
+type: docs
+description: Overview of the Width Classes
+category: responsive
+slug: width
+order: 40
+anchorLinks:
+  [
+		{ title: "Rem Values", link: "width-rem-values" },
+		{ title: "Percantage Values", link: "width-percentage-values" },
+		{ title: "Screen relative Values", link: "screen-based-widths" },
+    { title: "XS - XL", link: "xs--xl-widths" }
+  ]
+---
+
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Width
+
+#### How to use
+
+Width and height have a lot of different utiltiy classes. I'm much more of a coder than a designer (or writer) so when I do try to come up with a design on my own I'm always endlessly tweaking things. Which means that for me to be satifsfied with height and width utility classes, (and to a lesser extent, position0), they need to have lots of possible values.
+
+Clean maintaiable code is the only way projects will ever work well. However, if you're lucky enough to have a good designer who can give you good mockups, it's important to match it as cloesly as you can. Ideally, you will be able to have super clean code while still matching the design closely enough that no one can tell the difference without making some serious effort at insepction.
+
+So, that's why I have every possible position based value used with anything else alsow working with heights and widths. And of course, these all can be edited in `_variables.scss` if you need different values/or more!
+
+## Width Rem Values
+
+I find myself assigning widths with REM based values quite often. All these clases will work for `min-width` and `max-width` as well.
+
+| Class | CSS rule      |
+| :---- | :------------ |
+| w-1   | width: 1rem;  |
+| w-2   | width: 2rem;  |
+| w-3   | width: 3rem;  |
+| w-4   | width: 4rem;  |
+| w-5   | width: 5rem;  |
+| w-6   | width: 6rem;  |
+| w-7   | width: 7rem;  |
+| w-8   | width: 8rem;  |
+| w-10  | width: 10rem; |
+| w-12  | width: 12rem; |
+| w-16  | width: 16rem; |
+| w-20  | width: 20rem; |
+| w-24  | width: 24rem; |
+| w-30  | width: 30rem; |
+| w-36  | width: 36rem; |
+| w-42  | width: 42rem; |
+| w-48  | width: 48rem; |
+| w-56  | width: 56rem; |
+| w-64  | width: 64rem; |
+| w-72  | width: 72rem; |
+| w-80  | width: 80rem; |
+
+### Examples
+
+Here's some examples of the rem based width classes:
+
+<div className="text-white">
+  <div className="w-4 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-4</p>
+  </div>
+  <div className="w-12 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-12</p>
+  </div>
+  <div className="w-24 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-24</p>
+  </div>
+</div>
+
+<CodeWrapper title="HTML"  >
+
+```html
+<div class="text-white">
+  <div class="w-4 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-4</p>
+  </div>
+  <div class="w-12 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-12</p>
+  </div>
+  <div class="w-24 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-24</p>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+### Min, Max, and Responsive Examples
+
+Of course all these classes can can be prefixed with `min-`, `max-`, as well as responsive breapoints. If you're on a browser change the screen widths to see how they work (on small sizes you'll have to close the sidebar).
+
+<div>
+  <div className="min-w-36 max-w-48 h-4 bg-blue center-start pl-md sizing-border mb-sm text-white">
+    <p>.min-w-42 .max-w-48</p>
+  </div>
+  <p className="text-lg">
+    This will break out of the right margins on small displays, as the min width
+    is greater than small screen widths.
+  </p>
+  <div className="h-4 w-24 tab:w-30 scr:w-36 lg:w-48 bg-blue center-start pl-md sizing-border mb-sm text-white">
+    <p>.w-24 .tab:w-30 .scr:w-36 .lg:w-48</p>
+  </div>
+  <p className="text-lg">
+    This div will change size responsively based on screen size.
+  </p>
+  <div className="h-4 w-48 max-scr:w-24 bg-blue center-start pl-md sizing-border mb-sm text-white">
+    <p>.w-48 .max-scr:w-24</p>
+  </div>
+  <p className="text-lg">
+    Another responsive exmple with max:scr with a width of 24 on sizes below
+    1024px (the default `scr` breakpoint).
+  </p>
+</div>
+
+<CodeWrapper title="HTML"  >
+
+```html
+<div
+  class="min-w-36 max-w-48 h-4 bg-blue center-start pl-md sizing-border mb-sm text-white"
+>
+  <p>.min-w-42 .max-w-48</p>
+</div>
+<p>
+  This will break out of the right margins on small displays, as the min width
+  is greater than small screen widths.
+</p>
+<div
+  class="h-4 w-24 tab:w-30 scr:w-36 lg:w-48 bg-blue center-start pl-md sizing-border mb-sm text-white"
+>
+  <p>.w-24 .tab:w-30 .scr:w-36 .lg:w-48</p>
+</div>
+<p>This div will change size responsively based on screen size.</p>
+<div
+  class="h-4 w-48 max-scr:w-24 bg-blue center-start pl-md sizing-border mb-sm text-white"
+>
+  <p>.w-48 .max-scr:w-24</p>
+</div>
+<p>
+  Another responsive exmple with max:scr with a width of 24 on sizes below
+  1024px (the default `scr` breakpoint).
+</p>
+```
+
+</CodeWrapper>
+
+## Width Percentage Values
+
+It is also handy to have percentage based values (represented by fractions). I think it is a good balance of usefullness and number of classes to have them increment in steps of about 5% (plus classes for 3rd's). Classes are not repeated, for example, there is a 1/10 class but not a 2/20 class because that would give the same % value. All these can be prefixed with `min` and `max` as well as breakpoint prefixes:
+
+| Class   | CSS rule      |
+| :------ | :------------ |
+| w-0     | width: 1rem;  |
+| w-1/2   | width: 2rem;  |
+| w-1/3   | width: 3rem;  |
+| w-1/4   | width: 4rem;  |
+| w-3/4   | width: 5rem;  |
+| w-1/5   | width: 6rem;  |
+| w-2/5   | width: 7rem;  |
+| w-3/5   | width: 8rem;  |
+| w-4/5   | width: 10rem; |
+| w-1/10  | width: 12rem; |
+| w-3/10  | width: 16rem; |
+| w-7/10  | width: 20rem; |
+| w-9/10  | width: 24rem; |
+| w-1/20  | width: 30rem; |
+| w-3/20  | width: 36rem; |
+| w-7/20  | width: 42rem; |
+| w-9/20  | width: 48rem; |
+| w-11/20 | width: 56rem; |
+| w-13/20 | width: 64rem; |
+| w-17/20 | width: 72rem; |
+| w-19/20 | width: 80rem; |
+| w-full  | width: 80rem; |
+
+Widths are based on widths fo the parent container (in this case this section is wrapped in a div with a max-width of 1024 px)
+
+<div className="text-white">
+  <div className="w-1/4 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-1/4</p>
+  </div>
+  <div className="w-1/3 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-1/3</p>
+  </div>
+  <div className="w-17/20 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-17/20</p>
+  </div>
+</div>
+
+<CodeWrapper title="HTML"  >
+
+```html
+<div class="text-white">
+  <div class="w-1/4 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-1/4</p>
+  </div>
+  <div class="w-1/3 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-1/3</p>
+  </div>
+  <div class="w-17/20 h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-17/20</p>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+### Min, Max, and Responsive Examples
+
+If your'e in a browser you can change screen sizes to see these react, on small widths you'll have to close the sidebar to see the smallest widths:
+
+<div className="min-w-36 max-w-48 h-4 bg-blue center-start pl-md sizing-border mb-sm text-white">
+  <p>.w-1/2 .min-w-full</p>
+</div>
+<p className="text-lg">
+  Although this is set at 1/2 width, the min-w class overrides the min-width to
+  full width.
+</p>
+<div className="h-4 w-1/4 tab:w-1/2 scr:w-3/4 lg:w-full bg-blue center-start pl-md sizing-border mb-sm text-white">
+  <p>.w-1/4 .tab:w-1/2 .scr:3/4 .lg:w-full</p>
+</div>
+<p className="text-lg mb-lg">Fractional widths that change with breakpoints.</p>
+<div className="h-4 w-full max-scr:w-1/2 bg-blue center-start pl-md sizing-border mb-sm text-white">
+  <p>.w-full .max-scr:w-1/2</p>
+</div>
+<p className="text-lg">
+  Another responsive exmple with max:scr with a width of 1/2 on sizes below
+  1024px (the default `scr` breakpoint).
+</p>
+
+<CodeWrapper title="HTML"  >
+
+```html
+<div
+  className="min-w-36 max-w-48 h-4 bg-blue center-start pl-md sizing-border mb-sm text-white"
+>
+  <p>.w-1/2 .min-w-full</p>
+</div>
+<p className="text-lg">
+  Although this is set at 1/2 width, the min-w class overrides the min-width to
+  full width.
+</p>
+<div
+  className="h-4 w-1/4 tab:w-1/2 scr:w-3/4 lg:w-full bg-blue center-start pl-md sizing-border mb-sm text-white"
+>
+  <p>.w-1/4 .tab:w-1/2 .scr:3/4 .lg:w-full</p>
+</div>
+<p className="text-lg mb-lg">Fractional widths that change with breakpoints.</p>
+<div
+  className="h-4 w-full max-scr:w-1/2 bg-blue center-start pl-md sizing-border mb-sm text-white"
+>
+  <p>.w-full .max-scr:w-1/2</p>
+</div>
+<p className="text-lg">
+  Another responsive exmple with max:scr with a width of 1/2 on sizes below
+  1024px (the default `scr` breakpoint).
+</p>
+```
+
+</CodeWrapper>
+
+## Screen Based Widths
+
+I only use these in certina cases myself which is why I only have a few values, espeically for utility classes it probably makes more sense to me for this to be a case where one can write their own SCSS, but like with everything else values can be edited in `_variables.scss` if you need more values:
+
+| Class        | CSS rule      |
+| :----------- | :------------ |
+| w-1/4-screen | width: 25vw;  |
+| w-1/3-screen | width: 33vw   |
+| w-1/2-screen | width: 50vw;  |
+| w-screen     | width: 100vw; |
+
+## Examples
+
+As opposed to percentage based values on the container, these are relative to the entire view port. On small widths with the sidebar closed, they will match the fractional values, but on larger widths with the sidebar open you can see the difference since those are based on the size of this section, while these are based on the size of the screen:
+
+<div className="text-white">
+  <div className="w-1/4-screen h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-1/4-screen</p>
+  </div>
+  <div className="w-1/2-screen h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-1/2-screen</p>
+  </div>
+</div>
+
+<CodeWrapper title="HTML"  >
+
+```html
+<div class="text-white">
+  <div class="w-1/4-screen h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-1/4-screen</p>
+  </div>
+  <div class="w-1/2-screen h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-1/2-screen</p>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+### Min, Max, and Responsive Examples
+
+Of course these can be made responsive as well:
+
+<div className="w-1/4 min-w-1/2-screen h-4 bg-blue center-start pl-md sizing-border mb-sm text-white">
+  <p>.w-1/4 .min-w-1/2-screen</p>
+</div>
+<p className="text-lg">
+  Although this is set at 1/4 width, the min-w class overrides the min-width to
+  1/2 screen
+</p>
+<div className="h-4 w-1/5 tab:w-1/4-screen scr:w-1/3-screen lg:w-1/2-screen bg-blue center-start pl-md sizing-border mb-sm text-white">
+  <p>.w-1/5 .tab:w-1/4-screen .scr:w-1/3-screen .lg:w-1/2-screen</p>
+</div>
+<p className="text-lg mb-lg">Fractional widths that change with breakpoints.</p>
+<div className="h-4 w-1/2-screen max-scr:w-1/3-screen bg-blue center-start pl-md sizing-border mb-sm text-white">
+  <p>.w-1/2-screen .max-scr:w-1/3-screen</p>
+</div>
+<p className="text-lg">
+  Another responsive exmple with max:scr with a width of 1/3 screen on sizes
+  below 1024px (the default `scr` breakpoint).
+</p>
+
+<CodeWrapper title="HTML"  >
+
+```html
+<div
+  class="w-1/4 min-w-1/2-screen h-4 bg-blue center-start pl-md sizing-border mb-sm text-white"
+>
+  <p>.w-1/4 .min-w-1/2-screen</p>
+</div>
+<p class="text-lg">
+  Although this is set at 1/4 width, the min-w class overrides the min-width to
+  1/2 screen
+</p>
+<div
+  class="h-4 w-1/5 tab:w-1/4-screen scr:w-1/3-screen lg:w-1/2-screen bg-blue center-start pl-md sizing-border mb-sm text-white"
+>
+  <p>.w-1/5 .tab:w-1/4-screen .scr:w-1/3-screen .lg:w-1/2-screen</p>
+</div>
+<p class="text-lg mb-lg">Fractional widths that change with breakpoints.</p>
+<div
+  class="h-4 w-1/2-screen max-scr:w-1/3-screen bg-blue center-start pl-md sizing-border mb-sm text-white"
+>
+  <p>.w-1/2-screen .max-scr:w-1/3-screen</p>
+</div>
+<p class="text-lg">
+  Another responsive exmple with max:scr with a width of 1/3 screen on sizes
+  below 1024px (the default `scr` breakpoint).
+</p>
+```
+
+</CodeWrapper>
+
+## XS - XL Widths
+
+Finally, widths can also work with all the xs-xl values up to 5xl which are the same as the margin and padding values. Not quite as useful in my opnion, but I thought what the heck, why not include 'em.
+
+| Class  | CSS rule         |
+| :----- | :--------------- |
+| w-xxs  | width: 0.125rem; |
+| w-xs   | width: 0.25rem;  |
+| w-sm   | width: 0.5rem;   |
+| w-md   | width: 0.75rem;  |
+| w-base | width: 1rem;     |
+| w-lg   | width: 1.25rem;  |
+| w-xl   | width: 1.5rem;   |
+| w-2xl  | width: 2rem;     |
+| w-3xl  | width: 3rem;     |
+| w-4xl  | width: 4rem;     |
+| w-5xl  | width: 5rem;     |
+
+### Examples
+
+using these are pretty straight forward:
+
+<div className="text-white">
+  <div className="w-5xl h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-5xl</p>
+  </div>
+</div>
+
+Pretty much the only examples that can fit text are the largest ones haha, since these were values origionally designed with margins and paddings in mind. Here is the html:
+
+```HTML
+<div className="text-white">
+  <div className="w-5xl h-4 bg-blue center-start pl-md sizing-border mb-sm">
+    <p>.w-5xl</p>
+  </div>
+</div>
+```
+
+Like the examples above, these also work with `min`, `max` and the breakpoint prefixes as well.
+
+Well that's it for widths. Happy Coding!

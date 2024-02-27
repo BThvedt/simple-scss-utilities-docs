@@ -1,0 +1,72 @@
+---
+title: Colors and Font
+tags: [customize, colors-and-font]
+type: customize
+category: adjust-add-remove
+description: An overview of how to customize Colors and FOnt
+slug: colors-and-font
+order: 20
+---
+
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Colors and Fonts
+
+#### Customizing Colors and Fonts
+
+If you look in the `_variables.scss` file, you'll see the colors definitions, who's names and values can be changed to whatever you want:
+
+<CodeWrapper title="_variables.scss" isFile >
+
+```scss
+// default colors, change to your theme
+$colors: (
+  "default": (
+    "white": #fff,
+    "black": #000,
+    "red": #cb3810,
+    "green": #589f50,
+    "blue": #2978a0,
+    "default": #252832,
+    "background": #fdfcf9,
+    "magenta": #bf4081
+  ),
+  "dark-mode": (
+    // if you define a color with the same name, it gets overridden in this mode
+    "background": #292d3a,
+    "default": #dcdbda,
+    "blue": #5798e1,
+    "dark-mode-only": #4d5359 // <- a color only for dark mode
+  )
+  // more color modes can be added if you really want.. .
+);
+```
+
+</CodeWrapper>
+
+You can also find the map that defines the shades:
+
+<CodeWrapper title="_variables.scss" isFile >
+
+```scss
+// if you need more shades, or need them to be lighter/darker
+// that can be achieved here
+$color-modifiers: (
+  "light": (
+    "lt": 15%,
+    // <-- mixes in 15% white to make lighter
+    "ltr": 30% // <-- mixes in 30% white
+  ),
+  "dark": (
+    "dk": 15%,
+    // <-- mixes in 15% black .. etc
+    "dkr": 30%
+  )
+);
+```
+
+</CodeWrapper>
+
+So if you want a color `orange: #ff8c00` for example, just add it to the map. Then classes such as `.text-orange`, `bg-orange` .. etc will be generated, as well as the various shades so you can use a class like `.border-orange-dkr` as well.
+
+If you don't want a color, take it out! These maps generate a substantial amount of CSS so adding too many values can slow down the gulp process that watches the files slightly.

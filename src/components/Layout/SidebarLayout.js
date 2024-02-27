@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import Footer from "./Footer"
 import SideBar from "./Sidebar"
+import LayoutContext from "./LayoutContext"
 import { useStaticQuery, graphql } from "gatsby"
 import * as layoutStyles from "./layout.module.scss"
 import SidebarContext from "./SidebarContext"
@@ -8,11 +9,10 @@ import SidebarContext from "./SidebarContext"
 
 const SidebarLayout = ({ pathname, children }) => {
   // context state
+  const { sidebarOpen, setSidebarOpen } = useContext(LayoutContext)
 
   const [hasScrolled, setHasScrolled] = useState(false)
   const [activeAnchor, setActiveAnchor] = useState("")
-
-  const pathParts = pathname.split("/")
 
   const { docs, components, customize } = useStaticQuery(graphql`
     query HeaderQuery {
@@ -32,24 +32,24 @@ const SidebarLayout = ({ pathname, children }) => {
           }
         }
       }
-      components: allMdx(
-        filter: { frontmatter: { type: { eq: "components" } } }
-      ) {
-        nodes {
-          id
-          frontmatter {
-            title
-            slug
-            category
-            order
-            isCategoryRoot
-            anchorLinks {
-              title
-              link
-            }
-          }
-        }
-      }
+      # components: allMdx(
+      #   filter: { frontmatter: { type: { eq: "components" } } }
+      # ) {
+      #   nodes {
+      #     id
+      #     frontmatter {
+      #       title
+      #       slug
+      #       category
+      #       order
+      #       isCategoryRoot
+      #       anchorLinks {
+      #         title
+      #         link
+      #       }
+      #     }
+      #   }
+      # }
       customize: allMdx(
         filter: { frontmatter: { type: { eq: "customize" } } }
       ) {
@@ -71,21 +71,20 @@ const SidebarLayout = ({ pathname, children }) => {
     }
   `)
 
-  const section = pathParts.length && pathname.split("/")[1] // this should always be defined in this route but let;s be careful
+  // const pathParts = pathname.split("/")
+  // const section = pathParts.length && pathname.split("/")[1] // this should always be defined in this route but let;s be careful
 
   let sidebarData
 
-  switch (section) {
-    case "docs":
-      sidebarData = { path: "docs", ...docs }
-      break
-    case "components":
-      sidebarData = { path: "components", ...components }
-      break
-    case "customize":
-      sidebarData = { path: "customize", ...customize }
-      break
+  // this might be kinda janky code .. but I don't wanna spend forever trying to think about an alternative way
+  if (pathname.startsWith(`${process.env.PATH_PREFIX}/docs`)) {
+    sidebarData = { path: "docs", ...docs }
+  } else if (pathname.startsWith(`${process.env.PATH_PREFIX}/customize`)) {
+    sidebarData = { path: "customize", ...customize }
   }
+  // else if (pathname.startsWith(`${process.env.PATH_PREFIX}/components`)) {
+  //   sidebarData = { path: "components", ...components }
+  // }
 
   return (
     <div id="sidebar-layout" className="display-flex min-w-full grow-1">
@@ -100,7 +99,7 @@ const SidebarLayout = ({ pathname, children }) => {
         <SideBar sidebarData={sidebarData} />
         <div
           id="docs-section"
-          className={`display-flex flex-col grow-1 overflow-y-scroll ${layoutStyles.docsSection}`}
+          className={`display-flex flex-col grow-1 overflow-y-scroll position-relative ${layoutStyles.docsSection}`}
           onWheel={() => {
             setHasScrolled(true)
           }}
@@ -109,7 +108,18 @@ const SidebarLayout = ({ pathname, children }) => {
             setHasScrolled(true)
           }}
         >
-          <div id="the-document" className="grow-1 pl-xl p-lg">
+          <div
+            id="small-width-overlay"
+            className={`display-none ${
+              sidebarOpen ? "max-tab:display-block" : ""
+            } position-fixed top-0 left-0 w-full h-full z-3 bg-black opacity-10`}
+          />
+          <div
+            id="the-document"
+            className={`grow-1 pl-xl p-lg w-19/20 max-w-container lg:mx-auto   ${
+              sidebarOpen ? "max-tab:filter-blur-md" : ""
+            }`}
+          >
             {children}
           </div>
           <Footer />
