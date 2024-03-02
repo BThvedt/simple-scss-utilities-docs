@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunksimple_scss_utilities=self.webpackChunksimple_scss_utilities||[]).push([[5496],{5496:function(n,e,t){async function s(n,e=!0){await n.addInteractor("externalBounce",(async n=>{const{Bouncer:e}=await t.e(4500).then(t.bind(t,4500));return new e(n)}),e)}t.d(e,{loadExternalBounceInteraction:function(){return s}})}}]);
-//# sourceMappingURL=5496-5e0567f07dccbc6522e2.js.map
