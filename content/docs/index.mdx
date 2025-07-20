@@ -1,0 +1,186 @@
+---
+title: Overview
+tags: [overview]
+type: docs
+description: Overview of Simple Scss Utilities
+slug: index
+image: https://picsum.photos/200?random=1
+order: 10
+---
+
+import CodeWrapper from "../../src/components/Mdx/CodeWrapper"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
+
+# Overview
+
+#### Utility Classes for SCSS
+
+I assume you're familiar with the concept of utility classes. If not, it's really easy to pick up. I'm trying to think of a good way to get started, so how about we look at some colors!
+
+### A quick example: Colors!
+
+Here are the default colors the framework defines by default:
+
+<div className="display-flex flex-col items-center justify-center flex-wrap m-xl h-16">
+  <div className="bg-black text-white w-6 h-6 center shadow-md m-sm">
+    <p className="font-large">Black</p>
+  </div>
+  <div className="bg-white text-black w-6 h-6 center shadow-md m-sm">
+    <p className="font-large">White</p>
+  </div>
+  <div className="bg-red text-white w-6 h-6 center shadow-md m-sm">
+    <p className="font-large">Red</p>
+  </div>
+  <div className="bg-green text-white w-6 h-6 center shadow-md m-sm">
+    <p className="font-large">Green</p>
+  </div>
+  <div className="bg-blue text-white w-6 h-6 center shadow-md m-sm">
+    <p className="font-large">Blue</p>
+  </div>
+  <div className="bg-default w-6 h-6 center shadow-md m-sm">
+    <p className="text-background font-large">Default</p>
+  </div>
+  <div className="bg-background text-default w-6 h-6 center shadow-md m-sm">
+    <p className="font-large">Background</p>
+  </div>
+  <div className="bg-magenta text-white w-6 h-6 center shadow-md m-sm">
+    <p className="font-large">Magenta</p>
+  </div>
+</div>
+
+The docs go mroe in-depth, but let's let's dive into some questions that one might reasonably have on the first encounter:
+
+### "What if I want different colors?"
+
+Good Question! I (hopefully) made everything easy to customize so the classes can fit right into any design or theme you have in mind.
+
+Probably one of the first things one would want to do if they had a design would be to set the colors and fonts for their project. Add/remove at will, make your own names, change values, go wild! Instructions are in the [Customize](/customize/) section. Line heights, letter spacing, margins, paddings, names of the generated classes, just about everything is in a variable.
+
+### "What about different shades? Dark-mode? Psuedo classes? What about responsive classes?
+
+For more in-depth coverage of this particular subject I'd glance at the [Pseudo Classes](/docs/pseudo-classes/) overview and move on to the [Colors](/docs/colors/) section for examples of shades, pseudo-class functionality, and stuff like that.
+
+In terms of responsivity I tried to
+
+### "So.. what do these classes look like?"
+
+Let's take a look at the HTML for those boxes above:
+
+<CodeWrapper title="Html" >
+
+```html
+<div
+  class="display-flex flex-col flex-wrap items-center justify-center m-xl h-16"
+>
+  <div class="bg-black text-white w-6 h-6 center shadow-md m-sm">
+    <p class="font-large">Black</p>
+  </div>
+  <div class="bg-white text-black w-6 h-6 center shadow-md m-sm">
+    <p class="font-large">White</p>
+  </div>
+  <div class="bg-red text-white w-6 h-6 center shadow-md m-sm">
+    <p class="font-large">Red</p>
+  </div>
+  <div class="bg-green text-white w-6 h-6 center shadow-md m-sm">
+    <p class="font-large">Green</p>
+  </div>
+  <div class="bg-blue text-white w-6 h-6 center shadow-md m-sm">
+    <p class="font-large">Blue</p>
+  </div>
+  <div class="bg-default w-6 h-6 center shadow-md m-sm">
+    <p class="text-background font-large">Default</p>
+  </div>
+  <div class="bg-background text-default w-6 h-6 center shadow-md m-sm">
+    <p class="font-large">Background</p>
+  </div>
+  <div class="bg-magenta text-white w-6 h-6 center shadow-md m-sm">
+    <p class="font-large">Magenta</p>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+Each class name corresponds to a CSS property. Having utility classes like this, even if you don't wanna use 'em for everything, keeps your onw styleshetts nice and clean.
+
+### Isn't that more typing than Normal CSS?
+
+For sure, it's a matter of taste. Everything's a tradeoff. Less style clutter, possibly more typing.
+
+But with the almighty ctrl-c, ctrl-v and editor shortcuts, it's not really much of an issue. Plus, depending on your frontend framework and practices, you might not be repeating yourself much anyway and it might not be much of an issue.
+
+The advantages include incredibly slim stylesheets, seeing the styles right in the markup, everything is still easy to keep consistat, and it's just a satisfying and easy way to do styling!
+
+### "Doesn't Tailwind already do this?"
+
+I'm a big admirer of Tailwind. But there's differences. It is kind of like a less exhaustive, personal-project level tailwind-clone in SCSS. But while Tailwind's PostCSS can do things that SCSS can't do, the same applies vice-versa. It all comes down to what suits your taste. See the [Motivation](/motivation/) page!
+
+### "So what exactly do all these classes mean?""
+
+Here are the corresponding css values for all the classes used in the example above:
+
+| Class           | CSS rule                                                                 |
+| :-------------- | :----------------------------------------------------------------------- |
+| bg-black        | background-color: #000;                                                  |
+| bg-white        | background-color: #fff;                                                  |
+| bg-red          | background-color: #cb3810;                                               |
+| bg-green        | background-color: #589f50;                                               |
+| bg-blue         | background-color: #2978a0;                                               |
+| bg-default      | background-color: #252832;                                               |
+| bg-background   | background-color: #fdfcf9;                                               |
+| bg-magenta      | background-color: #bf4081;                                               |
+| text-white      | color: white;                                                            |
+| text-black      | color: black;                                                            |
+| text-background | color: #fdfcf9                                                           |
+| font-large      | font-family: "Francois One", sans-serif                                  |
+| m-xl            | margin: 1.5rem;                                                          |
+| m-sm            | margin: 0.5rem;                                                          |
+| h-16            | height: 16rem;                                                           |
+| w-6             | width: 6rem                                                              |
+| h-6             | height: 6rem                                                             |
+| display-flex    | display: flex;                                                           |
+| flex-col        | flex-direction: column;                                                  |
+| flex-wrap       | flex-wrap: wrap;                                                         |
+| items-center    | align-items: center;                                                     |
+| justify-center  | justify-content: center;                                                 |
+| center          | display: flex; <br/> align-items: center; <br/> justify-content: center; |
+
+Hopefully I will be able to document everything well and make it easy to find.
+
+### "So, how hard is it to change the Colors (or anything)?"
+
+Not very hard. Again, see the (Customize)[/customize/] section for more examples, but for just a quick overview here's what the colors look like in the \_variables.scss file.
+
+If you want a classes for like `bg-purple`, `text-purple`, `border-purple`, etc. for example, it's as simple as adding a key value like `"purple": #662d91` to this map. Here's what the color variables look like by default:
+
+<CodeWrapper title="_variables.scss" isFile>
+
+```scss
+$colors: (
+  "default": (
+    "white": #fff,
+    "black": #000,
+    "red": #cb3810,
+    "green": #589f50,
+    "blue": #2978a0,
+    "default": #252832,
+    "background": #fdfcf9,
+    "magenta": #bf4081
+  ),
+  "dark-mode": (
+    "background": #292d3a,
+    "default": #dcdbda,
+    "blue": #5798e1,
+    "dark-mode-only": #4d5359
+  )
+);
+```
+
+</CodeWrapper>
+
+If you can code up a website, I figure changing some variables in a file is not a big deal! Everything is up to you, from the names, to the number of classes, to the values and again, hopefully I've done a good job of documenting and making it easy.
+
+### "Anything else I should know?""
+
+I hope you liked this quick example. Glance around the docs, see the [Motivation](/motivation/) page if you want more insight into my motivations for making this, see the [Install](/install/) page if you want to use these yourself, and feel free to click the <FontAwesomeIcon  icon={faGithub} /> icon in the top menu bar to go to the github repo!

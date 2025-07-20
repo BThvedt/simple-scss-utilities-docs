@@ -1,0 +1,112 @@
+---
+title: "Colors and Pseudo Classes"
+tags: [colors, pseudo-classes]
+type: docs
+category: pseudo-classes
+description: An overview of the Pseudo Classes
+isCategoryRoot: true
+slug: colors-and-pseudo-classes
+order: 10
+---
+
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Overview of the Pseudo Classes
+
+#### A good place to start
+
+Ok, so you've decided on a design, you've installed the classes, you have your colors picked out, you have your fonts picked out, and need to get started.
+
+I figured a good place to start off these actual docs is with the Pseudo Classes!
+
+Most clases having to do with Color or Fonts will react to the built in pseudo classes.
+
+The framework comes with classes to react to these 3 default staes:
+
+- Hover
+- Active
+- and Focus
+
+If that's not enough, take a look at the [Customize](/customize/) section to add your own! It's as easy as adding the correct element-state name to this list in `_variables.scss`:
+
+<CodeWrapper title="_variables.scss" isFile>
+
+```scss
+$pseudo-classes: "hover", "active", "focus";
+```
+
+</CodeWrapper>
+
+So, for example if you want a `target` pseudo class, it's as easy as adding it to the list. However, given how particular the use-cases of many of these are, I think it would make more sense for most cases to take the opportuinty to write your own SCSS for these cases.
+
+Let's take a look at some examples. Maybe it would be fun to make a button:
+
+<div className="flex center p-lg">
+  <button className="bg-green px-lg py-md text-white cursor-pointer radius-md transition-fast-colors hover:bg-green-lt ">
+    <span className="text-lg">Hover Me!</span>
+  </button>
+</div>
+
+Here is the HTML:
+
+<CodeWrapper title="Html" >
+
+```html
+<button
+  className="bg-green px-lg py-sm text-white cursor-pointer radius-md transition-fast-colors hover:bg-green-lt "
+>
+  <span className="font-large text-lg">Hover Me!</span>
+</button>
+```
+
+</CodeWrapper>
+
+I would like to draw your attention to the `hover:bg-green-lt` class. This basically says to apply the bg-green-lt class on hover. Pretty simple huh?
+
+Let's try another button this time with an active state:
+
+<div className="flex center p-lg">
+  <button className="bg-green px-lg py-md text-white cursor-pointer radius-md transition-fast active:bg-red-dk active:shadow-none">
+    <span className="text-lg">Press Me!</span>
+  </button>
+</div>
+
+<CodeWrapper title="Html" >
+
+```html
+<button
+  className="bg-green px-lg py-md text-white cursor-pointer radius-md transition-fast active:bg-red-dk active:shadow-none"
+>
+  <span className="text-lg">Press Me!</span>
+</button>
+```
+
+</CodeWrapper>
+
+This time the backgroud reacts to the `active` pseudo class. If your eyes are sharp, you might notice the transition class is different. The `transition-fast` class applies a fast transition to all properties, not just color, and will also work here. There are several different variations of the transition class, attempting to cover the most common, but not all of cases. If you have a rare case (like you need to transition 2 different properties differently, for example) that's a time to write some custom SCSS.
+
+For a final exmaple, let's try an input to see the Focus class in action:
+
+<div className="flex center p-lg">
+  <input
+    type="text"
+    className="p-md text-md radius-md border border-default border-sm bg-white text-black focus:bg-blue focus:text-white"
+    value="Focus Me"
+  />
+</div>
+
+<CodeWrapper title="Html" >
+
+```html
+<input
+  type="text"
+  className="p-md text-md radius-md border border-default border-sm bg-white text-black focus:bg-blue focus:text-white"
+  value="Focus Me"
+/>
+```
+
+</CodeWrapper>
+
+I applied focus properties to the background and the text color sith the `focus:bg-blue` and `focus:text-white` classes.
+
+Hopefullly this has provided an instructive overview! Take a look at the [Colors](/docs/colors/), [Classes with Colors](/docs/classes-with-colors/), and [Additional Classes](/docs/additional-classes/) pages for more in-depth examples.

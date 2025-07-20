@@ -1,0 +1,50 @@
+{
+  "name": "simple-scss-utilities",
+  "version": "1.0.0",
+  "private": true,
+  "description": "simple-scss-utilities",
+  "author": "BThvedt",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mdx-js/react": "^2.3.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.2.1",
+    "gatsby": "^5.13.0",
+    "gatsby-plugin-google-gtag": "^5.13.0",
+    "gatsby-plugin-manifest": "^5.13.1",
+    "gatsby-plugin-mdx": "^5.13.1",
+    "gatsby-plugin-sass": "^6.13.0",
+    "gatsby-plugin-sharp": "^5.13.1",
+    "gatsby-plugin-sitemap": "^6.13.0",
+    "gatsby-remark-images": "^7.13.1",
+    "gatsby-source-filesystem": "^5.13.1",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "prism-react-renderer": "^2.3.1",
+    "prismjs": "^1.29.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-uuid": "^2.0.0",
+    "remark-gfm": "^3.0.1",
+    "sass": "^1.70.0",
+    "use-query-params": "^2.2.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1",
+    "gulp-purgecss": "^5.0.0"
+  }
+}

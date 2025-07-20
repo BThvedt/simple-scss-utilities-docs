@@ -1,0 +1,142 @@
+
+Todos: sidebar scroll pos 
+Sidebar links in new tab
+
+
+Todos: inline code styles
+picture 
+dark mode pseudo classes
+colors page
+ - I think the fix for this is make sure all default colors are in all modes 
+ done at the $color map level
+ Note: mode-only classes can be added at the mode level, but all modes get the default classes
+
+- Directional Border Radiuses
+- chage align to responsive
+
+
+also, try moving the $mode in the final block where the classes are generated
+
+Monday goal: (after interview)
+also try to fix text decoration onderover
+also add opacity to transitions
+and try to add dotted, dashed, and wavy to text-decoration-style
+and change text-decoration style from text-[style] to decoration-[style]
+clean up css for Iphone SE
+
+add textarea resize
+
+unordered list
+images 
+finish purge, getting started
+Start on Psuedo classes
+Start on dark mode.. css prefers dark mode
+- Pre gym goal 
+Goal for tomorrow: 
+Dark mode, and Dark mod docs
+
+
+Tasks: ✓✓✓
+
+✓ make branch
+✓ document process
+
+plan docs structure - halfway done 
+Goal for today: 
+- add anchor links
+- 
+✓ look at syntax highlighting plugins - ok, buess kinda works, might want to tweak the styles
+✓ make icon and favicon
+Tomorrow: 
+responsive sidebar and menu
+✓ add github link and night mode
+consider changing night mode to dark-mode
+
+TODO: 
+keep an eye on responsive classes 
+redo front-columns? Still seem to work 
+Finish responsive menu and sidebar - looks like just the menu!! Make a dropdown
+transition classes maybe
+
+Do a page .. and then maybe make a table 
+Then .. sidebar classes and page styles 
+then Data Annotation I guess.. 
+
+Ok. Goal for tonight: Data Annotation - explore further 
+Goal for tomorrow: Finish Colors and Fonts page, change to dark mode, try a few styles for the menu and docs pages, maybe make progress on Grid 
+
+Goal for weekend: Get at least half of the Responsive Examples done 
+
+Goal for next week: finish Docs 
+
+2 week goal: finish site and start on Laravel
+
+add a non javascript mode for prefers scheme
+add a dark-mode-only color
+Add a table - copy tailwind example 
+Go to gym 
+
+ 
+
+should probably import scss in gatsby browser.js 
+experiment with adding particles.js to head
+
+cosnt [message, setMessage] = useState('')
+
+useEffect(() => {
+	weirdFunction(element_x, () => {
+		if (in_view) {
+			// message is always gonna be ''
+			setMessage('element_x is in view')
+		}
+	});
+
+
+},[])
+
+useEffect(() => {
+	// logic reacting to "element_x is in view" 
+},[message]);
+
+note:
+gatsby plugin fontawesome is causing errors when I try to install other things with npm
+I took out
+re-install gatsby plugin fontawesome at the end 
+
+Overview
+Install 
+How to Use 
+Important! Purge! 
+
+Grid
+
+Responsive Classes
+margin
+padding
+width/height
+flex 
+position 
+font
+display
+overflow 
+border
+
+Non Responsive 
+text 
+border
+outline 
+cursor
+opacity 
+visibility
+z-index 
+
+
+Pseudo Classes
+Element states
+Colors
+Classes with Colors
+Additional Classes
+
+Box Shadows
+
+Once I get the docs laid out, start knocking a few of 'em out, got the logo made, and have everything responsive then look into data annotation. Goal - end of day Wensday

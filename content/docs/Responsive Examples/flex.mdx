@@ -1,0 +1,850 @@
+---
+title: Flex
+tags: [flexbox, flex]
+type: docs
+category: responsive
+description: How to use the Flexbox classes
+slug: flex
+order: 60
+anchorLinks:
+  [
+		{ title: "Flex Direction", link: "flex-direction" }, 
+		{ title: "Flex Wrap", link: "flex-wrap" }, 
+		{ title: "Shrink & Grow", link: "flex-shrink-and-flex-grow" }, 
+		{ title: "Justify Content", link: "justify-content" }, 
+		{ title: "Align Content", link: "align-content" }, 
+		{ title: "Align Items", link: "align-items" }, 
+		{ title: "Align Self", link: "align-self" }, 
+    { title: "Not Included", link: "not-included" }, 
+  ]
+---
+
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Display: Flex
+
+#### How to use the flex classes
+
+Display flex is the infinately useful layout tool and I tried to include every utility class I would commonly use in a project. I manily stick to flexbox myself, so I don't include the css-grid classes, although I did include a very simple col-based grid system. If you need css-grid, it's a complex enough and unique enough set of styling rules to me it just makes sense to maybe write it in custom scss instead of trying to learn a seperate set of framework rules on top of it.
+
+## Flex Direction
+
+First up is flex direction. Here are the classes:
+
+| Class            | CSS rule                        |
+| :--------------- | :------------------------------ |
+| flex-row         | flex-direction: row;            |
+| flex-col         | flex-direction: column;         |
+| flex-row-reverse | flex-direction: row-reverse;    |
+| flex-col-reverse | flex-direction: column-reverse; |
+
+### Example
+
+For a demonstration, here are two sets of flex elements, one with the `flex-row` class, and one with the `flex-col` class. The grid system covered (here)[/docs/grid/] is also based on flex, so I just use that to lay these out side by side. It's not to be confused with the flexbox-related css grid (not included in this framework).
+
+Notice in the html that I use the `max-scr:` prefix to switch to the `row-reverse` and `col-reverse` classes on widths below the `scr` breakpoint (by default 1024 px):
+
+<div className="row gap-sm ">
+  <div className="col-6">
+    <Paragraph
+      className="display-none max-scr:display-block text-lg"
+      text=".max-scr:flex-row-reverse"
+    />
+    <Paragraph
+      className="display-none lg:display-block text-lg"
+      text=".flex-row"
+    />
+  </div>
+  <div className="col-6">
+    <Paragraph
+      className="display-none max-scr:display-block text-lg"
+      text=".max-scr:flex-col-reverse"
+    />
+    <Paragraph
+      className="display-none lg:display-block text-lg"
+      text=".flex-col"
+    />
+  </div>
+</div>
+
+<div className="row gap-md text-white pr-lg">
+  <div className="col-6 br-sm border-dotted border-default">
+    <div className="display-flex flex-row max-scr:flex-row-reverse bg-background-dkr">
+      <div className="w-3 h-3 center bg-blue m-sm">1</div>
+      <div className="w-3 h-3 center bg-blue m-sm">2</div>
+      <div className="w-3 h-3 center bg-blue m-sm">3</div>
+      <div className="w-3 h-3 center bg-blue m-sm">4</div>
+    </div>
+  </div>
+  <div className="col-6">
+    <div className="display-flex flex-col max-scr:flex-col-reverse bg-background-dkr">
+      <div className="w-3 h-3 center bg-blue m-sm">1</div>
+      <div className="w-3 h-3 center bg-blue m-sm">2</div>
+      <div className="w-3 h-3 center bg-blue m-sm">3</div>
+      <div className="w-3 h-3 center bg-blue m-sm">4</div>
+    </div>
+  </div>
+</div>
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="row gap-md text-white pr-lg">
+  <div class="col-6 br-sm border-dotted border-default">
+    <div class="display-flex flex-row max-scr:flex-row-reverse bg-background-dkr">
+      <div class="w-3 h-3 center bg-blue m-sm">1</div>
+      <div class="w-3 h-3 center bg-blue m-sm">2</div>
+      <div class="w-3 h-3 center bg-blue m-sm">3</div>
+      <div class="w-3 h-3 center bg-blue m-sm">4</div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="display-flex flex-col max-scr:flex-col-reverse bg-background-dkr">
+      <div class="w-3 h-3 center bg-blue m-sm">1</div>
+      <div class="w-3 h-3 center bg-blue m-sm">2</div>
+      <div class="w-3 h-3 center bg-blue m-sm">3</div>
+      <div class="w-3 h-3 center bg-blue m-sm">4</div>
+    </div>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+## Flex Wrap
+
+The flex wrap classes are:
+
+| Class             | CSS rule                 |
+| :---------------- | :----------------------- |
+| flex-wrap         | flex-wrap: wrap;         |
+| flex-nowrap       | flex-wrap: nowrap;       |
+| flex-wrap-reverse | flex-wrap: wrap-reverse; |
+
+### Example
+
+Expanding on the previous example, I will set a fixed height to the column container and compare no-wrap to the wrap classes. Like before, I will use the `.max-scr` breakpoint to switch between the wrap classes, so below 1024px it will be `flex-wrap-reverse`:
+
+<div className="row gap-sm ">
+  <div className="col-6">
+    <Paragraph
+      className="text-lg"
+      text="flex-wrap: nowrap; (default)"
+    />
+
+  </div>
+  <div className="col-6">
+    <Paragraph
+      className="display-none max-scr:display-block text-lg"
+      text="max-scr:flex-wrap-reverse"
+    />
+    <Paragraph
+      className="display-none lg:display-block text-lg"
+      text=".flex-wrap"
+    />
+  </div>
+</div>
+
+<div className="row gap-md text-white pr-lg mb-lg">
+  <div className="col-6 br-sm border-dotted border-default">
+    <div className="display-flex flex-col bg-background-dkr h-10">
+      <div className="w-3 h-3 center bg-blue m-sm">1</div>
+      <div className="w-3 h-3 center bg-blue m-sm">2</div>
+      <div className="w-3 h-3 center bg-blue m-sm">3</div>
+      <div className="w-3 h-3 center bg-blue m-sm">4</div>
+      <div className="w-3 h-3 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+  <div className="col-6">
+    <div className="display-flex flex-col flex-wrap max-scr:flex-wrap-reverse bg-background-dkr h-10">
+      <div className="w-3 h-3 center bg-blue m-sm">1</div>
+      <div className="w-3 h-3 center bg-blue m-sm">2</div>
+      <div className="w-3 h-3 center bg-blue m-sm">3</div>
+      <div className="w-3 h-3 center bg-blue m-sm">4</div>
+      <div className="w-3 h-3 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+</div>
+
+Here's the HTML:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="row gap-md text-white pr-lg mb-lg">
+  <div class="col-6 br-sm border-dotted border-default">
+    <div class="display-flex flex-col bg-background-dkr h-10">
+      <div class="w-3 h-3 center bg-blue m-sm">1</div>
+      <div class="w-3 h-3 center bg-blue m-sm">2</div>
+      <div class="w-3 h-3 center bg-blue m-sm">3</div>
+      <div class="w-3 h-3 center bg-blue m-sm">4</div>
+      <div class="w-3 h-3 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="display-flex flex-col flex-wrap max-scr:flex-wrap-reverse bg-background-dkr h-10">
+      <div class="w-3 h-3 center bg-blue m-sm">1</div>
+      <div class="w-3 h-3 center bg-blue m-sm">2</div>
+      <div class="w-3 h-3 center bg-blue m-sm">3</div>
+      <div class="w-3 h-3 center bg-blue m-sm">4</div>
+      <div class="w-3 h-3 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+## Flex Shrink and Flex Grow
+
+Flex shrink and grow are useful to know for layout. There's only two utility classes for each by default:
+
+| Class    | CSS rule        |
+| :------- | :-------------- |
+| shrink-0 | flex-shrink: 0; |
+| shrink-1 | flex-shrink: 1; |
+| grow-0   | flex-grow: 0;   |
+| grow-1   | flex-grow: 1;   |
+
+### Example
+
+Let's continue with a similar example of numbered divs in a flex-col container:
+
+<div className="row gap-sm ">
+  <div className="col-6">
+    <Paragraph
+      className="text-lg"
+      text="Nowrap and shrink-0 on elements. The numbered divs break out of the container instead of shrinking:"
+    />
+
+  </div>
+  <div className="col-6">
+    <Paragraph
+      className="text-lg"
+      text="Flex-wrap is set to 'wrap' and divs 4 and 5 have been given a class of .grow-1 so they take up the extra leftover space in their columns: "
+    />
+  </div>
+</div>
+
+<div className="h-20">
+  <div className="row gap-md text-white pr-lg mb-lg">
+    <div className="col-6 br-sm border-dotted border-default">
+      <div className="display-flex flex-col bg-background-dkr h-12">
+        <div className="w-3 h-3 center bg-blue m-sm shrink-0">1</div>
+        <div className="w-3 h-3 center bg-blue m-sm shrink-0">2</div>
+        <div className="w-3 h-3 center bg-blue m-sm shrink-0">3</div>
+        <div className="w-3 h-3 center bg-blue m-sm shrink-0">4</div>
+      </div>
+    </div>
+    <div className="col-6">
+      <div className="display-flex flex-col flex-wrap max-scr:flex-wrap-reverse bg-background-dkr h-10">
+        <div className="w-3 h-3 center bg-blue m-sm">1</div>
+        <div className="w-3 h-3 center bg-blue m-sm">2</div>
+        <div className="w-3 h-3 center bg-blue m-sm">3</div>
+        <div className="w-3 h-3 center bg-blue m-sm grow-1">4</div>
+        <div className="w-3 h-3 center bg-blue m-sm grow-1">5</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+The Html for this example:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="h-20">
+  <div class="row gap-md text-white pr-lg mb-lg">
+    <div class="col-6 br-sm border-dotted border-default">
+      <div class="display-flex flex-col bg-background-dkr h-12">
+        <div class="w-3 h-3 center bg-blue m-sm shrink-0">1</div>
+        <div class="w-3 h-3 center bg-blue m-sm shrink-0">2</div>
+        <div class="w-3 h-3 center bg-blue m-sm shrink-0">3</div>
+        <div class="w-3 h-3 center bg-blue m-sm shrink-0">4</div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="display-flex flex-col flex-wrap max-scr:flex-wrap-reverse bg-background-dkr h-10">
+        <div class="w-3 h-3 center bg-blue m-sm">1</div>
+        <div class="w-3 h-3 center bg-blue m-sm">2</div>
+        <div class="w-3 h-3 center bg-blue m-sm">3</div>
+        <div class="w-3 h-3 center bg-blue m-sm grow-1">4</div>
+        <div class="w-3 h-3 center bg-blue m-sm grow-1">5</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+## Justify Content
+
+Justify content is simply prefixed with `justify`
+
+| Class           | CSS rule                        |
+| :-------------- | :------------------------------ |
+| justify-initial | justify-content: initial;       |
+| justify-inherit | justify-content: inherit;       |
+| justify-start   | justify-content: flex-start;    |
+| justify-end     | justify-content: flex-end;      |
+| justify-center  | justify-content: center;        |
+| justify-around  | justify-content: space-around;  |
+| justify-between | justify-content: space-between; |
+| justify-evenly  | justify-content: space-evenly;  |
+| justify-stretch | justify-content: stretch;       |
+
+### Example
+
+Each section below is flex-row and flex-wrap and has a different justfy property. Note: the itmes for `justify-stretch` have a `grow-1` class, (otherwise justify-items: stretch; has no effect)
+
+<div className="row gap-md pr-lg mb-lg">
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="justify-normal"
+    />
+    <div className="display-flex flex-wrap justify-normal bg-background-dkr text-white">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="justify-start"
+    />
+    <div className="display-flex flex-wrap justify-start bg-background-dkr text-white">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="justify-end"
+    />
+    <div className="display-flex flex-wrap justify-end  bg-background-dkr text-white">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+  <div className="col-3  border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="justify-center"
+    />
+    <div className="display-flex flex-wrap justify-center  bg-background-dkr text-white">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+</div>
+
+<div className="row gap-md pr-lg mb-lg">
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="justify-around"
+    />
+    <div className="display-flex flex-wrap justify-around bg-background-dkr text-white">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="justify-between"
+    />
+    <div className="display-flex flex-wrap justify-between bg-background-dkr text-white">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="justify-evenly"
+    />
+    <div className="display-flex flex-wrap justify-evenly  bg-background-dkr text-white">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+    </div>
+  </div>
+  <div className="col-3  border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="justify-stretch"
+    />
+    <div className="display-flex flex-wrap justify-stretch bg-background-dkr text-white">
+      <div className="w-2 h-2 center bg-blue m-sm grow-1">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm grow-1">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm grow-1">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm grow-1">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm grow-1">5</div>
+    </div>
+  </div>
+</div>
+
+To avoid a long block of html, I've only included two of the above examples here since basically each block only differes by a single class (except `justify-stretch` which also needs a `grow-1` class on the inner divs):
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<!-- justify-center -->
+<div class="display-flex flex-wrap justify-center  bg-background-dkr text-white">
+  <div class="w-2 h-2 center bg-blue m-sm">1</div>
+  <div class="w-2 h-2 center bg-blue m-sm">2</div>
+  <div class="w-2 h-2 center bg-blue m-sm">3</div>
+  <div class="w-2 h-2 center bg-blue m-sm">4</div>
+  <div class="w-2 h-2 center bg-blue m-sm">5</div>
+</div>
+
+<!-- justify-stretch -->
+<div class="display-flex flex-wrap justify-stretch bg-background-dkr text-white">
+  <div class="w-2 h-2 center bg-blue m-sm grow-1">1</div>
+  <div class="w-2 h-2 center bg-blue m-sm grow-1">2</div>
+  <div class="w-2 h-2 center bg-blue m-sm grow-1">3</div>
+  <div class="w-2 h-2 center bg-blue m-sm grow-1">4</div>
+  <div class="w-2 h-2 center bg-blue m-sm grow-1">5</div>
+</div>
+
+```
+
+</CodeWrapper>
+
+## Align Content
+
+Although `justify-content` is prefixed with just `justify` (kinda becuase that's how I'm used to using it from tailwind but also because it tends to be the most useful alignment class in practice in my experience), `align-content` and `align-tiems` also have useful applicatoins in flexbox.. and they are prefixed sith `content` and `items` prefixes.
+
+Align content is really kind of analagous to justify-content, exept on the perpendicular axis, at least in my mind. So here's the content classes:
+
+| Class           | CSS rule                      |
+| :-------------- | :---------------------------- |
+| content-initial | align-content: initial;       |
+| content-inherit | align-content: inherit;       |
+| content-start   | align-content: flex-start;    |
+| content-end     | align-content: flex-end;      |
+| content-center  | align-content: center;        |
+| content-around  | align-content: space-around;  |
+| content-between | align-content: space-between; |
+| content-evenly  | align-content: space-evenly;  |
+| content-stretch | align-content: stretch;       |
+
+To make these examples more illustrative, I increased the heights of the container:
+
+<div className="row gap-md pr-lg mb-lg">
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="content-initial"
+    />
+    <div className="display-flex flex-wrap content-initial bg-background-dkr text-white  h-12">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+      <div className="w-2 h-2 center bg-blue m-sm">6</div>
+    </div>
+  </div>
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="content-start"
+    />
+    <div className="display-flex flex-wrap content-start bg-background-dkr text-white h-12">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+      <div className="w-2 h-2 center bg-blue m-sm">6</div>
+    </div>
+  </div>
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="content-end"
+    />
+    <div className="display-flex flex-wrap content-end bg-background-dkr text-white  h-12">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+      <div className="w-2 h-2 center bg-blue m-sm">6</div>
+    </div>
+  </div>
+  <div className="col-3  border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="content-center"
+    />
+    <div className="display-flex flex-wrap content-center  bg-background-dkr text-white  h-12">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+      <div className="w-2 h-2 center bg-blue m-sm">6</div>
+    </div>
+  </div>
+</div>
+
+<div className="row gap-md pr-lg mb-lg">
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="content-around"
+    />
+    <div className="display-flex flex-wrap content-around  bg-background-dkr text-white  h-12">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+      <div className="w-2 h-2 center bg-blue m-sm">6</div>
+    </div>
+  </div>
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="content-between"
+    />
+    <div className="display-flex flex-wrap content-between bg-background-dkr text-white  h-12">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+      <div className="w-2 h-2 center bg-blue m-sm">6</div>
+    </div>
+  </div>
+  <div className="col-3 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="content-evenly"
+    />
+    <div className="display-flex flex-wrap content-evenly bg-background-dkr text-white  h-12">
+      <div className="w-2 h-2 center bg-blue m-sm">1</div>
+      <div className="w-2 h-2 center bg-blue m-sm">2</div>
+      <div className="w-2 h-2 center bg-blue m-sm">3</div>
+      <div className="w-2 h-2 center bg-blue m-sm">4</div>
+      <div className="w-2 h-2 center bg-blue m-sm">5</div>
+      <div className="w-2 h-2 center bg-blue m-sm">6</div>
+    </div>
+  </div>
+  <div className="col-3  border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="content-stretch"
+    />
+    <div className="display-flex flex-wrap content-stretch  bg-background-dkr text-white  h-12">
+      <div className="w-2  center bg-blue m-sm">1</div>
+      <div className="w-2  center bg-blue m-sm">2</div>
+      <div className="w-2  center bg-blue m-sm">3</div>
+      <div className="w-2  center bg-blue m-sm">4</div>
+      <div className="w-2  center bg-blue m-sm">5</div>
+      <div className="w-2  center bg-blue m-sm">6</div>
+    </div>
+  </div>
+</div>
+
+To avoid a huge block, I just include two of the above examples here. Notice that for content-stretch to work, the elements can't have an explicit height:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<!-- content-end -->
+<div class="display-flex flex-wrap content-end bg-background-dkr text-white h-16">
+  <div class="w-3 h-3 center bg-blue m-sm ">1</div>
+  <div class="w-3 h-4 center bg-blue m-sm ">2</div>
+  <div class="w-3 h-5 center bg-blue m-sm ">3</div>
+  <div class="w-3 h-3 center bg-blue m-sm ">4</div>
+  <div class="w-3 h-4 center bg-blue m-sm ">5</div>
+  <div class="w-3 h-5 center bg-blue m-sm ">6</div>
+</div>
+
+<!-- content-stretch -->
+<div class="display-flex flex-wrap content-stretch  bg-background-dkr text-white  h-16">
+  <div class="w-2 center bg-blue m-sm">1</div>
+  <div class="w-2 center bg-blue m-sm">2</div>
+  <div class="w-2 center bg-blue m-sm">3</div>
+  <div class="w-2 center bg-blue m-sm">4</div>
+  <div class="w-2 center bg-blue m-sm">5</div>
+  <div class="w-2 center bg-blue m-sm">6</div>
+</div>
+
+```
+
+</CodeWrapper>
+
+## Align Items
+
+Align items classes are prefixed with `items` as I've mentioned above:
+
+| Class          | CSS rule                 |
+| :------------- | :----------------------- |
+| items-normal   | align-items: normal;     |
+| items-start    | align-items: flex-start; |
+| items-end      | align-items: flex-end;   |
+| items-center   | align-items: center;     |
+| items-stretch  | align-items: stretch;    |
+| items-baseline | align-items: baseline;   |
+| items-initial  | align-items: initial;    |
+| items-inherit  | align-items: inherit;    |
+
+### Example
+
+Align-items has a bit more application in flexbox than `justify-items`, at least I know that `align-items: flex-end;` is something I've had to google at least a few times before haha.
+
+Since these examples are `flex-row` and in this case align-items works on the horizontal axis (the "cross-axis", aka the opposite of flex direction), I've increased the height of the containers as well as varied the heights of the items to more clearly show the effects. I've also left out normal and initial because they don't do much that items-start or items-inherit doesn't do in this paritcular case. The difference betwee `.items-center` and `.items-basline` is subtle, but it's there haha. Also note for `items-stretch` to work, elements in this case can't have an explicit defined height like with `content-stretch`:
+
+<div className="row gap-md pr-lg mb-lg">
+  <div className="col-4 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="items-start"
+    />
+    <div className="display-flex flex-wrap items-start bg-background-dkr text-white h-16">
+      <div className="w-3 h-3 center bg-blue m-sm ">1</div>
+      <div className="w-3 h-4 center bg-blue m-sm ">2</div>
+      <div className="w-3 h-5 center bg-blue m-sm ">3</div>
+      <div className="w-3 h-3 center bg-blue m-sm ">4</div>
+      <div className="w-3 h-4 center bg-blue m-sm ">5</div>
+      <div className="w-3 h-5 center bg-blue m-sm ">6</div>
+    </div>
+  </div>
+  <div className="col-4 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="items-end"
+    />
+    <div className="display-flex flex-wrap items-end bg-background-dkr text-white h-16">
+      <div className="w-3 h-3 center bg-blue m-sm ">1</div>
+      <div className="w-3 h-4 center bg-blue m-sm ">2</div>
+      <div className="w-3 h-5 center bg-blue m-sm ">3</div>
+      <div className="w-3 h-3 center bg-blue m-sm ">4</div>
+      <div className="w-3 h-4 center bg-blue m-sm ">5</div>
+      <div className="w-3 h-5 center bg-blue m-sm ">6</div>
+    </div>
+  </div>
+  <div className="col-4 border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="items-center"
+    />
+    <div className="display-flex flex-wrap items-center  bg-background-dkr text-white h-16">
+      <div className="w-3 h-3 center bg-blue m-sm ">1</div>
+      <div className="w-3 h-4 center bg-blue m-sm ">2</div>
+      <div className="w-3 h-5 center bg-blue m-sm ">3</div>
+      <div className="w-3 h-3 center bg-blue m-sm ">4</div>
+      <div className="w-3 h-4 center bg-blue m-sm ">5</div>
+      <div className="w-3 h-5 center bg-blue m-sm ">6</div>
+    </div>
+  </div>
+</div>
+
+<div className="row gap-md pr-lg mb-lg">
+  <div className="col-4 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="items-baseline"
+    />
+    <div className="display-flex flex-wrap items-baseline	 bg-background-dkr text-white h-16">
+      <div className="w-3 h-3 center bg-blue m-sm ">1</div>
+      <div className="w-3 h-4 center bg-blue m-sm ">2</div>
+      <div className="w-3 h-5 center bg-blue m-sm ">3</div>
+      <div className="w-3 h-3 center bg-blue m-sm ">4</div>
+      <div className="w-3 h-4 center bg-blue m-sm ">5</div>
+      <div className="w-3 h-5 center bg-blue m-sm ">6</div>
+    </div>
+  </div>
+  <div className="col-4 br-sm border-dotted border-default">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="items-stretch"
+    />
+    <div className="display-flex flex-wrap items-stretch bg-background-dkr text-white h-16">
+      <div className="w-3 center bg-blue m-sm ">1</div>
+      <div className="w-3 center bg-blue m-sm ">2</div>
+      <div className="w-3 center bg-blue m-sm ">3</div>
+      <div className="w-3 center bg-blue m-sm ">4</div>
+      <div className="w-3 center bg-blue m-sm ">5</div>
+      <div className="w-3 center bg-blue m-sm ">6</div>
+    </div>
+  </div>
+  <div className="col-4 ">
+    <Paragraph
+      className="text-base pb-sm bb-sm border-dotted mb-lg"
+      text="items-inherit"
+    />
+    <div className="display-flex flex-wrap items-inherit  bg-background-dkr text-white h-16">
+      <div className="w-3 h-3 center bg-blue m-sm ">1</div>
+      <div className="w-3 h-4 center bg-blue m-sm ">2</div>
+      <div className="w-3 h-5 center bg-blue m-sm ">3</div>
+      <div className="w-3 h-3 center bg-blue m-sm ">4</div>
+      <div className="w-3 h-4 center bg-blue m-sm ">5</div>
+      <div className="w-3 h-5 center bg-blue m-sm ">6</div>
+    </div>
+  </div>
+</div>
+
+Like above, to avoid a hefty block of HTML, I've only included the `items-end` and `items-basline` classes here:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<!-- items-end -->
+<div class="display-flex flex-wrap items-end bg-background-dkr text-white h-16">
+  <div class="w-3 h-3 center bg-blue m-sm ">1</div>
+  <div class="w-3 h-4 center bg-blue m-sm ">2</div>
+  <div class="w-3 h-5 center bg-blue m-sm ">3</div>
+  <div class="w-3 h-3 center bg-blue m-sm ">4</div>
+  <div class="w-3 h-4 center bg-blue m-sm ">5</div>
+  <div class="w-3 h-5 center bg-blue m-sm ">6</div>
+</div>
+
+<!-- items-stretch -->
+<div class="display-flex flex-wrap items-stretch bg-background-dkr text-white h-16">
+  <div class="w-3 center bg-blue m-sm ">1</div>
+  <div class="w-3 center bg-blue m-sm ">2</div>
+  <div class="w-3 center bg-blue m-sm ">3</div>
+  <div class="w-3 center bg-blue m-sm ">4</div>
+  <div class="w-3 center bg-blue m-sm ">5</div>
+  <div class="w-3 center bg-blue m-sm ">6</div>
+</div>
+
+```
+
+</CodeWrapper>
+
+## Align Self
+
+Phew! The last remaining flexbox utility class to cover is align-self.
+
+| Class               | CSS rule                |
+| :------------------ | :---------------------- |
+| align-self-auto     | align-self: normal;     |
+| align-self-start    | align-self: flex-start; |
+| align-self-end      | align-self: flex-end;   |
+| align-self-center   | align-self: center;     |
+| align-self-stretch  | align-self: stretch;    |
+| align-self-baseline | align-self: baseline;   |
+
+### Example:
+
+All these classes have flex-row. However, since alignment happens on the cross axis, it affects the vertical position. Note that the `align-self-stretch` class only has an effect if it's missing an explicity defined height.
+
+<div className="display-flex justify-around mb-2xl">
+
+<div className="display-flex flex-row bg-background-dkr border-md border-dashed h-12">
+  <div className="h-4 w-4 p-xs center text-white bg-blue sizing-border align-self-start">
+    <p>align-self-start</p>
+  </div>
+</div>
+
+<div className="display-flex flex-row bg-background-dkr border-md border-dashed h-12">
+  <div className="h-4 w-4 p-xs center text-white bg-blue sizing-border align-self-end">
+    <p>align-self-end</p>
+  </div>
+</div>
+
+<div className="display-flex flex-row bg-background-dkr border-md border-dashed h-12">
+  <div className="h-4 w-4 p-xs center text-white bg-blue sizing-border align-self-center">
+    <p>align-self-center</p>
+  </div>
+</div>
+
+<div className="display-flex flex-row bg-background-dkr border-md border-dashed h-12">
+  <div className="w-4 p-xs center text-white bg-blue sizing-border align-self-stretch">
+    <p>align-self-stretch</p>
+  </div>
+</div>
+
+<div className="display-flex flex-row bg-background-dkr border-md border-dashed h-12">
+  <div className="w-4 p-xs center text-white bg-blue sizing-border align-self-baseline">
+    <p>align-self-baseline</p>
+  </div>
+</div>
+
+</div>
+
+The HTML is pretty straight forward for these:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="display-flex justify-around mb-2xl">
+
+<div class="display-flex flex-row bg-background-dkr border-md border-dashed h-12">
+  <div class="h-4 w-4 p-xs center text-white bg-blue sizing-border align-self-start">
+    <p>align-self-start</p>
+  </div>
+</div>
+
+<div class="display-flex flex-row bg-background-dkr border-md border-dashed h-12">
+  <div class="h-4 w-4 p-xs center text-white bg-blue sizing-border align-self-end">
+    <p>align-self-end</p>
+  </div>
+</div>
+
+<div class="display-flex flex-row bg-background-dkr border-md border-dashed h-12">
+  <div class="h-4 w-4 p-xs center text-white bg-blue sizing-border align-self-center">
+    <p>align-self-center</p>
+  </div>
+</div>
+
+<div class="display-flex flex-row bg-background-dkr border-md border-dashed h-12">
+  <div class="w-4 p-xs center text-white bg-blue sizing-border align-self-stretch">
+    <p>align-self-stretch</p>
+  </div>
+</div>
+
+<div class="display-flex flex-row bg-background-dkr border-md border-dashed h-12">
+  <div class="w-4 p-xs center text-white bg-blue sizing-border align-self-baseline">
+    <p>align-self-baseline</p>
+  </div>
+</div>
+
+</div>
+```
+
+</CodeWrapper>
+
+## Not Included
+
+I don't include css-grid with this framework, although I did include a very simple col-based grid system. Actual CSS-Grid seems like a specific and complex enough task that it just makes more sense to me to use custom SCSS rather than learning a framework's way of handling that. It doesent seem any more convinent to use a framework, in other words, and because I'm mostly making this for myself (but doucmenting it in case someone else finds it interesting) I don't mind saving myself a lot of work including it for very little benefit!
+
+As such, these categories:
+
+- justify-items
+- justify-self
+
+also don't have untility classes, since those are grid-related.
+
+But anyway, that about covers the flexbox utilities. Happy Coding!

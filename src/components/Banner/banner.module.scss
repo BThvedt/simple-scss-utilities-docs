@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap");
+
+/* reset styles */
+* {
+  color: inherit;
+  margin: 0;
+}
+
+body {
+  font-family: Poppins;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+$r: 50px; // glow radius
+$o: 25px; // glow offset
+$d: 2s; // duration
+$chars: 7; // # of letters
+$bg: #111; // background color
+
+$c: cyan yellow tomato;
+
+#banner {
+  font: 8.5vw/1 Rubik Doodle Shadow;
+  //display: flex;
+  align-items: center;
+  justify-content: center;
+  // height: 100vh;
+  text-align: center;
+  background: $bg;
+  color: snow;
+  padding: 4.5rem 0rem 5.5rem 0rem;
+  overflow: hidden;
+
+  background: linear-gradient(-45deg, #e73c7e, #510c53, #052681, #af0404);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  background-position: fixed;
+
+  position: relative;
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.3);
+
+  .particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #text-container {
+    width: 100%;
+  }
+
+  #moveX {
+    animation: moveX 19s ease-in-out infinite;
+  }
+
+  #moveY {
+    animation: moveY 17s ease-in-out infinite;
+  }
+
+  h1 {
+    letter-spacing: -0em;
+    position: relative;
+    z-index: 10;
+
+    transform-origin: center center;
+    animation: rotate3D 9s infinite, opacity 11s infinite;
+    // transform: perspective(500px) rotateY(-10deg);
+    // random animation delays?
+
+    > span {
+      display: block;
+
+      span {
+        animation: glow $d ease-in-out both infinite;
+
+        &.word {
+          margin-right: 0.5em;
+        }
+
+        @for $i from 1 through $chars {
+          &:nth-child(#{$i}) {
+            animation-delay: calc($i / $chars) * -$d;
+          }
+        }
+      }
+    }
+  }
+
+  // #buttons {
+  //   display: flex;
+  //   width: 100%;
+  //   padding: 1rem;
+  //   justify-content: center;
+  //   position: relative;
+  //   z-index: 10;
+
+  //   .banner-button {
+  //     border: 2px solid;
+  //     border-color: rgba(255, 255, 255, 0.8);
+  //     padding: 0.75rem 1.5rem;
+  //     margin-right: 4rem;
+  //     margin-top: 2rem;
+  //     border-radius: 1rem;
+  //     cursor: pointer;
+  //     transition: background-color 0.3s;
+  //     .word {
+  //       animation: opacity 11s infinite;
+  //     }
+  //     &:hover {
+  //       background-color: rgba(255, 255, 255, 0.5);
+  //     }
+  //     span {
+  //       animation: glow $d ease-in-out both infinite;
+  //     }
+  //   }
+  // }
+
+  @mixin glow($c1, $c2, $c3) {
+    text-shadow: 0 0 calc($r / 6) snow, 0 (-$o) $r $c3, (-$o) $o $r $c2,
+      $o $o $r $c3;
+  }
+
+  @keyframes glow {
+    0%,
+    100% {
+      @include glow(nth($c, 1), nth($c, 2), nth($c, 3));
+    }
+    33% {
+      @include glow(nth($c, 2), nth($c, 3), nth($c, 1));
+    }
+    66% {
+      @include glow(nth($c, 3), nth($c, 1), nth($c, 2));
+    }
+  }
+}
+
+@keyframes rotate3D {
+  0% {
+    transform: perspective(500px) rotateY(0deg);
+  }
+
+  25% {
+    transform: perspective(500px) rotateY(-6deg);
+  }
+  75% {
+    transform: perspective(500px) rotateY(6deg);
+  }
+}
+
+@keyframes moveX {
+  0% {
+    transform: translateX(0rem);
+  }
+
+  25% {
+    transform: translateX(0.5rem);
+  }
+  75% {
+    transform: translateX(-0.5rem);
+  }
+}
+
+@keyframes moveY {
+  0% {
+    transform: translateY(0rem);
+  }
+
+  25% {
+    transform: translateY(0.5rem);
+  }
+  75% {
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0.95;
+  }
+
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

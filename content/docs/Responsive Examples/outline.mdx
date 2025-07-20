@@ -1,0 +1,302 @@
+---
+title: Outline Width
+tags: [responsive, overflow]
+type: docs
+description: Overview of the Outline Classes
+category: responsive
+slug: outline
+order: 36
+anchorLinks:
+  [
+    { title: "Classes", link: "classes" },
+    { title: "Outline Offset", link: "outline-offset-classes" },
+		{ title: "Examples", link: "examples" }
+  ] 
+---
+
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Outline
+
+#### How to use
+
+Outline Width gets pretty much the same values as border, but there's no direction, making this section shorter to document. Hey, less work for me! But outline also has a property called offset, so let's handle that here as well
+
+## Classes
+
+| Class       | CSS rule             |
+| :---------- | :------------------- |
+| outline-0   | outline-width: 0px;  |
+| outline-sm  | outline-width: 1px;  |
+| outline-md  | outline-width: 3px;  |
+| outline-lg  | outline-width: 5px;  |
+| outline-xl  | outline-width: 7px;  |
+| outline-2xl | outline-width: 11px; |
+
+However, note that to be displayed, outlines have to ALSO have a style class:
+
+| Class          | CSS rule               |
+| :------------- | :--------------------- |
+| outline-none   | outline-style: none;   |
+| outline-dotted | outline-style: dotted; |
+| outline-solid  | outline-style: solid;  |
+| outline-groove | outline-style: groove; |
+| outline-inset  | outline-style: inset;  |
+
+## Outline Offset Classes
+
+And here's the values for outline offset:
+
+| Class              | CSS rule              |
+| :----------------- | :-------------------- |
+| outline-offset-0   | outline-offset: 0px;  |
+| outline-offset-sm  | outline-offset: 1px;  |
+| outline-offset-md  | outline-offset: 3px;  |
+| outline-offset-lg  | outline-offset: 5px;  |
+| outline-offset-xl  | outline-offset: 7px;  |
+| outline-offset-2xl | outline-offset: 11px; |
+
+Let's get into some examples.
+
+## Examples
+
+Here I'm mostly covering outline and offset size, but they can also be given [Color](/docs/classes-with-colors/?anchor=outline-color) classes and [Styles](/docs/outline-styles) Styles, these are covered in the linked sections in more depth, but I included some of these here. Note that the outlines arn't really inlcluded in the browser calculations on element sizes, something which I had forgot (you can see the outlines kind of encroaching on the margines in these examples:)
+
+<div className="row h-10 gap-md align-center">
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-solid outline-0"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-solid</p>
+        <p>.outline-0</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-solid outline-sm"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-solid</p>
+        <p>.outline-sm</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-solid outline-med"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-solid</p>
+        <p>.outline-med</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-solid outline-lg"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-solid</p>
+        <p>.outline-lg</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-solid outline-xl"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-solid</p>
+        <p>.outline-xl</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-solid outline-2xl"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-solid</p>
+        <p>.outline-2xl</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="row h-16 gap-md align-center">
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-solid outline-offset-md outline-sm"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-solid</p>
+        <p>.outline-offset-md</p>
+        <p>.outline-sm</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-solid outline-offset-lg outline-lg radius-full"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-solid</p>
+        <p>.outline-offset-lg</p>
+        <p>.outline-lg</p>
+        <p>.radius-full</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-solid outline-magenta outline-lg outline-offset-lg"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-solid</p>
+        <p>.outline-lg</p>
+        <p>.outline-magenta</p>
+        <p>.outline-offset-lg</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-dotted outline-blue outline-lg outline-offset-lg radius-full"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-dotted</p>
+        <p>.outline-lg</p>
+        <p>.outline-blue</p>
+        <p>.radius-full</p>
+        <p>.outline-offset-lg</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-groove outline-red outline-2xl outline-offset-lg radius-md"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-groove</p>
+        <p>.outline-lg</p>
+        <p>.outline-red</p>
+        <p>.radius-md</p>
+        <p>.outline-offset-lg</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue outline-inset outline-green outline-2xl outline-offset-lg radius-md"></div>
+      </div>
+      <div className="display-flex flex-col mt-sm">
+        <p>.outline-inset</p>
+        <p>.outline-lg</p>
+        <p>.outline-green</p>
+        <p>.radius-md</p>
+        <p>.outline-offset-lg</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+In case you're wondering what the full html looks like, here's the markup for the last example:
+
+<CodeWrapper title="HTML" >
+
+```html
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div
+      className="w-3 h-3 bg-blue outline-inset outline-green outline-2xl outline-offset-lg radius-md"
+    ></div>
+  </div>
+  <div className="display-flex flex-col mt-sm">
+    <p>.outline-inset</p>
+    <p>.outline-lg</p>
+    <p>.outline-green</p>
+    <p>.radius-md</p>
+    <p>.outline-offset-lg</p>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+### Responsive Examples
+
+Let's move onto some responsive examples. I made only things that have to do with size really get the responsive treatment, if you need responsive outline colors or colors, that's a good opportuity for some custom scss. Both outline offset and size can respond to screen widths, if you're on a browser go ahead and change the screen widths to see them respond (for small widths you'll have to close the sidebar):
+
+<div className="center m-lg mb-xl flex-col my-2xl">
+  <div className="w-5 h-5 bg-blue radius-md outline-solid outline-offset-md outline-md tab:outline-lg tab:outline-offset-lg scr:outline-xl scr:outline-offset-xl lg:outline-2xl lg:outline-offset-2xl mb-xl" />
+  <Paragraph
+    className="display-none max-mob:display-block"
+    text=".outline-md .outline-offset-md"
+  />
+  <Paragraph
+    className="display-none tab:display-block scr:display-none"
+    text=".tab:outline-lg .tab:outline-offset-lg"
+  />
+  <Paragraph
+    className="display-none scr:display-block lg:display-none"
+    text=".scr:outline-xl .scr:outline-offset-xl"
+  />
+  <Paragraph
+    className="display-none lg:display-block"
+    text=".lg:outline-2xl .lg:outline-offset-2xl"
+  />
+</div>
+
+Here's the HTML:
+
+<CodeWrapper title="HTML" >
+
+```html
+<div
+  class="w-5 h-5 bg-blue radius-md mb-xl
+    outline-solid outline-offset-md outline-md 
+    tab:outline-lg tab:outline-offset-lg 
+    scr:outline-xl scr:outline-offset-xl 
+    lg:outline-2xl lg:outline-offset-2xl"
+/>
+```
+
+</CodeWrapper>
+
+And as one more example, here's a border with a `.max-scr` class, so the outline is `lg` up to 1024px (the break point between `scr` and `lg`) and `2xl` above that:
+
+<div className="center m-lg mb-xl flex-col my-xl">
+  <div className="w-5 h-5 bg-blue radius-md outline-solid outline-2xl max-scr:outline-lg mb-lg" />
+  <Paragraph
+    className="display-none max-scr:display-block"
+    text=".max-scr:outline-lg"
+  />
+  <Paragraph className="display-none lg:display-block" text=".outline-2xl" />
+</div>
+
+<CodeWrapper title="HTML" >
+
+```html
+<div
+  class="w-5 h-5 bg-blue radius-md outline-solid outline-2xl max-scr:outline-lg mb-lg"
+/>
+```
+
+</CodeWrapper>
+
+Happy Coding!

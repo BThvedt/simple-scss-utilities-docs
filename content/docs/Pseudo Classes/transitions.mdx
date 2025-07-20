@@ -1,0 +1,132 @@
+---
+title: Transitions
+tags: [pseudo-classes, colors]
+type: docs
+category: pseudo-classes
+description: Classes for smooth Transitions
+slug: transitions
+order: 35
+anchorLinks: [
+	{ title: "Transition Classes", link: "transition-classes" },
+	{ title: "With Pseudo Classes", link: "using-transitions-with-pseudo-classes" }
+]
+---
+
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+
+# Transitions
+
+#### Make it smooth
+
+A natural followup to colors and pseudo classes is transitions.
+
+By default, the transition classes have the form `transition-[speed]` for all `transition-[type]-[speed]` for the other properties and the css is as follows:
+
+## Transition Classes
+
+| Class                        | CSS rule                                                                                                                                                                                            |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| transition-1s                | transition: all 1s ease-in-out;                                                                                                                                                                     |
+| transition-colors-1s         | transition: color 1s ease-in-out, background-color 1s ease-in-out, border-color 1s ease-in-out, text-decoration-color 1s ease-in-out, fill 1s ease-in-out, stroke 1s ease-in-out;                   |
+| transition-opacity-1s        | transition: opacity 1s ease-in-out;                                                                                                                                                                 |
+| transition-shadow-1s         | transition: box-shadow 1s ease-in-out;                                                                                                                                                              |
+| transition-transform-1s      | transition: transform 1s ease-in-out;                                                                                                                                                               |
+| transition-slow              | transition: all 700ms ease-in-out;                                                                                                                                                                  |
+| transition-colors-slow       | transition: color 700ms ease-in-out, background-color 700ms ease-in-out, border-color 700ms ease-in-out, text-decoration-color 700ms ease-in-out, fill 700ms ease-in-out, stroke 700ms ease-in-out; |
+| transition-opacity-slow      | transition: opacity 700ms ease-in-out;                                                                                                                                                              |
+| transition-shadow-slow       | transition: transition: transform 700ms ease-in-out;                                                                                                                                                |
+| transition-transform-slow    | transition: transform 700ms ease-in-out;                                                                                                                                                            |
+| transition-med               | transition: all 500ms ease-in-out;                                                                                                                                                                  |
+| transition-colors-med        | transition: color 500ms ease-in-out, background-color 500ms ease-in-out, border-color 500ms ease-in-out, text-decoration-color 500ms ease-in-out, fill 500ms ease-in-out, stroke 500ms ease-in-out; |
+| transition-opacity-med       | transition: opacity 500ms ease-in-out;                                                                                                                                                              |
+| transition-shadow-med        | transition: box-shadow 500ms ease-in-out;                                                                                                                                                           |
+| transition-transform-med     | transition: transform 500ms ease-in-out;                                                                                                                                                            |
+| transition-default           | transition: all 300ms ease-in-out;                                                                                                                                                                  |
+| transition-colors-default    | transition: color 300ms ease-in-out, background-color 300ms ease-in-out, border-color 300ms ease-in-out, text-decoration-color 300ms ease-in-out, fill 300ms ease-in-out, stroke 300ms ease-in-out; |
+| transition-opacity-default   | transition: opacity 300ms ease-in-out;                                                                                                                                                              |
+| transition-shadow-default    | transition: box-shadow 300ms ease-in-out;                                                                                                                                                           |
+| transition-transform-default | transition: transform 300ms ease-in-out;                                                                                                                                                            |
+| transition-fast              | transition: all 150ms ease-in-out;                                                                                                                                                                  |
+| transition-colors-fast       | transition: color 150ms ease-in-out, background-color 150ms ease-in-out, border-color 150ms ease-in-out, text-decoration-color 150ms ease-in-out, fill 150ms ease-in-out, stroke 150ms ease-in-out; |
+| transition-opacity-fast      | transition: opacity 150ms ease-in-out;                                                                                                                                                              |
+| transition-shadow-fast       | transition: box-shadow 150ms ease-in-out;                                                                                                                                                           |
+| transition-transform-fast    | transition: transform 150ms ease-in-out;                                                                                                                                                            |
+
+Applying transition: all whenever a transition is needed can lead to unwanted janky side effects sometimes, so more specific classes targeting widely used properties are useful. I think these classes should cover the majority of use cases, and although the framework doesn't come with any transform classes, it might be helpful to still have transition classes that apply to transform.
+
+Transitions by default come in 5 flavors:
+
+- All
+- Colors
+- Opacity
+- Box Shadow
+- and Transform
+
+In addition to these classes, transitions also come in various speeds:
+
+- 1s (one second)
+- slow (700 ms)
+- med (500 ms)
+- default (300 ms)
+- and Fast (150 ms, my favorite)
+
+for a total of 25 different default classes.
+
+The transition function is always `ease-in-out` although this can be customized in the `_variables.scss` file as well as the names and times:
+
+<CodeWrapper title="_variables.scss" isFile>
+
+```scss
+$transition-function: ease-in-out; // change the function here
+// both the keys and values can be changed in this map as well:
+$transition-speeds: (
+  "1s": 1s,
+  "slow": 700ms,
+  "med": 500ms,
+  "default": 300ms,
+  "fast": 150ms
+);
+```
+
+</CodeWrapper>
+
+## Using Transitions with Pseudo Classes
+
+Transitions can make your pseudo classes nice and smooth. Let's take a look at a button with a bunch of `:hover` and `:active` classes as an exmaple. I use a `transition-colors-default` class to animate it smoothly, notice how all the various color properties transition when you hover and/or press the button:
+
+<div className="flex center pt-lg pb-2xl">
+  <button className="px-lg py-sm bg-green-ltr text-blue-dkr font-large text-xl center cursor-pointer radius-lg hover:bg-blue hover:text-white active:text-black active:bg-magenta transition-colors-default border-md border-green-dk hover:border-white active:border-black">
+    <Paragraph className="s" text="Click Me, I'm a Button" />
+  </button>
+</div>
+
+Here is the Html (I broke the color classes into seperate lines for readability):
+
+<CodeWrapper title="Html" >
+
+```html
+<button
+  class="px-lg py-sm font-large text-xl radius-lg cursor-pointer border-md
+
+      bg-green-ltr 
+      text-blue-dkr 
+      border-green-dk
+
+      hover:bg-blue 
+      hover:text-white 
+      hover:border-white
+
+      active:text-black 
+      active:bg-magenta 
+      active:border-black
+			
+      transition-colors-default"
+>
+  Click Me, I'm a Button
+</button>
+```
+
+</CodeWrapper>
+
+Hopefully this provides a good overview of how to use the transition classes!

@@ -1,0 +1,192 @@
+---
+title: Display
+tags: [responsive, display]
+type: docs
+description: Overview of the Display Classes
+category: responsive
+slug: display
+order: 55
+---
+
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Display
+
+#### How to use
+
+The utility classes for display are pretty straightforward:
+
+| Class                | CSS rule               |
+| :------------------- | :--------------------- |
+| display-none         | display: none;         |
+| display-block        | display: block;        |
+| display-flex         | display: flex;         |
+| display-inline-block | display: inline-block; |
+| display-inline       | display: inline;       |
+
+These can all be prefixed with the default responsive prefixe to change the display. Out of all of these, `display: flex` probably deserves it's own section the other four properties are pretty straightforward so I'll just give some quick examples here:
+
+### Display None
+
+Display none of course hides content, and can be used with responsive classes like shown beneath. If you're on a browser you can change the screen width of the window to see the message change (you'll have to close the sidebar for the small widths):
+
+<div className="center m-lg mb-xl">
+  <Paragraph
+    className="text-xl font-bold p-lg border-sm display-none max-mob:display-block"
+    text="Mobile Size"
+  />
+  <Paragraph
+    className="text-xl font-bold p-lg border-sm  display-none tab:display-block scr:display-none"
+    text="Tablet Size"
+  />
+  <Paragraph
+    className="text-xl font-bold p-lg border-sm  display-none scr:display-block lg:display-none"
+    text="Screen Size"
+  />
+  <Paragraph
+    className="text-xl font-bold p-lg border-sm  display-none lg:display-block"
+    text="Large Size"
+  />
+</div>
+
+The default breakpoints are eaxy to edit in `_variables.scss` see the (Customize)[/customze/] section for more details. However, this effect is acheived by switching display none with display block with the breakpoint prefixes like so:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="center m-lg mb-xl">
+  <p
+    class="text-xl font-bold p-lg border-sm
+      display-none max-mob:display-block"
+  >
+    Mobile Size
+  </p>
+  <p
+    class="text-xl font-bold p-lg border-sm
+      display-none tab:display-block scr:display-none"
+  >
+    Tablet Size
+  </p>
+  <p
+    class="text-xl font-bold p-lg border-sm
+      display-none scr:display-block lg:display-none"
+  >
+    Screen Size
+  </p>
+  <p
+    class="text-xl font-bold p-lg border-sm
+      display-none lg:display-block"
+  >
+    Large Size
+  </p>
+</div>
+```
+
+</CodeWrapper>
+
+### Display Block / Display Inline
+
+Display block and display inline basically determine if you want something to be inline, `like this code-styled text`, or a block like a new paragraph. I can't think of many useful examples of switching these responsively, but for demonstration, here's a series of span elements that are inline up to the max of the `scr` breakpoint (1024 px) and display block at widths larger:
+
+<div className="text-lg m-lg">
+  <p className="display-none max-scr:display-block mb-xs">
+    Below 1024px: Display Inline
+  </p>
+  <p className="display-none lg:display-block mb-xs">
+    1024px and above: Display Block
+  </p>
+  <span className="max-scr:display-inline display-block p-md ">Span 1</span>
+  <span className="max-scr:display-inline display-block p-md ">Span 2</span>
+  <span className="max-scr:display-inline display-block p-md ">Span 3</span>
+  <span className="max-scr:display-inline display-block p-md ">Span 4</span>
+</div>
+
+The HTML is pretty simple:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="text-lg m-lg">
+  <p class="display-none max-scr:display-block mb-xs">
+    Below 1024px: Display Inline
+  </p>
+  <p class="display-none lg:display-block mb-xs">
+    1024px and above: Display Block
+  </p>
+  <span class="max-scr:display-inline display-block p-md ">Span 1</span>
+  <span class="max-scr:display-inline display-block p-md ">Span 2</span>
+  <span class="max-scr:display-inline display-block p-md ">Span 3</span>
+  <span class="max-scr:display-inline display-block p-md ">Span 4</span>
+</div>
+```
+
+</CodeWrapper>
+
+### Display Inline-Block
+
+Display Block is like Display Inline except it lets you define widths and heights. Here are some spans with widths and heights set, however in the screen size and below they're `display: inline` and on large sizes they're `display: inline-block`:
+
+<div className="text-lg m-lg">
+  <p className="display-none max-scr:display-block mb-xs">
+    Below 1024px: Display Inline
+  </p>
+  <p className="display-none lg:display-block mb-xs">
+    1024px and above: Display Inline Block
+  </p>
+  <span
+    className="max-scr:display-inline 
+	display-inline-block w-6 h-6 
+	p-md lg:border-sm"
+  >
+    <Paragraph className="display-inline" text="Span 1" />
+  </span>
+  <span className="max-scr:display-inline display-inline-block w-6 h-6 p-md lg:border-sm">
+    <Paragraph className="display-inline" text="Span 2" />
+  </span>
+  <span className="max-scr:display-inline display-inline-block w-6 h-6 p-md lg:border-sm">
+    <Paragraph className="display-inline" text="Span 3" />
+  </span>
+  <span className="max-scr:display-inline display-inline-block w-6 h-6 p-md lg:border-sm">
+    <Paragraph className="display-inline" text="Span 4" />
+  </span>
+</div>
+
+And here's the HTML:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="text-lg m-lg">
+  <p class="display-none max-scr:display-block mb-xs">
+    Below 1024px: Display Inline
+  </p>
+  <p class="display-none lg:display-block mb-xs">
+    1024px and above: Display Inline Block
+  </p>
+  <span
+    class="max-scr:display-inline
+      display-inline-block w-6 h-6 p-md lg:border-sm">
+    Span 1
+  </span>
+  <span
+    class="max-scr:display-inline
+      display-inline-block w-6 h-6 p-md lg:border-sm">
+    Span 2
+  </span>
+  <span
+    class="max-scr:display-inline
+      display-inline-block w-6 h-6 p-md lg:border-sm">
+    Span 3
+  </span>
+  <span
+    class="max-scr:display-inline
+      display-inline-block w-6 h-6 p-md lg:border-sm">
+    Span 4
+  </span>
+</div>
+```
+
+</CodeWrapper>
+
+The final display property is the almighty `display: flex`. For real, I was a self taugh coder, the first website I ever made was based on a completely table-based layout haha. I didn't use display: flex for so long, but when I finally figured it out it was soooo much better. I will be going over this property in the next section. Happy Coding!

@@ -1,0 +1,224 @@
+---
+title: Install
+tags: []
+type: page
+slug: install
+description: Instructions on how to install this page
+image: https://picsum.photos/200?random=1
+---
+
+import ImportedLayout from "../components/Layout/Layout"
+import CodeWrapper from "../../src/components/Mdx/CodeWrapper"
+
+# Installing Simple Scss Utilities
+
+#### Not tough, if you're familiar with SCSS and NPM
+
+<div className="max-w-42 mx-auto text-lg line-height-xl">
+Confession time: I left this project before I finished the docs because I got a web developer job. However, I decided to come back to it and try to use it for an actual project. I learned a few things about configuring the gulpfile when I did.
+
+So, let'ss start with a simple example, then switch to a more realistic exmpale. Preresiqute: I assume if you're reading this you're probably familar with NPM.
+
+#### Start Here: A simple example
+
+Once you understand all the lines in this simple example, you can move onto the real example I provide. Then, (especially with the help of AI which wasn't really widely used when I first made this), you will be ready to taylor the gulpfile to yoru needs.
+
+The first step would be to clone the base scss files into your project, wherever you want to put them:
+
+<CodeWrapper title="Clone the repo">
+
+```bash
+git clone https://github.com/BThvedt/simple-scss-utilities
+```
+
+</CodeWrapper>
+
+The next step is to install the npm files that are required:
+
+<CodeWrapper title="Install NPM Packages">
+
+```bash
+npm init
+npm install gulp gulp-sass sass gulp-purgecss
+```
+
+</CodeWrapper>
+
+You also might need to install `gulp-cli` in order to make the gulp commmands work. For NPM init, I'm using the 'commonjs' syntax for requires, I believe for my version (Node v 22 and NPM v 10) it's still the default setting.
+
+Ok. Then in whatever directory you decided to install, it's time to make a gulp file. Here's the basic example:
+
+<div className = "text-md line-height-md">
+<CodeWrapper title="gulpfile.js" addExtraMarginUnderTitle="True">
+
+```JS
+
+const { src, dest, watch, series } = require("gulp")
+const sass = require("gulp-sass")(require("sass"))
+const purgecss = require("gulp-purgecss")
+
+function buildStyles() {
+  return src("simple-scss-utilities/**/*.scss")
+    .pipe(sass())
+    .pipe(
+      purgecss({
+        content: ["src/**/*.js", "content/**/*.mdx"],
+        defaultExtractor: (content) => {
+          const defaultSelectors = content.match(/[A-Za-z0-9_-]+/g) || []
+          const extendedSelectors = content.match(/[^<>"=\s]+/g) || []
+          return defaultSelectors.concat(extendedSelectors)
+        }
+      })
+    )
+    .pipe(dest("src/css"))
+}
+
+function watchTask() {
+  watch(["simple-scss-utilities/**/*.scss", "*.html"], buildStyles)
+}
+
+exports.watch = series(buildStyles, watchTask)
+
+```
+
+</CodeWrapper>
+</div>
+
+I'd like to call out the important lines. This is very similar to the actual file I used for this site, with a couple important exceptions. This site is built in gatsby, with .mdx and js files. So if we loook at the `buildStyles()` funciton, you can see we're taking our source (which is all the .scss files inside the simple scss utilities folder, the path is relative to the .gulpfile), and piping it through the sass() function which basically compiles the sass into css.
+
+THEN, we're purging the unused classes, so I look in all the .js and .mdx files, in the `src/**/*.jos` and `content/**/*.mdx` and call a function called `purgecss()` (which is very important - I have an entire rant on how important it is somewehre else on this site) which uses a couple regex patterns to find selectors, then whatever isn't used iss purged from the final css file living in `src/css` (I think the default filename is index.css)
+
+Then finally we have a watchtask. I'm watching the `simple-scss-utilities` folder (because I was touching it up alongside making this site) as well as an `.html` file for some reason. I can't remember why I did it like that. Nevertheless, it's not hard to see what it does. It actively watches the files specified, and runs the function that compiles and purges the styles.
+
+The command from the command line will build and purge it all:
+
+<CodeWrapper title="Run Gulp">
+
+```bash
+gulp watch
+```
+
+</CodeWrapper>
+
+The only thing to do would be to add the resulting css file to your site, and you'd have your utility classes.
+
+However, this is not a realistic example for several reasons:
+
+- The entire point of these utility classes is to handle 80% of the styling, the rest should be handled by the user in very slim, very lightweight .scss files. So you would probably need to watch multiple directories.
+- The purge function just takes too long to run on some underpowered machines (like mine)
+
+#### A more practical example
+
+So let's make some tweaks and dive into a more real example. This is an example I'm using on a current project. It's a drupal site (a PHP Content management framework) and I've got a custom module to add react elements to the site as well as a lot of .twig files (a markup template engine) for the site's templatle. So what the file would have to do is:
+
+- watch all the .js and .twig files
+- not take a long time
+- compile both the simple-scss-utilities classes as well as another directory of .scss files for custom non-utility stylese
+
+So for a strategy, I break the file apart into three commands:
+
+- build: gets the simple-scss-utilities files ready to use (unpurged)
+- watch: watches just the custom styles
+- purge: Purges the scss files (run before deploy) - reduces nearly a Megabyte of css into typically just a few KB
+
+I will also use caching and cleaning to touch up a few loose ends. So first thing to do would be to install a few new packages:
+
+<CodeWrapper title="A couple more packages">
+
+```bash
+npm install gulp-concat gulp-clean-css gulp-cached
+```
+
+</CodeWrapper>
+
+- gulp-concat will help us specify names for the generated css files
+- gulp-clean-css will help us simplify the generated files
+- and gulp cached will only look for file changes (I guess it's not that important in the end but I have it in there haha)
+
+Here is the new gulpfile
+
+<div className = "text-md line-height-md">
+<CodeWrapper title="gulpfile.js" addExtraMarginUnderTitle="True">
+
+```JS
+
+const { src, dest, watch, series, parallel } = require("gulp");
+const sass = require("gulp-sass")(require("sass"));
+const purgecss = require("gulp-purgecss");
+const concat = require("gulp-concat");
+const cleanCSS = require("gulp-clean-css");
+const cached = require("gulp-cached");
+
+// Build raw utility styles without purging
+function buildSSU() {
+  return src("simple-scss-utilities/**/*.scss")
+    .pipe(cached("build")) // cache unpurged build
+    .pipe(sass())
+    .pipe(concat("ssu.css"))
+    .pipe(dest("css"));
+}
+
+// SCSS for global styles
+function buildGlobalStyles() {
+  return src("scss/**/*.scss") // <-- your second folder
+    .pipe(cached("global")) // only changed files
+    .pipe(sass())
+    .pipe(concat("style.css"))
+    .pipe(cleanCSS())
+    .pipe(dest("css"));
+}
+
+// SCSS with PurgeCSS
+function buildPurgedStyles() {
+  return src("simple-scss-utilities/**/*.scss")
+    .pipe(cached("styles")) // only changed files
+    .pipe(sass())
+    .pipe(
+      purgecss({
+        content: [
+          "../../modules/custom/react_components/**/*.js",
+          "./templates/**/*.twig",
+        ],
+        defaultExtractor: (content) => {
+          const defaultSelectors = content.match(/[A-Za-z0-9_-]+/g) || [];
+          const extendedSelectors = content.match(/[^<>"=\s]+/g) || [];
+          return defaultSelectors.concat(extendedSelectors);
+        },
+      })
+    )
+    .pipe(concat("ssu.css"))
+    .pipe(dest("css"));
+}
+
+exports.build = parallel(buildSSU, buildGlobalStyles);
+exports.watch = () => {
+  watch("scss/**/*.scss", buildGlobalStyles);
+};
+exports.purge = buildPurgedStyles;
+
+
+```
+
+</CodeWrapper>
+</div>
+
+So the first thing probalby to notice is the exports at the bottom, I break everything apart into 3 seperate functions. Also notice I'm watching multiple scss directories and generating multiple css files. asdf
+
+To use, first you would run: `gulp build`. This runs the `buildSSU` and `buildGlobalStyles` functions, which should compile everything into two files: `style.css` and `ssu.css` . You would want to add these to your project, using whatever means is approperate. The `cleanCSS()` function in `buildGlobalStyles` allows everything to go into a single file (by default it was mirroring the structure of my custom .scss directory, which uses folders and subfolders for the various .scss files to go along with each template file my site uses, but I would just want one .css file)
+
+Then, in development, I'd run `gulp watch`. This ONLY watches my custom .scss directory, which speeds things up quite a bit. In theory, I wouldn't need to edit the `simple-scss-utilities` directory at all, so why even bother with it?
+
+Finally, before deploying, I would run `gulp purgs`. This purges all the unused simple-scss-utilities classes. I'm watching two directories, one for my react_components, and one for my .twig template files, and any class that's not in these directories will be thrwon out, turning the generated ssu.css file from nearly 900KB into something much, muchm much slimmer.
+
+Hopefully I didn't leave out any detail, and it's easy to see how to modify/extend these basic concepts into whatever use case you need!
+
+</div>
+
+export default function Layout({ children }) {
+  return (
+    <ImportedLayout>
+      <main className="p-xl">{children}</main>
+    </ImportedLayout>
+  )
+
+}

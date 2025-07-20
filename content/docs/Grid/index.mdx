@@ -1,0 +1,202 @@
+---
+title: Grid
+tags: [grid]
+type: docs
+category: grid
+description: How to use the Grid
+isCategoryRoot: true
+slug: grid
+order: 30
+anchorLinks:
+  [
+		{ title: "Class Definitions", link: "class-definitions" },
+		{ title: "Responsive Examples", link: "responsive-examples" }
+  ]
+---
+
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# The Grid System
+
+#### How to Use the Grid
+
+Not to be confused with CSS-grid, I personally perfer to do as much as I can with flexbox, but a col-based grid system is pretty simple to make and still comes in handy so one is included. I actually didn't includ css-grid in this framework, one because I never really use it much myself, but also because it doesn't really make sense to handle the complexity and unique use cases with a framework which to me seems more cumbersome than writing it yourself!
+
+However, I do have a this greatly simplified col-based grid system, which I think is useful enough for a lot of use cases!
+
+It's a pretty standard 12 column system and the column classes `.col-1`, `.col-2`, etc determine how many columns an element takes up in the container. The classes are definately made to be responsive, so if you're on a browser try changing the screen widths to see how elements react!
+
+So to use these classes wrap them in a `row` class, which pretty much applies a display flex, and there's `gap` classes for column gaps which supplies padding to the direct children, as well as negitive margins to the row. Like everything else, the column gap values can be modified in `_varialbes.css` (see [Customize](/customize/) section for more details). Here's a listing of all the grid classes, and see below for a few examples:
+
+## Class Definitions
+
+(note: gap classes are applied to the children of the row)
+
+| Class    | CSS rule                                                             |
+| :------- | :------------------------------------------------------------------- |
+| row      | display: flex;<br/>flex-flow: row wrap;                              |
+| gap-none | padding: 0                                                           |
+| gap-xs   | padding: .25rem                                                      |
+| gap-sm   | padding: .5rem                                                       |
+| gap-md   | padding: 1rem                                                        |
+| gap-lg   | padding: 1.5rem                                                      |
+| gap-xl   | padding: 2rem                                                        |
+| gap-2xl  | padding: 3rem                                                        |
+| col-1    | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 8.3333333333%;  |
+| col-2    | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 16.6666666667%; |
+| col-3    | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 25%;            |
+| col-4    | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 33.3333333333%; |
+| col-5    | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 41.6666666667%; |
+| col-6    | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 50%;            |
+| col-7    | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 58.3333333333%; |
+| col-8    | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 66.6666666667%; |
+| col-9    | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 75%;            |
+| col-10   | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 83.3333333333%; |
+| col-11   | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 91.6666666667%; |
+| col-12   | box-sizing: border-box;<br/>flex-grow: 0;<br/>width: 100%;           |
+
+## Responsive Examples
+
+Here is a simple example that's not responsive, but just fills the screen width.
+
+Medium gap, 4 cols (each column take up 3 "column slots" out of 12, making each a quarter width):
+
+<div className="row h-8 gap-md">
+  <div className="col-3  br-sm border-dotted">
+    <div className="bg-blue center h-full radius-md">
+      <Paragraph className="text-white" text=".col-3" />
+    </div>
+  </div>
+  <div className="col-3 x br-sm border-dotted">
+    <div className="bg-blue center h-full radius-md">
+      <Paragraph className="text-white" text=".col-3" />
+    </div>
+  </div>
+  <div className="col-3  br-sm border-dotted">
+    <div className="bg-blue center h-full radius-md">
+      <Paragraph className="text-white" text=".col-3" />
+    </div>
+  </div>
+  <div className="col-3 ">
+    <div className="bg-blue center h-full radius-md">
+      <Paragraph className="text-white" text=".col-3" />
+    </div>
+  </div>
+</div>
+
+<CodeWrapper title="Html">
+
+```html
+<!-- row container and gap -->
+<div className="row h-8 gap-md">
+  <!-- each child div is 3 container widths out of 12, or 1/4 width total -->
+  <div className="col-3 br-sm border-dotted">
+    <!-- the gap-md class on the row provides a consistant inner padding -->
+    <div className="bg-blue center h-full radius-md">
+      <p className="text-white">col-3</p>
+    </div>
+  </div>
+
+  <div className="col-3 br-sm border-dotted">
+    <div className="bg-blue center h-full radius-md">
+      <p className="text-white">col-3</p>
+    </div>
+  </div>
+
+  <div className="col-3 br-sm border-dotted">
+    <div className="bg-blue center h-full radius-md">
+      <p className="text-white">col-3</p>
+    </div>
+  </div>
+
+  <div className="col-3">
+    <div className="bg-blue center h-full radius-md">
+      <p className="text-white">col-3</p>
+    </div>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+Now let's take a look at an example that changes from large screens to mobile according to the default breakpoints. If you change the screen width, you might have to get the sidebar out of the way on 768px or smaller (the default "tablet" or "tab" break point). The additional classes make it a bit more complitcated, but not too much more. Notice that in this case it's also best to switch the height classes to the inner grid items themselves.
+
+<div className="row gap-sm mb-xl">
+  <div className="h-8 col-12 lg:col-3 scr:col-6 scr:br-sm border-dotted">
+    <div className="bg-blue text-white center flex-col h-full radius-md">
+      <Paragraph text="col-12" />
+      <Paragraph text=".lg:col-3" />
+      <Paragraph text=".scr:col-6" />
+    </div>
+  </div>
+  <div className="h-8 col-12 lg:col-3 scr:col-6 lg:br-sm border-dotted">
+    <div className="bg-blue text-white center flex-col  h-full radius-md">
+      <Paragraph text="col-12" />
+      <Paragraph text=".lg:col-3" />
+      <Paragraph text=".scr:col-6" />
+    </div>
+  </div>
+  <div className="h-8 col-12 lg:col-3 scr:col-6 scr:br-sm border-dotted">
+    <div className="bg-blue text-white center flex-col  h-full radius-md">
+      <Paragraph text="col-12" />
+      <Paragraph text=".lg:col-3" />
+      <Paragraph text=".scr:col-6" />
+    </div>
+  </div>
+  <div className="h-8 col-12 lg:col-3 scr:col-6">
+    <div className="bg-blue text-white center flex-col  h-full radius-md">
+      <Paragraph text="col-12" />
+      <Paragraph text=".lg:col-3" />
+      <Paragraph text=".scr:col-6" />
+    </div>
+  </div>
+</div>
+
+I switched the gap class to be a bit smaller and element has a default width of 12, but on screen sizes (denoted by the `scr:` prefix) which by default is anything over 768px wide, the width becomes 6 for a 2 column layout, and on large sizes (denoted by the `lg:` prefix), the width becomes 3 for a 4 column layout.
+
+Also, note that this is only one way of using the responsive classes. For more info on how they work see the [Responsive](/responsive-classes/) section.
+
+And as a final note: the `center` class has a display of flex built in, so all I need is a `flex-col` class to get inner text paragraphs in a column, and the HTML is as follows.
+
+<CodeWrapper title="Html">
+
+```html
+<div className="row gap-sm">
+  <div className="h-8 col-12 lg:col-3 scr:col-6 scr:br-sm border-dotted">
+    <div className="bg-blue text-white center flex-col h-full radius-md">
+      <p>.col-12</p>
+      <p>.scr:col-6</p>
+      <p>.lg:col-3</p>
+    </div>
+  </div>
+
+  <div className="h-8 col-12 lg:col-3 scr:col-6 lg:br-sm border-dotted">
+    <div className="bg-blue text-white center flex-col h-full radius-md">
+      <p>.col-12</p>
+      <p>.scr:col-6</p>
+      <p>.lg:col-3</p>
+    </div>
+  </div>
+
+  <div className="h-8 col-12 lg:col-3 scr:col-6 scr:br-sm border-dotted">
+    <div className="bg-blue text-white center flex-col h-full radius-md">
+      <p>.col-12</p>
+      <p>.scr:col-6</p>
+      <p>.lg:col-3</p>
+    </div>
+  </div>
+
+  <div className="h-8 col-12 lg:col-3 scr:col-6">
+    <div className="bg-blue text-white center flex-col h-full radius-md">
+      <p>.col-12</p>
+      <p>.scr:col-6</p>
+      <p>.lg:col-3</p>
+    </div>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+Hopefully this shows how easy it is to add some basic columns to a layout with these utility classes!

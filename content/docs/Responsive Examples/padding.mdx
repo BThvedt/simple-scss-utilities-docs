@@ -1,0 +1,403 @@
+---
+title: Padding
+tags: [responsive, padding]
+type: docs
+description: Overview of the Padding Classes
+category: responsive
+slug: padding
+order: 30
+anchorLinks:
+  [
+    { title: "Classes", link: "classes" },
+		{ title: "Examples", link: "examples" }
+  ]
+---
+
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Padding
+
+#### How to use
+
+Padding is very similar to margin. They can have `sm`, `md`, `lg`, `xl` etc. classes, they also have the same fractional classes, they can be applied in any direction, they both cna be made responsive, adn indeed modifying the same values in `variables.scss` will apply classes to both.
+
+## Classes
+
+Here are the default classes. Like with margin that in addition to the `p-[size]` classes, there's also `.pt`,`.pb`,`pl`, and `pr` classes for top, bottom, left, and right paddings respectively, as well as `.px` and `.py` classes for both left and right or top and bottom.
+
+All these clases also respond to the responsive prefixes, see the (Responsive)[/docs/responsive-classes/] section for details for that as well.
+
+Note that the percents aren't repeated, for example, there's a `1/20` padding but not a `2/20` padding or a `4/20` padding because those are already handled by the `1/10` and `1/5` classes.
+
+Note that with the fraction classes the percents aren't repeated, for example, there's a `1/20` and a `3/20` padding, but not a `2/20` padding or a `4/20` padding because those are already handled by the `1/10` and `1/5` classes.
+
+| Class   | CSS rule           |
+| :------ | :----------------- |
+| p-0     | padding: 0;        |
+| p-xxs   | padding: 0.125rem; |
+| p-xs    | padding: 0.25rem;  |
+| p-sm    | padding: 0.5rem;   |
+| p-md    | padding: 0.75rem;  |
+| p-base  | padding: 1rem;     |
+| p-lg    | padding: 1.25rem;  |
+| p-xl    | padding: 1.5rem;   |
+| p-2xl   | padding: 2rem;     |
+| p-3xl   | padding: 3rem;     |
+| p-4xl   | padding: 4rem;     |
+| p-5xl   | padding: 5rem;     |
+| p-1/2   | padding: 50%       |
+| p-1/3   | padding: 33%       |
+| p-2/3   | padding: 66%       |
+| p-1/4   | padding: 25%       |
+| p-2/4   | padding: 50%       |
+| p-3/4   | padding: 75%       |
+| p-1/5   | padding: 20%       |
+| p-2/5   | padding: 40%       |
+| p-3/5   | padding: 60%       |
+| p-4/5   | padding: 80%       |
+| p-1/10  | padding: 10%       |
+| p-3/10  | padding: 30%       |
+| p-7/10  | padding: 70%       |
+| p-9/10  | padding: 90%       |
+| p-1/20  | padding: 5%        |
+| p-3/20  | padding: 15%       |
+| p-7/20  | padding: 35%       |
+| p-9/20  | padding: 45%       |
+| p-11/20 | padding: 55%       |
+| p-13/20 | padding: 65%       |
+| p-17/20 | padding: 85%       |
+| p-19/20 | padding: 95%       |
+| p-full  | padding: 100%      |
+
+Each of these classes are repeated for top, bottom, left, right, x, and y directions so see some examples below:
+
+## Examples
+
+### Padding Sizes
+
+These are the example "default" sizes for paddings. Note these can all be changed by editing the `_variables.scss` file. See the [Customize](/customize/) section for further info. Each blue box is a div, the light magenta areas represent the paddings applied by the classes in the caption:
+
+<div className="row mb-xl">
+  <div className="col-4 display-flex flex-col items-center">
+    <div className="mb-lg">
+      <div className="bg-magenta-lt pr-xs radius-md">
+        <div className="bg-blue w-3 h-3 radius-md" />
+      </div>
+      <p>.pr-xs</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-magenta-lt pr-lg radius-md">
+        <div className="bg-blue w-3 h-3 radius-md" />
+      </div>
+      <p>.pr-lg</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-magenta-lt pr-3xl radius-md">
+        <div className="bg-blue w-3 h-3 radius-md" />
+      </div>
+      <p>.pr-3xl</p>
+    </div>
+
+  </div>
+
+  <div className="col-4 display-flex flex-col items-center">
+    <div className="mb-lg">
+      <div className="bg-magenta-lt pr-sm radius-md">
+        <div className="bg-blue w-3 h-3 radius-md"  />
+      </div>
+      <p>.pr-sm</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-magenta-lt pr-xl radius-md">
+        <div className="bg-blue w-3 h-3 radius-md" />
+      </div>
+      <p>.pr-xl</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-magenta-lt pr-4xl radius-md">
+        <div className="bg-blue w-3 h-3 radius-md" />
+      </div>
+      <p>.pr-4xl</p>
+    </div>
+
+  </div>
+
+  <div className="col-4 display-flex flex-col items-center">
+    <div className="mb-lg">
+      <div className="bg-magenta-lt pr-md radius-md">
+        <div className="bg-blue w-3 h-3 radius-md" />
+      </div>
+      <p>.pr-md</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-magenta-lt pr-2xl radius-md">
+        <div className="bg-blue w-3 h-3 radius-md" />
+      </div>
+      <p>.pr-2xl</p>
+    </div>
+
+    <div className="mb-lg">
+      <div className="bg-magenta-lt pr-5xl radius-md">
+        <div className="bg-blue w-3 h-3 radius-md" />
+      </div>
+      <p>.pr-5xl</p>
+    </div>
+
+  </div>
+  
+</div>
+
+Here's what the html for one of the boxes above would look like
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div className="mb-lg">
+  <div className="bg-magenta-lt pr-xl radius-md">
+    <div className="bg-blue w-3 h-3 radius-md" />
+  </div>
+  <p>.pr-xl</p>
+</div>
+```
+
+</CodeWrapper>
+
+### Fractional Sizes
+
+Like margin, percents are relative to the containing element. With margins this makes more sense to me, and with padding I find this to be slightly more counter-intutitve but hey it's how it's done.
+
+Like with margin, for these examples I have a fixed witdth container, and a blue div element, but here the light magenta element signifies padding of the blue div's parent, but it's relative to the dashed-outline container div, so, like margin, it breaks out when given a width full (or near full):
+
+<div className="display-flex flex-col items-center mb-xl">
+
+<div className="m-md">
+  <div className="display-flex bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="pr-1/10 bg-magenta-lt display-inline-block">
+      <div className="bg-blue w-3 h-3" />
+    </div>
+  </div>
+  <p>.pr-1/10</p>
+</div>
+
+<div className="m-md">
+  <div className="display-flex bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="pr-1/5 bg-magenta-lt display-inline-block">
+      <div className="bg-blue w-3 h-3" />
+    </div>
+  </div>
+  <p>.pr-1/5</p>
+</div>
+
+<div className="m-md">
+  <div className="display-flex bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="pr-1/3 bg-magenta-lt display-inline-block">
+      <div className="bg-blue w-3 h-3" />
+    </div>
+  </div>
+  <p>.pr-1/3</p>
+</div>
+
+<div className="m-md">
+  <div className="display-flex bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="pr-1/2 bg-magenta-lt display-inline-block">
+      <div className="bg-blue w-3 h-3" />
+    </div>
+  </div>
+  <p>.pr-1/2</p>
+</div>
+
+<div className="m-md">
+  <div className="display-flex bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="pr-17/20 bg-magenta-lt display-inline-block">
+      <div className="bg-blue w-3 h-3" />
+    </div>
+  </div>
+  <p>.pr-17/20</p>
+</div>
+
+<div className="m-md">
+  <div className="display-flex bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="pr-full bg-magenta-lt display-inline-block">
+      <div className="bg-blue w-3 h-3" />
+    </div>
+  </div>
+  <p>.pr-full</p>
+</div>
+
+</div>
+
+Here's an example for the HTML of the pl-1/2 box:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div className="m-md">
+  <div className="display-flex bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+    <div className="pr-1/2 bg-magenta-lt display-inline-block">
+      <div className="bg-blue w-3 h-3" />
+    </div>
+  </div>
+  <p>.pr-1/2</p>
+</div>
+```
+
+</CodeWrapper>
+
+### Directional Paddings
+
+And here are examples of classes going in each direction. Each "directional" class also works for every one of the widths i.e. `sm`, `md`, `lg`, etc.
+
+<div className="display-flex align-center justify-between mb-xl">
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div className="bg-magenta-lt pt-xl radius-md">
+      <div className="w-3 h-3 bg-blue radius-md"></div>
+    </div>
+  </div>
+  <p>.pt-xl</p>
+</div>
+
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div className="bg-magenta-lt pr-xl radius-md">
+      <div className="w-3 h-3 bg-blue radius-md"></div>
+    </div>
+  </div>
+  <p>.pr-xl</p>
+</div>
+
+{" "}
+
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div className="bg-magenta-lt pt-xl radius-md">
+      <div className="w-3 h-3 bg-blue radius-md"></div>
+    </div>
+  </div>
+  <p>.pt-xl</p>
+</div>
+
+{" "}
+
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div className="bg-magenta-lt pb-xl radius-md">
+      <div className="w-3 h-3 bg-blue radius-md"></div>
+    </div>
+  </div>
+  <p>.pb-xl</p>
+</div>
+
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div className="bg-magenta-lt px-xl radius-md">
+      <div className="w-3 h-3 bg-blue radius-md"></div>
+    </div>
+  </div>
+  <p>.px-xl</p>
+</div>
+
+<div className="display-flex flex-col justify-center ">
+  <div className="display-flex center">
+    <div className="bg-magenta-lt w-3 h-3 py-xl radius-md">
+      <div className="w-3 h-3 bg-blue radius-md"></div>
+    </div>
+  </div>
+  <p>.py-xl</p>
+</div>
+
+</div>
+
+A few examples of the above boxes (just `pt`, `pb`, and `px`):
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="display-flex flex-col justify-center ">
+  <div class="display-flex center">
+    <div class="bg-magenta-lt pt-xl radius-md">
+      <div class="w-3 h-3 bg-blue radius-md"></div>
+    </div>
+  </div>
+  <p>.pt-xl</p>
+</div>
+
+{" "}
+
+<div class="display-flex flex-col justify-center ">
+  <div class="display-flex center">
+    <div class="bg-magenta-lt pb-xl radius-md">
+      <div class="w-3 h-3 bg-blue radius-md"></div>
+    </div>
+  </div>
+  <p>.pb-xl</p>
+</div>
+
+<div class="display-flex flex-col justify-center ">
+  <div class="display-flex center">
+    <div class="bg-magenta-lt px-xl radius-md">
+      <div class="w-3 h-3 bg-blue radius-md"></div>
+    </div>
+  </div>
+  <p>.px-xl</p>
+</div>
+```
+
+</CodeWrapper>
+
+### Responsive Paddings
+
+And finally, here's some examples with the responsive classes set. If you're on a browser, adjust the screen sizes to see them in action, although for small sizes you'll have to close the sidebar:
+
+<div className="center m-lg mb-xl flex-col my-xl">
+  <div className="bg-magenta-lt p-sm tab:p-lg scr:p-2xl lg:p-3xl radius-md mb-md">
+    <div className="w-5 h-5 bg-blue radius-md" />
+  </div>
+  <Paragraph className="display-none max-mob:display-block" text=".p-sm" />
+  <Paragraph
+    className="display-none tab:display-block scr:display-none"
+    text=".tab:p-lg"
+  />
+  <Paragraph
+    className="display-none scr:display-block lg:display-none"
+    text=".scr:p-2xl"
+  />
+  <Paragraph className="display-none lg:display-block" text=".lg:p-3xl" />
+</div>
+
+Code for the Box:
+
+<CodeWrapper title="HTML" >
+
+```HTML
+<div class="bg-background-dkr border-dark-mode-only-ltr border-lg border-dashed radius-md mb-md">
+  <div class="w-5 h-5 m-sm tab:m-lg scr:m-2xl lg:m-3xl bg-blue radius-md" />
+</div>
+```
+
+</CodeWrapper>
+
+Responive padding with the max-[breakpoint] classes. Here the padding left is 1/4 for widths under 1024px and 3/4 for widths over that amount:
+
+<div className="center flex-col m-xl">
+  <div className="bg-background-dkr border-lg border-dark-mode-only-ltr border-dashed w-16">
+
+    <div className="bg-magenta-lt w-3 h-3 pl-3/4 max-scr:pl-1/4">
+      <div className="bg-blue w-3 h-3" />
+    </div>
+
+  </div>
+  <Paragraph
+    className="display-none max-scr:display-block"
+    text=".max-scr:pl-1/4"
+  />
+  <Paragraph className="display-none lg:display-block" text=".pl-3/4" />
+</div>
+
+Happy coding!

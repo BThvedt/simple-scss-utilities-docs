@@ -1,0 +1,382 @@
+---
+title: Border Width
+tags: [responsive, overflow]
+type: docs
+description: Overview of the Border Classes
+category: responsive
+slug: border
+order: 33
+anchorLinks:
+  [
+    { title: "Classes", link: "classes" },
+		{ title: "Examples", link: "examples" }
+  ]  
+---
+
+import { Paragraph } from "../../../src/components/Mdx/textComponents"
+import CodeWrapper from "../../../src/components/Mdx/CodeWrapper"
+
+# Border
+
+#### How to use
+
+Like margin and padding, border and outline can be applied in any direction but there's less classes. You can find the widths in `_variables.scss` and like with everything else both the keys and the values can be edited, added, or removed:
+
+<CodeWrapper title="_variables.scss_" isFile >
+
+```scss
+$border-and-outline-widths: (
+  "0": 0px,
+  "sm": 1px,
+  "md": 3px,
+  "lg": 5px,
+  "xl": 7px,
+  "2xl": 11px
+);
+```
+
+</CodeWrapper>
+
+These default values generate default classes like you would expect.
+
+| Class      | CSS rule            |
+| :--------- | :------------------ |
+| border-0   | border-width: 0px;  |
+| border-sm  | border-width: 1px;  |
+| border-md  | border-width: 3px;  |
+| border-lg  | border-width: 5px;  |
+| border-xl  | border-width: 7px;  |
+| border-2xl | border-width: 11px; |
+
+Border classes include [Colors](/docs/classes-with-colors/?anchor=border-color) or [Styles](/docs/border/?anchor=top-right-bottom-left) which are covered in their own pages, but it's pretty simple and I'll include those in the examples below.
+
+In addition to these, there's also classes for the left, right, top, and bottom borders which are `.bl`, `.br`, `.bt`, and `.bb` classes respectively. There are also x and y classes `.bx` and `.by`:
+
+| Class  | CSS rule                                               |
+| :----- | :----------------------------------------------------- |
+| bl-0   | border-left-width: 0px;                                |
+| bl-sm  | border-left-width: 1px;                                |
+| bl-md  | border-left-width: 3px;                                |
+| bl-lg  | border-left-width: 5px;                                |
+| bl-xl  | border-left-width: 7px;                                |
+| bl-2xl | border-left-width: 11px;                               |
+| br-0   | border-right-width: 0px;                               |
+| br-sm  | border-right-width: 1px;                               |
+| br-md  | border-right-width: 3px;                               |
+| br-lg  | border-right-width: 5px;                               |
+| br-xl  | border-right-width: 7px;                               |
+| br-2xl | border-right-width: 11px;                              |
+| bt-0   | border-top-width: 0px;                                 |
+| bt-sm  | border-top-width: 1px;                                 |
+| bt-md  | border-top-width: 3px;                                 |
+| bt-lg  | border-top-width: 5px;                                 |
+| bt-xl  | border-top-width: 7px;                                 |
+| bt-xl  | border-top-width: 11px;                                |
+| bb-0   | border-bottom-width: 0px;                              |
+| bb-sm  | border-bottom-width: 1px;                              |
+| bb-md  | border-bottom-width: 3px;                              |
+| bb-lg  | border-bottom-width: 5px;                              |
+| bb-xl  | border-bottom-width: 7px;                              |
+| bb-2xl | border-bottom-width: 11px;                             |
+| bx-0   | border-left-width: 0px;<br/>border-right-width: 0px;   |
+| bx-sm  | border-left-width: 1px;<br/>border-right-width: 1px;   |
+| bx-md  | border-left-width: 3px;<br/>border-right-width: 3px;   |
+| bx-lg  | border-left-width: 5px;<br/>border-right-width: 5px;   |
+| bx-xl  | border-left-width: 7px;<br/>border-right-width: 7px;   |
+| bx-2xl | border-left-width: 11px;<br/>border-right-width: 11px; |
+| by-0   | border-top-width: 0px;<br/>border-bottom-width: 0px;   |
+| by-sm  | border-top-width: 1px;<br/>border-bottom-width: 1px;   |
+| by-md  | border-top-width: 3px;<br/>border-bottom-width: 3px;   |
+| by-lg  | border-top-width: 5px;<br/>border-bottom-width: 5px;   |
+| by-xl  | border-top-width: 7px;<br/>border-bottom-width: 7px;   |
+| by-2xl | border-top-width: 11px;<br/>border-bottom-width: 11px; |
+
+So lets see some examples!
+
+## Examples
+
+<div className="row h-8 gap-md align-center">
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue border-0"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.border-0</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue border-sm"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.border-sm</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue border-md"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.border-md</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue border-lg"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.border-lg</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue border-xl"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.border-xl</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue border-2xl"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.border-2xl</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="row h-8 gap-md align-center">
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue bt-xl border-red"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.bt-xl</p>
+        <p>.border-red</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue bb-xl border-green"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.bb-xl</p>
+        <p>.border-green</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue bl-xl border-magenta"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.bl-xl</p>
+        <p>.border-magenta</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue br-xl border-blue-dkr"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.br-xl</p>
+        <p>.border-blue-dkr</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue by-xl"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.by-xl</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue bx-xl"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.bx-xl</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="row h-14 mb-lg gap-md align-center">
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue bx-xl rtl-lg rbr-lg border-dashed border-magenta"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.bx-xl</p>
+        <p>.border-dashed</p>
+        <p>.border-magenta</p>
+        <p>.rtl-lg</p>
+        <p>.rbr-lg</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue bx-xl rbl-lg rtr-lg border-dotted border-default-dkr"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.bx-xl</p>
+        <p>.border-dotted</p>
+        <p>.border-default-dkr</p>
+        <p>.rbl-lg</p>
+        <p>.rtr-lg</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue by-2xl radius-full"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.by-2xl</p>
+        <p>.radius-full</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue border-md border-red rbr-full"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.border-md</p>
+        <p>.border-groove</p>
+        <p>.border-green</p>
+        <p>.radius-full</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue border-2xl border-groove border-green radius-full"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.border-2xl</p>
+        <p>.border-groove</p>
+        <p>.border-green</p>
+        <p>.radius-full</p>
+      </div>
+    </div>
+  </div>
+  <div className="col-2">
+    <div className="display-flex flex-col justify-center ">
+      <div className="display-flex center">
+        <div className="w-3 h-3 bg-blue border-2xl border-inset border-magenta radius-full"></div>
+      </div>
+      <div className="display-flex flex-col">
+        <p>.border-2xl</p>
+        <p>.border-inset</p>
+        <p>.border-magenta</p>
+        <p>.radius-full</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+In case you're wondering what the full html looks like, here's the markup for the last example:
+
+<CodeWrapper title="HTML" >
+
+```html
+<div class="display-flex flex-col justify-center ">
+  <div class="display-flex center">
+    <div
+      class="w-3 h-3 bg-blue border-2xl border-inset border-magenta radius-full"
+    ></div>
+  </div>
+  <div class="display-flex flex-col">
+    <p>.border-2xl</p>
+    <p>.border-inset</p>
+    <p>.border-magenta</p>
+    <p>.radius-full</p>
+  </div>
+</div>
+```
+
+</CodeWrapper>
+
+### Responsive Examples
+
+Like margin and padding, border width classes can be prefixed with the breakpoints defined in `_variables.scss`. Here is an example of the border changing sizes from small to large widths. If you're on a browser you can resize the screen to see the border width, on the smallest widths you'll have to close the sideber. I didn't make order radius, style classes don't respond to breakpoints because they don't have much to do with size, if you need those to be responsive it's a good opportunity to write some custom SCSS! But border size is at least responsive:
+
+<div className="center m-lg mb-xl flex-col my-xl">
+  <div className="w-5 h-5 bg-blue radius-md border-md tab:border-lg scr:border-xl lg:border-2xl " />
+  <Paragraph className="display-none max-mob:display-block" text=".border-md" />
+  <Paragraph
+    className="display-none tab:display-block scr:display-none"
+    text=".tab:border-lg"
+  />
+  <Paragraph
+    className="display-none scr:display-block lg:display-none"
+    text=".scr:border-xl"
+  />
+  <Paragraph className="display-none lg:display-block" text=".lg:border-2xl" />
+</div>
+
+Here is the code for the responsive border size:
+
+<CodeWrapper title="HTML" >
+
+```html
+<div
+  class="w-5 h-5 bg-blue radius-md border-md tab:border-lg scr:border-xl lg:border-2xl "
+/>
+```
+
+</CodeWrapper>
+
+And as one more example, here's a border with a `.max-scr` class, so the outline is `lg` up to 1024px (the break point between `scr` and `lg`) and `2xl` above that:
+
+<div className="center m-lg mb-xl flex-col my-xl">
+  <div className="w-5 h-5 bg-blue radius-md border-2xl max-scr:border-lg" />
+  <Paragraph
+    className="display-none max-scr:display-block"
+    text=".max-scr:border-lg"
+  />
+  <Paragraph className="display-none lg:display-block" text=".border-2xl" />
+</div>
+
+And here's the HTML:
+
+<CodeWrapper title="HTML" >
+
+```html
+<div class="w-5 h-5 bg-blue radius-md border-2xl max-scr:border-lg" />
+```
+
+</CodeWrapper>
+
+Happy coding!
