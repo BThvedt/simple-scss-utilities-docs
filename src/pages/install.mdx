@@ -135,6 +135,8 @@ npm install gulp-concat gulp-clean-css gulp-cached
 - gulp-clean-css will help us simplify the generated files
 - and gulp cached will only look for file changes (I guess it's not that important in the end but I have it in there haha)
 
+Update: actually, now I am unsure about using cached
+
 Here is the new gulpfile
 
 <div className = "text-md line-height-md">
@@ -152,7 +154,7 @@ const cached = require("gulp-cached");
 // Build raw utility styles without purging
 function buildSSU() {
   return src("simple-scss-utilities/**/*.scss")
-    .pipe(cached("build")) // cache unpurged build
+    // .pipe(cached("build")) // cache unpurged build
     .pipe(sass())
     .pipe(concat("ssu.css"))
     .pipe(dest("css"));
@@ -161,7 +163,7 @@ function buildSSU() {
 // SCSS for global styles
 function buildGlobalStyles() {
   return src("scss/**/*.scss") // <-- your second folder
-    .pipe(cached("global")) // only changed files
+    // .pipe(cached("global")) // only changed files .. no wait, actually.. don't do this, things can get overwritten
     .pipe(sass())
     .pipe(concat("style.css"))
     .pipe(cleanCSS())
@@ -171,7 +173,7 @@ function buildGlobalStyles() {
 // SCSS with PurgeCSS
 function buildPurgedStyles() {
   return src("simple-scss-utilities/**/*.scss")
-    .pipe(cached("styles")) // only changed files
+    // .pipe(cached("styles")) // only changed files
     .pipe(sass())
     .pipe(
       purgecss({

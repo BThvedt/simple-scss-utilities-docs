@@ -80,6 +80,13 @@ const SidebarLayout = ({ pathname, children }) => {
 
   let sidebarData
 
+  console.log("TIME TO DEBUG")
+  console.log(sidebarData)
+  console.log(`${path_prefix}docs`)
+  console.log(process.env)
+  console.log(process.env.GATSBY_PATH_PREFIX)
+  console.log(process.env.PATH_PREFIX)
+
   // this might be kinda janky code .. but I don't wanna spend forever trying to think about an alternative way
   if (pathname.startsWith(`${path_prefix}docs`)) {
     sidebarData = { path: "docs", ...docs }
