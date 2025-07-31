@@ -6,7 +6,7 @@
 // a variable for the max comtainer size
 // max-width gets this max-width-container
 // if you don't want to use it, you don't gotta (or set it to 100% or 100 vw)
-$container-size: 1024px; // 1024 is a good value imo
+$container-size: 1280px; // 1280 is a good value imo
 
 // fonts are a nice start to customizing a design
 $fonts: (
@@ -37,11 +37,10 @@ $font-weights: (
 // so the way the media queires are generated, "mob" is 0-640px, "tab" 640-720, "scr" 768-1024, "lg" is anything bigger
 $breakpoints: (
   "_": none,
-  "mob": 0,
-  "tab": 640px,
-  // tab starts at 640
-  "scr": 768px,
-  "lg": 1024px
+  "mob": 0, // below 450px, mobile phone
+  "tab": 450px, // tab starts at 450-ish
+  "scr": 768px, // above this is a screen type of with
+  "lg": 1024px // widths larger than this are "large"
 );
 
 // dark mode ..
